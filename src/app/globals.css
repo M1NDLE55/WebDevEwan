@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
+/* :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
@@ -24,10 +24,24 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
-}
+} */
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+}
+
+@layer components {
+  .effect-glass {
+    @apply border border-[rgba(255,255,255,0.3)] bg-[rgba(255,255,255,0.2)] shadow-sm backdrop-blur-[5px] backdrop-filter [box-shadow:0_4px_30px_rgba(0,0,0,0.1)];
+  }
+
+  .h-section-1 {
+    @apply flex h-[calc(100dvh-64px)];
+  }
+
+  .center-div {
+    @apply flex items-center justify-center;
   }
 }
