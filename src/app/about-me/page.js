@@ -12,5 +12,5 @@ export default function Page() {
   }, [pathname]);
   //#endregion
 
-  return <main className="h-section-1 p-4">quote</main>;
+  return <main className="h-section-1 p-4">about me</main>;
 }
