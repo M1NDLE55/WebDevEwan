@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Header() {
   return (
-    <header className="flex h-16 flex-row items-center justify-between border-b p-4">
+    <header className="flex h-16 flex-row items-center justify-between p-4">
       <Link href="/">LOGO</Link>
       <Menu />
     </header>
