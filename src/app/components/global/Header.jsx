@@ -12,6 +12,7 @@ export default function Header() {
 function Menu() {
   const links = [
     { href: "/", text: "Home" },
+    { href: "/about-me", text: "About Me" },
     { href: "/quote", text: "Quote" },
   ];
 

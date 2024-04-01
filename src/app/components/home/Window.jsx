@@ -12,7 +12,12 @@ export default function Window() {
 
       <div className="center-div relative h-[calc(100%-40px)] p-4">
         <div className="absolute right-5 top-0 hidden md:inline">
-          <Star />
+          <Image
+            src="/star_black.png"
+            width={250}
+            height={250}
+            alt="Picture of a star"
+          />
         </div>
         <h2 className="text-center text-5xl italic leading-loose sm:text-6xl sm:leading-loose">
           Feeling <b>inspired</b>?
@@ -35,15 +40,4 @@ export default function Window() {
 
 function Circle() {
   return <div className="h-3 w-3 rounded-full bg-black" />;
-}
-
-function Star() {
-  return (
-    <Image
-      src="/star_black.png"
-      width={250}
-      height={250}
-      alt="Picture of a star"
-    />
-  );
 }
