@@ -1,6 +1,6 @@
 export default function Shapes() {
   return (
-    <div className="absolute left-0 top-0 -z-10 h-[calc(100dvh+120px)] w-full overflow-clip sm:overflow-visible">
+    <div className="absolute left-0 top-0 -z-10 h-[calc(100vh+120px)] w-full overflow-clip sm:overflow-visible">
       <Circle
         className="-top-40 right-1/2 bg-gradient-to-r from-orange-500 to-pink-600"
         type={5}
