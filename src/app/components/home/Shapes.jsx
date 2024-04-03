@@ -1,24 +1,24 @@
 export default function Shapes() {
   return (
-    <div className="absolute left-0 top-0 -z-10 h-[calc(100dvh+100px)] w-full">
+    <div className="absolute left-0 top-0 -z-10 h-[calc(100dvh+120px)] w-full overflow-clip sm:overflow-visible">
       <Circle
         className="-top-40 right-1/2 bg-gradient-to-r from-orange-500 to-pink-600"
         type={5}
       />
       <Circle
-        className="right-1/4 top-48 bg-gradient-to-br from-yellow-400 to-orange-600"
+        className="right-16 top-28 bg-gradient-to-br from-yellow-400 to-orange-600 sm:right-1/4 sm:top-48"
         type={2}
       />
       <Circle
-        className="left-44 top-56 bg-gradient-to-br from-cyan-400 to-blue-600"
+        className="left-44 top-56 hidden bg-gradient-to-br from-cyan-400 to-blue-600 sm:inline"
         type={1}
       />
       <Circle
-        className="bottom-1/4 left-3/4 bg-gradient-to-br from-lime-400 to-cyan-600"
+        className="-right-20 bottom-1/4 bg-gradient-to-br from-lime-400 to-cyan-600 sm:left-3/4"
         type={3}
       />
       <Circle
-        className="right-2/3 top-3/4 bg-gradient-to-r from-fuchsia-400 to-indigo-600"
+        className="bottom-0 right-2/3 bg-gradient-to-r from-fuchsia-400 to-indigo-600"
         type={4}
       />
     </div>
@@ -35,6 +35,8 @@ function Circle({ className: style, type }) {
   ];
 
   return (
-    <div className={`absolute rounded-full ${style} ${sizes[type - 1]}`} />
+    <div
+      className={`absolute rounded-full shadow-md ${style} ${sizes[type - 1]}`}
+    />
   );
 }

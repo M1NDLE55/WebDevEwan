@@ -1,88 +1,51 @@
 import Link from "next/link";
 
 export default function Services() {
-  const services = [
+  const blocks = [
     {
-      service: "Web Development and Content Creation",
-      description:
-        "Creating custom websites enriched with engaging content to captivate your audience",
-      tag: "dev",
+      title: "Website Development and Management",
+      services: ["Website Development", "Domain, Email and Hosting Management"],
+      color: "border-[#fb5607]",
+      href: "/quote?ref=dev",
     },
     {
-      service: "Domain, Email, and Hosting Management",
-      description:
-        "Registering and managing domain names, setting up professional email addresses, and handling website hosting",
-      tag: "hosting",
+      title: "Optimization and Engagement",
+      services: ["SEO", "Mobile Optimization", "Social Media Integration"],
+      color: "border-[#ff006e]",
+      href: "/quote?ref=opt",
     },
     {
-      service: "SEO and Mobile Optimization",
-      description:
-        "Boosting your website's search engine rankings and ensuring seamless user experience on mobile devices",
-      tag: "seo",
+      title: "Content Creation and Analysis",
+      services: ["Content Creation", "Analytics and Reporting"],
+      color: "border-[#8338ec]",
+      href: "/quote?ref=con",
     },
     {
-      service: "E-commerce Solutions",
-      description:
-        "Setting up online stores and integrating secure payment gateways for e-commerce functionality",
-      tag: "ecom",
-    },
-    {
-      service: "Analytics and Reporting",
-      description:
-        "Implementing tools to track website performance and user behavior, and providing insightful reports",
-      tag: "report",
+      title: "E-commerce and Security",
+      services: ["E-commerce Solutions", "Robust Security Measures"],
+      color: "border-[#3a86ff]",
+      href: "/quote?ref=ecomm",
     },
   ];
-
-  const colors = [
-    "border-[#2d00f7]",
-    "border-[#8900f2]",
-    "border-[#b100e8]",
-    "border-[#d100d1]",
-    "border-[#e500a4]",
-  ];
-
-  const results = [];
-
-  services.forEach((service, i) => {
-    let index = Math.floor(Math.random() * 5);
-
-    if (i === 0) {
-      results.push({ ...service, color: colors[index] });
-      return;
-    }
-
-    while (i === 1) {
-      if (colors[index] !== results[0].color) {
-        results.push({ ...service, color: colors[index] });
-        return;
-      }
-      index = Math.floor(Math.random() * 5);
-    }
-
-    while (i > 1) {
-      if (
-        colors[index] !== results[i - 1].color &&
-        colors[index] !== results[i - 2].color
-      ) {
-        results.push({ ...service, color: colors[index] });
-        return;
-      }
-      index = Math.floor(Math.random() * 5);
-    }
-  });
 
   return (
-    // <div className="center-div grid grid-cols-1 gap-4 lg:grid-cols-2">
-    <div className="center-div flex-col gap-4">
-      {results.map((result, i) => (
+    <div className="center-div grid max-w-7xl grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
+      {blocks.map((block) => (
         <Link
-          key={i}
-          href={{ pathname: "/quote", query: { ref: result.tag } }}
-          className={`flex w-full max-w-[700px] flex-col rounded-md border p-4 shadow transition-all hover:pl-5 lg:h-28 ${result.color}`}
+          key={block.title}
+          href={block.href}
+          className={`group flex flex-col rounded-md border p-4 text-center shadow-md sm:h-52 ${block.color}`}
         >
-          <h3 className="text-xl">{result.service}</h3>
-          <p>{result.description}</p>
+          <h3 className="text-xl transition-transform duration-300 lg:translate-y-[calc((174px-100%)/2)] lg:group-hover:translate-y-0">
+            {block.title}
+          </h3>
+          <ul className="mt-4 transition-opacity duration-300 lg:opacity-0 lg:group-hover:opacity-100">
+            {block.services.map((service) => (
+              <li key={service} className="text-base sm:text-lg">
+                {service}
+              </li>
+            ))}
+          </ul>
         </Link>
       ))}
     </div>
