@@ -30,11 +30,19 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+
+  .shadow-outer {
+    box-shadow: 0 4 30 rgba(0, 0, 0, 0.1);
+  }
 }
 
 @layer components {
   .effect-glass {
-    @apply border border-[rgba(255,255,255,0.3)] bg-[rgba(255,255,255,0.2)] shadow-sm backdrop-blur-[5px] backdrop-filter [box-shadow:0_4px_30px_rgba(0,0,0,0.1)];
+    @apply border border-[rgba(255,255,255,0.3)] bg-[rgba(255,255,255,0.2)] shadow-md backdrop-blur-[5px] backdrop-filter;
+  }
+
+  .effect-glass-2 {
+    @apply border border-[rgba(255,255,255,0.3)] bg-[rgba(255,255,255,0.5)] shadow-md backdrop-blur-[5px] backdrop-filter;
   }
 
   .h-section-1 {
