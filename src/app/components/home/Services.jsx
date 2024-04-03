@@ -3,9 +3,9 @@ import Link from "next/link";
 export default function Services() {
   const services = [
     {
-      service: "Website Development",
+      service: "Web Development and Content Creation",
       description:
-        "Designing and building custom websites tailored to your needs",
+        "Creating custom websites enriched with engaging content to captivate your audience",
       tag: "dev",
     },
     {
@@ -15,22 +15,10 @@ export default function Services() {
       tag: "hosting",
     },
     {
-      service: "SEO Optimization",
+      service: "SEO and Mobile Optimization",
       description:
-        "Optimizing your website to improve its visibility and ranking in search engine results",
+        "Boosting your website's search engine rankings and ensuring seamless user experience on mobile devices",
       tag: "seo",
-    },
-    {
-      service: "Content Creation",
-      description:
-        "Crafting engaging content for your website, including text, images, and multimedia elements",
-      tag: "content",
-    },
-    {
-      service: "Social Media Integration",
-      description:
-        "Seamlessly connecting your website with social media platforms to enhance engagement and reach",
-      tag: "social",
     },
     {
       service: "E-commerce Solutions",
@@ -44,22 +32,6 @@ export default function Services() {
         "Implementing tools to track website performance and user behavior, and providing insightful reports",
       tag: "report",
     },
-    // {
-    //   service: "Security Measures",
-    //   description:
-    //     "Implementing measures to protect your website from security threats and ensuring data safety",
-    // },
-    {
-      service: "Mobile First Design",
-      description:
-        "Optimizing your website for seamless viewing and usability on mobile devices",
-      tag: "mfd",
-    },
-    // {
-    //   service: "Conversion Rate Optimization (CRO)",
-    //   description:
-    //     "Analyzing user behavior and implementing strategies to improve your website's conversion rate",
-    // },
   ];
 
   const colors = [
@@ -101,7 +73,8 @@ export default function Services() {
   });
 
   return (
-    <div className="center-div grid grid-cols-1 gap-4 lg:grid-cols-2">
+    // <div className="center-div grid grid-cols-1 gap-4 lg:grid-cols-2">
+    <div className="center-div flex-col gap-4">
       {results.map((result, i) => (
         <Link
           key={i}

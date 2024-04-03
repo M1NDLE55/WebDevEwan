@@ -21,8 +21,9 @@ export default function Home() {
           Get a Quote
         </Link>
       </div>
-      <div className="center-div px-7">
+      <div className="center-div mt-40 px-7">
         <p className="text-xl sm:w-[700px] sm:text-2xl">
+          {/* effect-glass-2 rounded-md border-orange-400 p-4 */}
           Hey there, I&apos;m{" "}
           <Link href="/about-me" className="underline">
             Ewan
@@ -43,7 +44,7 @@ export default function Home() {
         </h2>
         <Services />
       </div>
-      <div className="center-div mb-16 mt-20 px-7">
+      {/* <div className="center-div mb-16 mt-20 px-7">
         <h2 className="text-center text-5xl italic leading-loose sm:text-6xl sm:leading-loose">
           Feeling <b>inspired</b>?
           <br />
@@ -58,7 +59,7 @@ export default function Home() {
           <br className="sm:hidden" />
           quote!
         </h2>
-      </div>
+      </div> */}
     </main>
   );
 }
