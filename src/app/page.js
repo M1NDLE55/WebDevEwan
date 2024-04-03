@@ -21,7 +21,7 @@ export default function Home() {
         </Link>
       </div>
       <div className="center-div mt-40 px-7">
-        <p className="border-l-2 border-double border-violet-500 pl-4 text-xl sm:w-[700px] sm:text-2xl">
+        <p className="border-l-2 border-violet-500 pl-4 text-xl sm:w-[700px] sm:text-2xl">
           Hey there, I&apos;m{" "}
           <Link href="/about-me" className="underline">
             Ewan
