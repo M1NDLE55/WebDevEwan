@@ -45,8 +45,16 @@ body {
     @apply border border-[rgba(255,255,255,0.3)] bg-[rgba(255,255,255,0.5)] shadow-md backdrop-blur-[5px] backdrop-filter;
   }
 
+  .effect-glass-plain {
+    @apply bg-[rgba(255,255,255,0.5)] backdrop-blur-[5px] backdrop-filter;
+  }
+
+  .effect-none {
+    @apply border-none bg-inherit shadow-none backdrop-blur-0 backdrop-filter-none;
+  }
+
   .h-section-1 {
-    @apply flex h-[calc(100dvh-64px)];
+    @apply flex h-[calc(100vh-64px)];
   }
 
   .center-div {
