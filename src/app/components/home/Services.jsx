@@ -6,24 +6,28 @@ export default function Services() {
       title: "Website Development and Management",
       services: ["Website Development", "Domain, Email and Hosting Management"],
       color: "border-[#fb5607]",
+      text: "text-[#fb5607]",
       href: "/quote?ref=dev",
     },
     {
       title: "Optimization and Engagement",
       services: ["SEO", "Mobile Optimization", "Social Media Integration"],
       color: "border-[#ff006e]",
+      text: "text-[#ff006e]",
       href: "/quote?ref=opt",
     },
     {
       title: "Content Creation and Analysis",
       services: ["Content Creation", "Analytics and Reporting"],
       color: "border-[#8338ec]",
+      text: "text-[#8338ec]",
       href: "/quote?ref=con",
     },
     {
       title: "E-commerce and Security",
       services: ["E-commerce Solutions", "Robust Security Measures"],
       color: "border-[#3a86ff]",
+      text: "text-[#3a86ff]",
       href: "/quote?ref=ecomm",
     },
   ];
@@ -36,7 +40,9 @@ export default function Services() {
           href={block.href}
           className={`group flex flex-col rounded-md border p-4 text-center shadow-md sm:h-52 ${block.color}`}
         >
-          <h3 className="text-xl transition-transform duration-300 lg:translate-y-[calc((174px-100%)/2)] lg:group-hover:translate-y-0">
+          <h3
+            className={`text-xl transition-transform duration-300 sm:text-2xl lg:translate-y-[calc((174px-100%)/2)] lg:group-hover:translate-y-0 ${block.text}`}
+          >
             {block.title}
           </h3>
           <ul className="mt-4 transition-opacity duration-300 lg:opacity-0 lg:group-hover:opacity-100">
