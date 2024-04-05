@@ -50,7 +50,7 @@ body {
   }
 
   .effect-none {
-    @apply bg-inherit backdrop-blur-0 backdrop-filter-none;
+    @apply border-none bg-inherit shadow-none backdrop-blur-0 backdrop-filter-none;
   }
 
   .h-section-1 {

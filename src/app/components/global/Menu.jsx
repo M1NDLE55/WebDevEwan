@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export function MenuIcon({ isOpen, setOpen }) {
   return (
@@ -13,7 +14,9 @@ export function MenuIcon({ isOpen, setOpen }) {
   );
 }
 
-export function MenuLinks({ isOpen }) {
+export function MenuLinks({ isOpen, setOpen }) {
+  const pathname = usePathname();
+
   const links = [
     { href: "/", text: "Home" },
     { href: "/about-me", text: "About Me" },
@@ -21,14 +24,21 @@ export function MenuLinks({ isOpen }) {
   ];
 
   return (
-    <div
-      className={`effect-glass-plain sm:effect-none absolute left-0 top-16 flex w-full flex-col gap-2 p-4 opacity-0 transition-all duration-300 sm:visible sm:static sm:flex sm:w-fit sm:flex-row sm:opacity-100 ${isOpen ? "visible opacity-100" : "invisible"}`}
-    >
-      {links.map((link) => (
-        <Link key={link.href} href={link.href} className="">
-          {link.text}
-        </Link>
-      ))}
-    </div>
+    <>
+      <div
+        className={`sm:effect-none absolute left-0 top-0 z-10 flex w-full flex-col p-4 pt-16 opacity-0 transition-all duration-300 sm:visible sm:static sm:flex sm:w-fit sm:flex-row sm:gap-2 sm:pt-4 sm:opacity-100 ${isOpen ? "effect-glass-2 rounded-b-xl opacity-100" : "invisible"}`}
+      >
+        {links.map((link) => (
+          <Link
+            key={link.href}
+            href={link.href}
+            className={`py-2 sm:p-0 sm:transition-all sm:duration-300 ${pathname === link.href ? "font-bold" : ""}`}
+            onClick={() => setOpen(false)}
+          >
+            {link.text}
+          </Link>
+        ))}
+      </div>
+    </>
   );
 }
