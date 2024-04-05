@@ -10,12 +10,14 @@ export default function Header() {
   return (
     <header className="flex-row items-center justify-between sm:flex">
       <div
-        className={`relative flex h-16 flex-row items-center justify-between py-4 pl-5 pr-4 transition-all duration-300 ${isOpen ? "effect-glass-plain" : ""}`}
+        className={`relative z-20 flex h-16 flex-row items-center justify-between py-4 pl-5 pr-4`}
       >
-        <Link href="/">LOGO</Link>
+        <Link href="/" onClick={() => setOpen(false)}>
+          LOGO
+        </Link>
         <MenuIcon isOpen={isOpen} setOpen={setOpen} />
       </div>
-      <MenuLinks isOpen={isOpen} />
+      <MenuLinks isOpen={isOpen} setOpen={setOpen} />
     </header>
   );
 }
