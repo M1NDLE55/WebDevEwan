@@ -18,8 +18,8 @@ export default function Page() {
             It was during this period of frustration that I discovered web
             development. Web development not only offered solutions to my
             problems but did so in an incredibly accessible and dynamic manner.
-            The field is continually evolving, creating new opportunities for
-            growth and learning each day.
+            The industry keeps on changing, offering fresh chances for
+            development and learning every single day.
           </P>
           <P>
             However, amidst my excitement, I encountered numerous websites that
@@ -34,9 +34,7 @@ export default function Page() {
             than just building a functional website. With this in mind, I
             approach each project with a holistic perspective, ensuring that
             every element, from the underlying code to the visual aesthetics,
-            contributes to a seamless and engaging user experience. I strive to
-            create websites that not only function flawlessly but also tell a
-            compelling story.
+            contributes to a seamless and engaging user experience.
           </P>
         </div>
       </div>
