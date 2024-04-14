@@ -33,7 +33,7 @@ export default function Services() {
   ];
 
   return (
-    <div className="center-div mt-10 grid max-w-7xl grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+    <div className="mt-10 grid max-w-7xl grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
       {blocks.map((block) => (
         <Link
           key={block.title}
