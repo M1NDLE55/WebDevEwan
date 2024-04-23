@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function Services() {
   const blocks = [
     {
-      title: "Website Development and Management",
+      title: "Web Development and Management",
       services: ["Website Development", "Domain, Email and Hosting Management"],
       color: "border-[#fb5607]",
       text: "text-[#fb5607]",
@@ -33,7 +33,7 @@ export default function Services() {
   ];
 
   return (
-    <div className="center-div grid max-w-7xl grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
+    <div className="mt-10 grid max-w-7xl grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
       {blocks.map((block) => (
         <Link
           key={block.title}
@@ -41,7 +41,7 @@ export default function Services() {
           className={`group flex flex-col rounded-md border p-4 text-center shadow-md sm:h-52 ${block.color}`}
         >
           <h3
-            className={`text-xl transition-transform duration-300 sm:text-2xl lg:translate-y-[calc((174px-100%)/2)] lg:group-hover:translate-y-0 ${block.text}`}
+            className={`text-xl transition-transform duration-300 will-change-transform sm:text-2xl lg:translate-y-[calc((174px-100%)/2)] lg:group-hover:translate-y-0 ${block.text}`}
           >
             {block.title}
           </h3>
