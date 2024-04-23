@@ -1,6 +1,6 @@
 import Link from "next/link";
-import Services from "./components/home/Services";
-import Shapes from "./components/home/Shapes";
+import Services from "../components/home/Services";
+import Shapes from "../components/home/Shapes";
 
 export default function Home() {
   return (
