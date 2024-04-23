@@ -54,7 +54,11 @@ body {
   }
 
   .h-section-1 {
-    @apply flex h-[calc(100vh-64px)];
+    @apply h-[calc(100vh-64px)];
+  }
+
+  .min-h-section-1 {
+    @apply h-full min-h-[calc(100vh-64px-64px)];
   }
 
   .center-div {
