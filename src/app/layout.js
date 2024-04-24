@@ -12,6 +12,7 @@ export const metadata = {
     description:
       "I specialize in crafting killer websites that showcase your brand, captivate visitors, and transform them into loyal fans.",
   },
+  metadataBase: new URL("https://www.webdevewan.com/"),
 };
 
 export default function RootLayout({ children }) {
