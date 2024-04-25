@@ -1,59 +1,75 @@
 import Link from "next/link";
+import { LaptopMinimal, ShoppingCart, Globe, Zap } from "lucide-react";
 
 export default function Services() {
-  const blocks = [
+  const services = [
     {
-      title: "Web Development and Management",
-      services: ["Website Development", "Domain, Email and Hosting Management"],
-      color: "border-[#fb5607]",
+      title: "Custom Website Development",
+      content:
+        "From simple static websites to dynamic web applications with robust databases, I craft custom solutions to suit your unique needs.",
+      border: "border-[#fb5607]",
+      node: "bg-[#fb5607]",
       text: "text-[#fb5607]",
       href: "/quote?ref=dev",
+      icon: <LaptopMinimal />,
     },
     {
-      title: "Optimization and Engagement",
-      services: ["SEO", "Mobile Optimization", "Social Media Integration"],
-      color: "border-[#ff006e]",
+      title: "E-commerce Solutions",
+      content:
+        "Dive into the world of e-commerce with confidence. I specialize in building secure, scalable, and feature-rich online stores that drive sales.",
+      border: "border-[#ff006e]",
+      node: "bg-[#ff006e]",
       text: "text-[#ff006e]",
       href: "/quote?ref=opt",
+      icon: <ShoppingCart />,
     },
     {
-      title: "Content Creation and Analysis",
-      services: ["Content Creation", "Analytics and Reporting"],
-      color: "border-[#8338ec]",
+      title: "Web Hosting and Domain Management",
+      content:
+        "Leave the technicalities to me! I offer reliable management of your website and email hosting, coupled with seamless domain management.",
+      border: "border-[#8338ec]",
+      node: "bg-[#8338ec]",
       text: "text-[#8338ec]",
       href: "/quote?ref=con",
+      icon: <Globe />,
     },
     {
-      title: "E-commerce and Security",
-      services: ["E-commerce Solutions", "Robust Security Measures"],
-      color: "border-[#3a86ff]",
+      title: "SEO Optimization",
+      content:
+        "I follow rigid design principles that not only ensure a seamless experience across various devices but also focus heavily on SEO optimization for a higher ranking in search results.",
+      border: "border-[#3a86ff]",
+      node: "bg-[#3a86ff]",
       text: "text-[#3a86ff]",
       href: "/quote?ref=ecomm",
+      icon: <Zap />,
     },
   ];
 
   return (
-    <div className="mt-10 grid max-w-7xl grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
-      {blocks.map((block) => (
-        <Link
-          key={block.title}
-          href={block.href}
-          className={`group flex flex-col rounded-md border p-4 text-center shadow-md sm:h-52 ${block.color}`}
-        >
-          <h3
-            className={`text-xl transition-transform duration-300 will-change-transform sm:text-2xl lg:translate-y-[calc((174px-100%)/2)] lg:group-hover:translate-y-0 ${block.text}`}
+    <div className="center-div mt-20 flex-col px-10">
+      <h2 className="max-w-2xl text-balance text-center text-3xl sm:text-4xl">
+        Ready to Take Your Online Presence to the{" "}
+        <span className="font-bold text-[#fb5607]">Next Level</span>?
+        <br />
+        Here&apos;s How I Can Help:
+      </h2>
+      <div className="mt-10 grid w-full max-w-4xl grid-cols-1 gap-10 md:grid-cols-2">
+        {services.map((service, i) => (
+          <Link
+            href={service.href}
+            key={i}
+            className={`relative flex flex-col rounded-md border p-4 text-center shadow-md ${service.border}`}
           >
-            {block.title}
-          </h3>
-          <ul className="mt-4 transition-opacity duration-300 lg:opacity-0 lg:group-hover:opacity-100">
-            {block.services.map((service) => (
-              <li key={service} className="text-base sm:text-lg">
-                {service}
-              </li>
-            ))}
-          </ul>
-        </Link>
-      ))}
+            <div
+              className={`center-div absolute left-0 top-0 h-16 w-16 -translate-x-1/2 -translate-y-1/2 rounded-full border bg-white shadow-md ${service.border}`}
+            >
+              {service.icon}
+            </div>
+            <h3 className="mb-2 text-xl sm:text-2xl">{service.title}</h3>
+            <p className="sm:text-lg">{service.content}</p>
+          </Link>
+        ))}
+      </div>
     </div>
   );
 }
