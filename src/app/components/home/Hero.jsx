@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ArrowDown } from "lucide-react";
 
 export default function Hero() {
   return (
@@ -15,8 +16,12 @@ export default function Hero() {
       >
         Get a Quote
       </Link>
-      <Link href="/#welcome" className="mt-5 text-lg underline sm:text-xl">
+      <Link
+        href="/#welcome"
+        className="center-div group mt-5 flex-col text-lg sm:text-xl"
+      >
         Read More
+        <ArrowDown className="transition-transform group-hover:translate-y-2" />
       </Link>
     </div>
   );

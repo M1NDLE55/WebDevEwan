@@ -46,10 +46,10 @@ export default function Services() {
   ];
 
   return (
-    <div className="center-div mt-20 flex-col px-10">
+    <div className="center-div mt-14 flex-col px-4 sm:mt-20">
       <h2 className="max-w-2xl text-balance text-center text-3xl sm:text-4xl">
-        Ready to Take Your Online Presence to the{" "}
-        <span className="font-bold text-[#fb5607]">Next Level</span>?
+        Ready to Go <span className="font-bold text-[#fb5607]">Next Level</span>
+        ?
         <br />
         Here&apos;s How I Can Help:
       </h2>
@@ -61,11 +61,11 @@ export default function Services() {
             className={`relative flex flex-col rounded-md border p-4 text-center shadow-md ${service.border}`}
           >
             <div
-              className={`center-div absolute left-0 top-0 h-16 w-16 -translate-x-1/2 -translate-y-1/2 rounded-full border bg-white shadow-md ${service.border}`}
+              className={`center-div absolute left-1/2 top-0 h-16 w-16 -translate-x-1/2 -translate-y-1/2 rounded-full border bg-white shadow-md ${service.border}`}
             >
               {service.icon}
             </div>
-            <h3 className="mb-2 text-xl sm:text-2xl">{service.title}</h3>
+            <h3 className="mb-2 mt-5 text-xl sm:text-2xl">{service.title}</h3>
             <p className="sm:text-lg">{service.content}</p>
           </Link>
         ))}
