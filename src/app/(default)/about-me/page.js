@@ -2,9 +2,9 @@ export default function Page() {
   return (
     <main>
       <div className="min-h-section-1 flex justify-center">
-        <div className="my-4 h-fit w-full max-w-3xl rounded-md px-4">
+        <article className="my-4 h-fit w-full max-w-3xl rounded-md px-4">
           <h1 className="mb-4 text-3xl sm:text-4xl">About Me</h1>
-          <div className="flex flex-row justify-between border-b border-[#fb5607] pb-2 sm:text-lg">
+          <div className="flex flex-row justify-between border-b border-violet-500 pb-2 sm:text-lg">
             <h2>Ewan Trollip</h2>
             <h2>2024</h2>
           </div>
@@ -39,7 +39,7 @@ export default function Page() {
               contributes to a seamless and engaging user experience.
             </p>
           </div>
-        </div>
+        </article>
       </div>
     </main>
   );

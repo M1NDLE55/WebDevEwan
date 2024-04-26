@@ -13,12 +13,12 @@ export default function FooterMenu() {
   ];
 
   return (
-    <nav className="flex flex-col gap-2 text-center text-lg sm:flex-row md:absolute md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2 md:gap-4">
+    <nav className="flex flex-col text-center text-lg sm:flex-row md:absolute md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2 md:gap-4">
       {links.map((link) => (
         <Link
           key={link.href}
           href={link.href}
-          className={`${pathname === link.href ? "font-bold" : ""}`}
+          className={`p-1 md:p-0 ${pathname === link.href ? "font-bold" : ""}`}
         >
           {link.text}
         </Link>
