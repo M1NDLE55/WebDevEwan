@@ -58,7 +58,7 @@ export default function Services() {
           <Link
             href={service.href}
             key={i}
-            className={`relative flex flex-col rounded-md border p-4 text-center shadow-md ${service.border}`}
+            className={`relative flex flex-col rounded-md border bg-white p-4 text-center shadow-md ${service.border}`}
           >
             <div
               className={`center-div absolute left-1/2 top-0 h-16 w-16 -translate-x-1/2 -translate-y-1/2 rounded-full border bg-white shadow-md ${service.border}`}

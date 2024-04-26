@@ -9,7 +9,7 @@ export default function About() {
       <h2 className="max-w-2xl text-balance text-center text-3xl sm:text-4xl">
         Let&apos;s Talk
       </h2>
-      <div className="center-div mt-5 w-full max-w-4xl rounded-md border border-violet-500 p-4 md:rounded-full md:py-10">
+      <div className="center-div mt-5 w-full max-w-4xl rounded-md border border-violet-500 bg-white p-4 md:rounded-full md:py-10">
         <p className="w-full max-w-2xl text-center text-xl sm:text-2xl">
           Hey there, I&apos;m{" "}
           <Link href="/about-me" className="underline">
