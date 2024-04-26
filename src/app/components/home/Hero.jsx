@@ -12,7 +12,7 @@ export default function Hero() {
       </h1>
       <Link
         href={{ pathname: "/quote", query: { ref: "cta-t" } }}
-        className="mt-10 w-fit rounded-md border border-cyan-400 p-4 px-6 py-4 text-center text-xl shadow-md transition-colors hover:border-green-400 sm:text-2xl"
+        className="mt-10 w-fit rounded-md border border-cyan-400 bg-white p-4 px-6 py-4 text-center text-xl shadow-md transition-colors hover:border-green-400 sm:text-2xl"
       >
         Get a Quote
       </Link>
