@@ -6,17 +6,22 @@ export default function Hero() {
       <h1 className="text-balance text-center text-5xl font-bold sm:text-6xl">
         Hey there! I&apos;m Ewan
       </h1>
-      <p className="mt-4 text-lg sm:text-xl">Software Developer | Student</p>
-      <div className="center-div mt-10 flex-col gap-4 sm:flex-row sm:gap-2">
+      <p className="mt-5 rounded-full border border-red-500 px-2 py-1 text-center text-red-500 sm:text-lg">
+        Websites | Web Apps | Mobile Apps
+      </p>
+      <p className="mt-5 text-center text-lg sm:text-xl">
+        Long Story Short - I Build Stuff
+      </p>
+      <div className="center-div mt-8 flex-col gap-4 sm:flex-row sm:gap-2">
         <Link
           href="/#welcome"
-          className="w-full rounded-md border border-red-500 p-4 px-6 py-4 text-center text-xl shadow-lg shadow-red-200 transition-colors hover:border-red-600 sm:w-fit sm:text-2xl"
+          className="w-full rounded-md border border-red-500 p-4 px-6 py-4 text-center text-xl shadow-lg shadow-red-200 transition-colors hover:border-red-600 sm:h-full sm:w-fit sm:text-2xl"
         >
           Read More
         </Link>
         <Link
           href={{ pathname: "/quote", query: { ref: "cta-t" } }}
-          className="w-fit rounded-md bg-red-500 p-4 px-6 py-4 text-center text-xl text-white shadow-lg transition-colors hover:bg-red-600 sm:text-2xl"
+          className="w-fit rounded-md bg-red-500 p-4 px-6 py-4 text-center text-xl text-white shadow-lg transition-colors hover:bg-red-600 sm:h-full sm:text-2xl"
         >
           Contact Me
         </Link>
