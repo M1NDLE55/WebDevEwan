@@ -46,12 +46,9 @@ export default function Services() {
   ];
 
   return (
-    <div className="center-div mt-14 flex-col px-4 sm:mt-20">
-      <h2 className="max-w-2xl text-balance text-center text-3xl sm:text-4xl">
-        Ready to Go <span className="font-bold text-[#fb5607]">Next Level</span>
-        ?
-        <br />
-        Here&apos;s How I Can Help:
+    <div id="services" className="center-div mt-14 flex-col px-4 sm:mt-20">
+      <h2 className="max-w-2xl text-balance text-center text-3xl sm:text-5xl">
+        My Services
       </h2>
       <div className="mt-10 grid w-full max-w-4xl grid-cols-1 gap-10 md:grid-cols-2">
         {services.map((service, i) => (
