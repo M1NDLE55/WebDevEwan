@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Hero() {
   return (
-    <div className="h-section-1 center-div relative flex-col px-4">
+    <div className="center-div flex-col px-4 py-28">
       <h1 className="text-balance text-center text-5xl font-bold sm:text-6xl">
         Hey there! I&apos;m Ewan
       </h1>
@@ -27,18 +27,6 @@ export default function Hero() {
           Contact Me
         </Link>
       </div>
-      <svg
-        className="absolute bottom-0 -z-10 h-16 w-full"
-        preserveAspectRatio="none"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="-720.1 -76.144 720.2 76.24"
-      >
-        <path
-          d="M-63.2985-69.37C-49.9434-63.68-38.324-54.582-29.6081-42.9899L0 0-720 0C-720 0-709.99-12.9202-690.075-16.4792L-105.5-75.5C-91.2745-77.1415-76.654-75.06-63.2985-69.37Z"
-          fill="white"
-        />
-      </svg>
     </div>
   );
 }
