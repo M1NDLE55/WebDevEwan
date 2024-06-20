@@ -13,7 +13,7 @@ export default function About() {
           fill="white"
         />
       </svg>
-      <div id="about" className="center-div bg-white pt-12">
+      <div id="about" className="center-div bg-white py-12">
         <div className="w-full max-w-3xl px-4">
           <h2 className="text-3xl sm:text-5xl">About Me</h2>
           <p className="mt-4 text-xl sm:text-2xl">
