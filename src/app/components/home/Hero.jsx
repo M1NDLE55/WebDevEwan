@@ -21,7 +21,7 @@ export default function Hero() {
           Read More
         </Link>
         <Link
-          href="/quote"
+          href="/contact"
           className="w-fit rounded-md bg-red-500 p-4 px-6 py-4 text-center text-xl text-white shadow-lg transition-colors hover:bg-red-600 sm:h-full sm:text-2xl"
         >
           Contact Me
