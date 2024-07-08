@@ -8,12 +8,12 @@ export default function Footer() {
           <a href="https://github.com/M1NDLE55" className="px-2 py-1">
             <Github />
           </a>
-          <a
+          {/* <a
             href="https://www.linkedin.com/in/ewan-trollip/"
             className="px-2 py-1"
           >
             <Linkedin />
-          </a>
+          </a> */}
         </div>
         <p className="text-lg">
           &copy; {new Date().getFullYear()} | WebDevEwan
