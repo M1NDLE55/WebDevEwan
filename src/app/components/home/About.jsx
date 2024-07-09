@@ -1,28 +1,27 @@
-import Link from "next/link";
-
 export default function About() {
   return (
-    <div
-      id="welcome"
-      className="center-div mt-[150px] flex-col px-4 sm:mt-[200px]"
-    >
-      <h2 className="max-w-2xl text-balance text-center text-3xl sm:text-4xl">
-        Let&apos;s Talk
-      </h2>
-      <div className="center-div mt-5 w-full max-w-4xl rounded-md px-4 md:rounded-full md:border md:border-violet-500 md:bg-white md:py-10 md:shadow-md">
-        <p className="w-full max-w-2xl text-center text-xl sm:text-2xl">
-          Hey there, I&apos;m{" "}
-          <Link href="/about-me" className="underline">
-            Ewan
-          </Link>
-          . So, here&apos;s the deal &ndash; not having a killer website is like
-          being invisible to potential customers. You&apos;re missing out on
-          opportunities left, right, and center! But don&apos;t sweat it,
-          because that&apos;s where I come in. I specialize in solving the whole
-          &apos;invisible&apos; problem by creating websites that not only show
-          off your brand but also hook visitors and turn them into loyal fans.
-        </p>
+    <>
+      {/* <div className="w-full overflow-hidden">
+        SVG
+      </div> */}
+      <div
+        id="about"
+        className="center-div text-pretty bg-white py-12 text-center"
+      >
+        <div className="w-full max-w-4xl px-4">
+          <h2 className="text-3xl sm:text-5xl">About Me</h2>
+          <p className="mt-4 text-xl sm:text-2xl">
+            I&apos;m a freelance developer dedicated to crafting killer web and
+            mobile apps. I value integrity, continuous learning, and a
+            user-first approach, ensuring every project is not only modern but
+            also makes your visitors feel at home. I love developing websites
+            because I believe each one provides a unique experience and leaves a
+            lasting impression on your customer base. My journey began with a
+            Bachelor&apos;s degree in IT, and since then, I&apos;ve continually
+            honed my skills through hands-on experience and self-improvement.
+          </p>
+        </div>
       </div>
-    </div>
+    </>
   );
 }

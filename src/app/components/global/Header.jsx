@@ -14,14 +14,12 @@ export default function Header() {
         <div
           className={`relative z-20 flex h-16 flex-row items-center justify-between px-4 py-4`}
         >
-          <Link href="/" onClick={() => setOpen(false)}>
-            <Image
-              src="/logo.png"
-              width={32}
-              height={32}
-              alt="Website logo"
-              className=""
-            />
+          <Link
+            href="/"
+            onClick={() => setOpen(false)}
+            className="hover:animate-spin"
+          >
+            <Image src="/logo.png" width={32} height={32} alt="Website logo" />
           </Link>
           <MenuIcon isOpen={isOpen} setOpen={setOpen} />
         </div>
