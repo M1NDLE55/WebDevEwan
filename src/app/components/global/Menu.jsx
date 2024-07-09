@@ -19,8 +19,10 @@ export function MenuLinks({ isOpen, setOpen }) {
 
   const links = [
     { href: "/", text: "Home" },
-    { href: "/about-me", text: "About Me" },
-    { href: "/quote", text: "Quote" },
+    { href: "/#about", text: "About" },
+    { href: "/#services", text: "Services" },
+    // { href: "/project", text: "Projects" },
+    { href: "/contact", text: "Contact" },
   ];
 
   return (

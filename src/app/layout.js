@@ -1,4 +1,5 @@
 import { Inter } from "next/font/google";
+import { Toaster } from "react-hot-toast";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -17,8 +18,14 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className="scroll-smooth bg-neutral-50">
-      <body className={inter.className}>{children}</body>
+    <html
+      lang="en"
+      className="scroll-smooth bg-neutral-100 selection:bg-red-500 selection:text-white"
+    >
+      <body className={inter.className}>
+        {children}
+        <Toaster position="bottom-right" />
+      </body>
     </html>
   );
 }
