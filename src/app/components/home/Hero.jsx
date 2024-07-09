@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Hero() {
   return (
-    <div className="center-div flex-col px-4 py-28">
+    <div className="center-div flex-col px-4 pb-44 pt-28">
       <h1 className="text-balance text-center text-5xl font-bold sm:text-6xl">
         Hey there! I&apos;m Ewan
       </h1>
@@ -21,7 +21,7 @@ export default function Hero() {
           Read More
         </Link>
         <Link
-          href="/contact"
+          href="/#contact"
           className="w-fit rounded-md bg-red-500 px-6 py-4 text-center text-xl text-white shadow-lg transition-colors hover:bg-red-600 sm:h-full sm:text-2xl"
         >
           Contact Me

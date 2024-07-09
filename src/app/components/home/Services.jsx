@@ -28,27 +28,18 @@ export default function Services() {
   return (
     <div id="services" className="center-div relative">
       <div className="absolute top-0 h-full w-full">
-        <div className="h-[calc(40%)] w-full bg-white"></div>
-        <div className="w-full overflow-hidden">
-          <svg
-            className="relative block h-32 w-[calc(150%)]"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 1200 120"
-            preserveAspectRatio="none"
-            fill="none"
-          >
-            <path
-              d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
-              fill="white"
-            ></path>
-          </svg>
-        </div>
+        <div className="h-[calc(50%-48px)] w-full bg-white"></div>
+        {/* //todo: div below must be replaced with svg (h-16)*/}
+        <div className="h-16 w-full bg-white"></div>
+        {/* <div className="w-full overflow-hidden">
+          SVG
+        </div> */}
       </div>
       <div className="grid w-full max-w-6xl grid-cols-1 gap-10 px-4 pt-8 md:grid-cols-3">
         {services.map((service, i) => (
           <div
             key={i}
-            className={`relative flex flex-col rounded-md border border-red-500 bg-white p-4 text-center shadow-lg shadow-red-200`}
+            className={`relative flex flex-col rounded-md border border-red-500 bg-white p-4 text-center shadow-md shadow-red-200`}
           >
             <div
               className={`center-div absolute left-1/2 top-0 h-16 w-16 -translate-x-1/2 -translate-y-1/2 rounded-full border border-red-500 bg-white shadow-md shadow-red-200`}
