@@ -1,7 +1,7 @@
 "use server";
 import { schema } from "./schema";
 import { Resend } from "resend";
-import EmailTemplate from "../components/home/Email-Template";
+import EmailTemplate from "../components/home/email-template";
 
 export async function sendMessage(clientData) {
   const result = schema.safeParse(clientData);
