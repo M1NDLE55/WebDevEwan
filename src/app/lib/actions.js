@@ -16,7 +16,7 @@ export async function sendMessage(clientData) {
     const { data } = await resend.emails.send({
       from: "WebDevEwan <mailer@webdevewan.com>",
       to: result.data.email,
-      // bcc: "ewan@webdevewan.com",
+      bcc: "ewantrollip@webdevewan.com",
       subject: "Thank You for Reaching Out",
       react: EmailTemplate(result.data.name, result.data.message),
     });

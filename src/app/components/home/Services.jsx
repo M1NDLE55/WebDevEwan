@@ -5,7 +5,7 @@ export default function Services() {
     {
       title: "Websites",
       content:
-        "I create custom websites tailored to your specific needs. Using Next.js, I build fast, secure, and scalable websites that offer a seamless user experience. If you prefer, I can also work with WordPress or Shopify for e-commerce solutions, making it easy to manage your online store.",
+        "Using Next.js, I build fast, secure, and scalable websites that offer a seamless user experience. If you prefer, I can also work with WordPress or Shopify for e-commerce solutions, making it easy to manage your online store.",
 
       icon: <LaptopMinimal />,
     },
