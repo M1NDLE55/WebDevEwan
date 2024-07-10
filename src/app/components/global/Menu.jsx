@@ -14,8 +14,6 @@ export function MenuIcon({ isOpen, setOpen }) {
 }
 
 export function MenuLinks({ isOpen, setOpen }) {
-  // const pathname = usePathname();
-
   const links = [
     { href: "/", text: "Home" },
     { href: "/#about", text: "About" },
