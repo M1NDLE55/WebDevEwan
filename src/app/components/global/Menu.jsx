@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 
 export function MenuIcon({ isOpen, setOpen }) {
   return (
@@ -15,14 +14,14 @@ export function MenuIcon({ isOpen, setOpen }) {
 }
 
 export function MenuLinks({ isOpen, setOpen }) {
-  const pathname = usePathname();
+  // const pathname = usePathname();
 
   const links = [
     { href: "/", text: "Home" },
     { href: "/#about", text: "About" },
     { href: "/#services", text: "Services" },
     // { href: "/project", text: "Projects" },
-    { href: "/contact", text: "Contact" },
+    { href: "/#contact", text: "Contact" },
   ];
 
   return (
@@ -33,7 +32,7 @@ export function MenuLinks({ isOpen, setOpen }) {
         <Link
           key={link.href}
           href={link.href}
-          className={`py-2 text-lg sm:p-0 sm:transition-all sm:duration-300 ${pathname === link.href ? "font-bold" : ""}`}
+          className={`py-2 text-lg hover:font-bold sm:p-0 sm:transition-all sm:duration-300`}
           onClick={() => setOpen(false)}
         >
           {link.text}
