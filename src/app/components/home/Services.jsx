@@ -28,12 +28,11 @@ export default function Services() {
   return (
     <div id="services" className="center-div relative">
       <div className="absolute top-0 h-full w-full">
-        <div className="h-[calc(50%-48px)] w-full bg-white"></div>
-        {/* //todo: div below must be replaced with svg (h-16)*/}
-        <div className="h-16 w-full bg-white"></div>
-        {/* <div className="w-full overflow-hidden">
-          SVG
-        </div> */}
+        <div className="h-[calc(50%+16px)] w-full bg-white"></div>
+        {/* <div className="h-[calc(50%-48px)] w-full bg-white"></div>
+         <div className="w-full overflow-hidden">
+          SVG (h-16)
+        </div>  */}
       </div>
       <div className="grid w-full max-w-6xl grid-cols-1 gap-10 px-4 pt-8 md:grid-cols-3">
         {services.map((service, i) => (
