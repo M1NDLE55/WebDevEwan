@@ -17,7 +17,7 @@ export async function sendMessage(clientData) {
       from: "WebDevEwan <mailer@webdevewan.com>",
       to: result.data.email,
       bcc: "ewantrollip@webdevewan.com",
-      subject: "Thank You for Reaching Out",
+      subject: "Thank You for Getting in Touch!",
       react: EmailTemplate(result.data.name, result.data.message),
     });
 

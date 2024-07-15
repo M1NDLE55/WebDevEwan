@@ -5,13 +5,14 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Web Developer | South Africa | WebDevEwan",
+  title: "Freelance Web Developer | WebDevEwan",
   description:
-    "Hey there, I'm Ewan. Ready to stop being invisible to your customers? I specialize in crafting killer websites that showcase your brand, captivate visitors, and transform them into loyal fans.",
+    "Hey there! I'm Ewan, a freelance web developer based in South Africa.",
   openGraph: {
-    title: "Web Developer | South Africa | WebDevEwan",
+    title: "Freelance Web Developer | WebDevEwan",
     description:
-      "I specialize in crafting killer websites that showcase your brand, captivate visitors, and transform them into loyal fans.",
+      "Hey there! I'm Ewan, a freelance web developer based in South Africa.",
+    type: "website",
   },
   metadataBase: new URL("https://www.webdevewan.com/"),
 };

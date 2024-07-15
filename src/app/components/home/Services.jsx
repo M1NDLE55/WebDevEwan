@@ -5,21 +5,21 @@ export default function Services() {
     {
       title: "Websites",
       content:
-        "Using Next.js, I build fast, secure, and scalable websites that offer a seamless user experience. If you prefer, I can also work with WordPress or Shopify for e-commerce solutions, making it easy to manage your online store.",
+        "Using a suite of tools such as Next.js or popular website builders like Wix, Squarespace, and WordPress, I build fast, secure, and visually appealing websites. Whether you need a landing page, portfolio, or an informational site, I ensure that your online presence is professional and engaging.",
 
       icon: <LaptopMinimal />,
     },
     {
       title: "Web Apps",
       content:
-        "Web applications are interactive websites that function like software on your computer or phone. I develop web apps using Next.js, ensuring they are efficient, user-friendly, and designed to meet your business goals. Whether it's a custom dashboard, a booking system, or any other web-based tool, I’ve got you covered.",
+        "Web applications are interactive websites that function like software on your computer or phone. I develop web apps using Next.js, ensuring they are efficient, user-friendly, and designed to meet your business goals. If you prefer, I can also work with website builders or Shopify for e-commerce solutions, making it easy to manage your online store.",
 
       icon: <AppWindowMac />,
     },
     {
       title: "Mobile Apps",
       content:
-        "Using Expo, I create mobile apps that work on both iOS and Android devices. These apps are designed to be intuitive and engaging, providing your users with a smooth and enjoyable experience. Whether you need an app for your business, an event, or a new product, I can help bring your vision to life.",
+        "Using Expo, I create mobile apps that work on both iOS and Android devices. These apps are designed to be intuitive and engaging, providing your users with a smooth and enjoyable experience. Whether you need an app for your business, an event, or a new product, I got you covered.",
 
       icon: <Smartphone />,
     },
@@ -28,13 +28,13 @@ export default function Services() {
   return (
     <div id="services" className="center-div relative">
       <div className="absolute top-0 h-full w-full">
-        <div className="h-[calc(50%+16px)] w-full bg-white"></div>
+        <div className="h-full w-full bg-white lg:h-[calc(50%+16px)]"></div>
         {/* <div className="h-[calc(50%-48px)] w-full bg-white"></div>
          <div className="w-full overflow-hidden">
           SVG (h-16)
         </div>  */}
       </div>
-      <div className="grid w-full max-w-6xl grid-cols-1 gap-10 px-4 pt-8 md:grid-cols-3">
+      <div className="grid w-full max-w-6xl grid-cols-1 gap-10 px-4 pb-12 pt-8 lg:grid-cols-3 lg:pb-0">
         {services.map((service, i) => (
           <div
             key={i}
@@ -46,7 +46,7 @@ export default function Services() {
               {service.icon}
             </div>
             <h3 className="mb-2 mt-5 text-xl sm:text-2xl">{service.title}</h3>
-            <p className="sm:text-lg">{service.content}</p>
+            <p className="text-lg">{service.content}</p>
           </div>
         ))}
       </div>

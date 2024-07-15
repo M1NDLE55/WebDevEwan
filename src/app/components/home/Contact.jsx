@@ -55,30 +55,33 @@ export default function ContactForm() {
   }
 
   return (
-    <div id="contact" className="center-div pb-16 pt-28">
+    <div id="contact" className="center-div pb-10 pt-20 lg:pb-16 lg:pt-28">
       <div className="w-full max-w-3xl px-4">
         <h2 className="text-center text-3xl sm:text-5xl">Get In Touch</h2>
-        <form className="mt-8 flex flex-col gap-4" onSubmit={handleSubmit}>
+        <form
+          className="mt-8 flex flex-col gap-4 text-lg"
+          onSubmit={handleSubmit}
+        >
           <input
             name="name"
             type="text"
             placeholder="Name*"
             required
-            className="rounded-md border p-2 text-lg shadow"
+            className="rounded-md border p-2 shadow"
           />
           <input
             name="email"
             type="email"
             placeholder="Email*"
             required
-            className="rounded-md border p-2 text-lg shadow"
+            className="rounded-md border p-2 shadow"
           />
           <textarea
             name="message"
             rows={3}
             placeholder="Message*"
             required
-            className="rounded-md border p-2 text-lg shadow"
+            className="rounded-md border p-2 shadow"
           />
           <button
             type="submit"
