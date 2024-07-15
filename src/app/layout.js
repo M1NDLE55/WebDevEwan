@@ -1,6 +1,8 @@
 import { Inter } from "next/font/google";
 import { Toaster } from "react-hot-toast";
 import "./globals.css";
+import Header from "./components/global/Header";
+import Footer from "./components/global/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,7 +26,9 @@ export default function RootLayout({ children }) {
       className="scroll-smooth bg-neutral-100 selection:bg-red-500 selection:text-white"
     >
       <body className={inter.className}>
+        <Header />
         {children}
+        <Footer />
         <Toaster position="bottom-right" />
       </body>
     </html>
