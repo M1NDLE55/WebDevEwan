@@ -13,7 +13,7 @@ import {
 const baseUrl = "https://www.webdevewan.com";
 
 export default function EmailTemplate(name, message) {
-  const previewText = `Here's a copy of your response`;
+  const previewText = `Thank you for getting in touch!`;
 
   return (
     <Html>
@@ -32,19 +32,18 @@ export default function EmailTemplate(name, message) {
           </Section>
           <Section style={{ paddingBottom: "20px" }}>
             <Row>
-              <Text style={heading}>
-                Hey {name}, here&apos;s a copy of your message
+              <Text style={paragraph}>Hey {name},</Text>
+              <Text style={paragraph}>Thank you for getting in touch!</Text>
+              <Text style={paragraph}>
+                I&apos;ll review your message as soon as possible and get back
+                to you shortly.
+              </Text>
+              <Text style={paragraph}>Have a great day!</Text>
+              <Text style={paragraph}>Ewan</Text>
+              <Text style={ps}>
+                P.S. here&apos;s a copy of your message for your records:
               </Text>
               <Text style={review}>{message}</Text>
-              <Text style={paragraph}>
-                I&apos;ll be in contact with you shortly after reviewing your
-                message.
-              </Text>
-              <Text style={paragraph}>
-                Have a good one,
-                <br />
-                Ewan
-              </Text>
             </Row>
           </Section>
         </Container>
@@ -66,23 +65,15 @@ const container = {
   maxWidth: "100%",
 };
 
-const userImage = {
-  margin: "0 auto",
-  marginBottom: "16px",
-  borderRadius: "50%",
-};
-
-const heading = {
-  fontSize: "32px",
-  lineHeight: "1.3",
-  fontWeight: "700",
-  color: "#484848",
-};
-
 const paragraph = {
   fontSize: "18px",
   lineHeight: "1.4",
   color: "#484848",
+};
+
+const ps = {
+  ...paragraph,
+  fontStyle: "italic",
 };
 
 const review = {
@@ -90,40 +81,4 @@ const review = {
   padding: "24px",
   backgroundColor: "#f2f3f3",
   borderRadius: "4px",
-};
-
-const button = {
-  backgroundColor: "#ff5a5f",
-  borderRadius: "3px",
-  color: "#fff",
-  fontSize: "18px",
-  paddingTop: "19px",
-  paddingBottom: "19px",
-  textDecoration: "none",
-  textAlign: "center",
-  display: "block",
-  width: "100%",
-};
-
-const link = {
-  ...paragraph,
-  color: "#ff5a5f",
-  display: "block",
-};
-
-const reportLink = {
-  fontSize: "14px",
-  color: "#9ca299",
-  textDecoration: "underline",
-};
-
-const hr = {
-  borderColor: "#cccccc",
-  margin: "20px 0",
-};
-
-const footer = {
-  color: "#9ca299",
-  fontSize: "14px",
-  marginBottom: "10px",
 };
