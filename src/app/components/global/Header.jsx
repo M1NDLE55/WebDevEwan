@@ -9,17 +9,13 @@ export default function Header() {
   const [isOpen, setOpen] = useState(false);
 
   return (
-    <header className="center-div">
+    <header className="center-div border-b sm:border-b-0">
       <div className="w-full max-w-7xl flex-row items-center justify-between sm:flex">
         <div
           className={`relative z-20 flex h-16 flex-row items-center justify-between px-4 py-4`}
         >
-          <Link
-            href="/"
-            onClick={() => setOpen(false)}
-            className="hover:animate-spin"
-          >
-            <Image src="/logo.png" width={32} height={32} alt="Website logo" />
+          <Link href="/" onClick={() => setOpen(false)}>
+            <Image src="/logo.png" width={150} height={55} alt="Website logo" />
           </Link>
           <MenuIcon isOpen={isOpen} setOpen={setOpen} />
         </div>

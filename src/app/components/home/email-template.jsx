@@ -25,8 +25,8 @@ export default function EmailTemplate(name, message) {
           <Section>
             <Img
               src={`${baseUrl}/logo.png`}
-              width="40"
-              height="40"
+              width="100"
+              height="36"
               alt="WebDevEwan"
             />
           </Section>
