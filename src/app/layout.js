@@ -21,11 +21,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html
-      lang="en"
-      // className="scroll-smooth bg-neutral-100 selection:bg-red-500 selection:text-white"
-      className="bg-black"
-    >
+    <html lang="en" className="bg-black">
       <body className={inter.className}>
         {/* <Header /> */}
         {children}

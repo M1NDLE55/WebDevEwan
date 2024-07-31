@@ -11,33 +11,3 @@
     box-shadow: 0 4 30 rgba(0, 0, 0, 0.1);
   }
 }
-
-@layer components {
-  .effect-glass {
-    @apply border border-[rgba(255,255,255,0.3)] bg-[rgba(255,255,255,0.2)] shadow-md backdrop-blur-[5px] backdrop-filter;
-  }
-
-  .effect-glass-2 {
-    @apply border border-[rgba(255,255,255,0.3)] bg-[rgba(255,255,255,0.5)] shadow-md backdrop-blur-[5px] backdrop-filter;
-  }
-
-  .effect-glass-plain {
-    @apply bg-[rgba(255,255,255,0.5)] backdrop-blur-[5px] backdrop-filter;
-  }
-
-  .effect-none {
-    @apply border-none bg-inherit shadow-none backdrop-blur-0 backdrop-filter-none;
-  }
-
-  .h-section-1 {
-    @apply h-[calc(100vh-64px)];
-  }
-
-  .min-h-section-1 {
-    @apply h-full min-h-[calc(100vh-64px-65px)];
-  }
-
-  .center-div {
-    @apply flex items-center justify-center;
-  }
-}
