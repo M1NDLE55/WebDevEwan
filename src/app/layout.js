@@ -23,12 +23,13 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className="scroll-smooth bg-neutral-100 selection:bg-red-500 selection:text-white"
+      // className="scroll-smooth bg-neutral-100 selection:bg-red-500 selection:text-white"
+      className="bg-black"
     >
       <body className={inter.className}>
-        <Header />
+        {/* <Header /> */}
         {children}
-        <Footer />
+        {/* <Footer /> */}
         <Toaster position="bottom-right" />
       </body>
     </html>
