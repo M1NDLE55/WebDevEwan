@@ -1,8 +1,8 @@
 export default function About() {
   return (
-    <div className="flex w-full justify-center px-4">
+    <div className="flex w-full justify-center px-4 pb-40">
       <div className="w-full max-w-7xl">
-        <h2 className="bg-gradient-to-b from-neutral-50 to-neutral-400 bg-clip-text pb-3 text-7xl font-bold text-transparent">
+        <h2 className="bg-gradient-to-b from-neutral-50 to-neutral-400 bg-clip-text pb-4 text-7xl font-bold text-transparent">
           My Story
         </h2>
         <div className="grid w-full grid-cols-5 gap-4 text-neutral-50">
