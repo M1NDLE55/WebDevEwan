@@ -1,8 +1,8 @@
 "use client";
 
 import { sendMessage } from "@/app/lib/actions";
-import toast from "react-hot-toast";
 import { schema } from "@/app/lib/schema";
+import toast from "react-hot-toast";
 import { useState } from "react";
 
 export default function ContactForm() {
@@ -54,44 +54,41 @@ export default function ContactForm() {
     await handleAction(new FormData(event.target));
   }
 
+  const inputCSS =
+    "rounded-md border border-neutral-700 bg-neutral-950 p-2 focus:outline-none focus:ring-2 focus:ring-violet-400 focus:ring-offset-2 focus:ring-offset-violet-50";
+
   return (
-    <div id="contact" className="center-div pb-10 pt-20 lg:pb-16 lg:pt-28">
-      <div className="w-full max-w-3xl px-4">
-        <h2 className="text-center text-3xl sm:text-5xl">Get In Touch</h2>
-        <form
-          className="mt-8 flex flex-col gap-4 text-lg"
-          onSubmit={handleSubmit}
-        >
-          <input
-            name="name"
-            type="text"
-            placeholder="Name*"
-            required
-            className="rounded-md border p-2 shadow"
-          />
-          <input
-            name="email"
-            type="email"
-            placeholder="Email*"
-            required
-            className="rounded-md border p-2 shadow"
-          />
-          <textarea
-            name="message"
-            rows={3}
-            placeholder="Message*"
-            required
-            className="rounded-md border p-2 shadow"
-          />
-          <button
-            type="submit"
-            className="mt-4 rounded-md bg-red-500 p-2 text-center text-xl text-white shadow-lg transition-colors hover:bg-red-600 disabled:opacity-70 sm:h-full sm:text-2xl"
-            disabled={isLoading}
-          >
-            Send
-          </button>
-        </form>
-      </div>
-    </div>
+    <form
+      className="mt-8 flex flex-col gap-4 text-lg text-neutral-50"
+      onSubmit={handleSubmit}
+    >
+      <input
+        name="name"
+        type="text"
+        placeholder="Name*"
+        required
+        className={inputCSS}
+      />
+      <input
+        name="email"
+        type="email"
+        placeholder="Email*"
+        required
+        className={inputCSS}
+      />
+      <textarea
+        name="message"
+        rows={3}
+        placeholder="Message*"
+        required
+        className={inputCSS}
+      />
+      <button
+        type="submit"
+        className="mt-6 inline-flex h-12 items-center justify-center rounded-md border border-neutral-50 px-6 font-medium text-neutral-50 transition-colors hover:border-violet-500 focus:outline-none focus:ring-2 focus:ring-violet-400 focus:ring-offset-2 focus:ring-offset-violet-50"
+      >
+        Send
+      </button>
+    </form>
   );
 }
