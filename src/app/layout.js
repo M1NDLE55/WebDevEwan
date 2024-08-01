@@ -1,6 +1,7 @@
 import { Inter } from "next/font/google";
 import { Toaster } from "react-hot-toast";
 import "./globals.css";
+import { FloatingNav } from "./components/ui/FloatingNavbar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,9 +21,19 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+  const links = [
+    { name: "Home", link: "/", icon: null },
+    { name: "About", link: "/#about", icon: null },
+    { name: "Projects", link: "/#projects", icon: null },
+  ];
+
   return (
     <html lang="en" className="scroll-smooth bg-black">
       <body className={inter.className}>
+        <FloatingNav
+          navItems={links}
+          button={{ name: "Contact", link: "/contact" }}
+        />
         {children}
         <Toaster position="bottom-right" />
       </body>
