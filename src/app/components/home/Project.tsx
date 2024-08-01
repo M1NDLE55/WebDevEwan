@@ -32,14 +32,14 @@ export default function Project({ project }) {
   }, []);
 
   return (
-    <PinContainer title={project.title} href={project.localHref}>
+    <PinContainer title={project.localHref} href={project.localHref}>
       <div className="flex h-[20rem] w-[20rem] basis-full flex-col justify-between p-4 tracking-tight text-slate-100/50 sm:basis-1/2">
         <div>
           <h3 className="!m-0 max-w-xs !pb-2 text-base font-bold text-neutral-50">
             {project.title}
           </h3>
           <div className="!m-0 !p-0 text-base font-normal">
-            <span className="text-neutral-400 ">{project.description}</span>
+            <p className="text-neutral-400 ">{project.description}</p>
           </div>
         </div>
         {image ? (

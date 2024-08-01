@@ -21,7 +21,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className="bg-black">
+    <html lang="en" className="scroll-smooth bg-black">
       <body className={inter.className}>
         {children}
         <Toaster position="bottom-right" />

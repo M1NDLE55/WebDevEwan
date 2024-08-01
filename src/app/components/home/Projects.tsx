@@ -25,7 +25,7 @@ export default function Projects() {
   ];
 
   return (
-    <div id="projects" className="flex w-full justify-center px-4 pb-40">
+    <div id="projects" className="flex w-full justify-center px-4 pb-60">
       <div className="w-full max-w-7xl">
         <h2 className="bg-gradient-to-b from-neutral-50 to-neutral-400 bg-clip-text pb-4 text-7xl font-bold text-transparent">
           Projects
