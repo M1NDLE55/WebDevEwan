@@ -1,11 +1,11 @@
 export default function About() {
   return (
-    <div className="flex w-full justify-center px-4 pb-60">
+    <div id="about" className="flex w-full justify-center px-4 pb-60">
       <div className="w-full max-w-7xl">
         <h2 className="bg-gradient-to-b from-neutral-50 to-neutral-400 bg-clip-text pb-4 text-7xl font-bold text-transparent">
           My Story
         </h2>
-        <div className="grid w-full grid-cols-5 gap-4 text-neutral-50">
+        <div className="grid w-full grid-cols-5 gap-8 text-neutral-50">
           <div className="col-span-3 rounded-xl border border-neutral-700 bg-neutral-950 p-4">
             <h3 className="text-3xl font-bold">Who Am I</h3>
             <p className="mt-2 text-lg">
