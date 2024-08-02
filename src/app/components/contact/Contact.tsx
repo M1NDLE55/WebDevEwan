@@ -83,11 +83,11 @@ export default function ContactForm() {
         required
         className={inputCSS}
       />
-      <button
-        type="submit"
-        className="mt-6 inline-flex h-12 items-center justify-center rounded-md border border-neutral-50 px-6 font-medium text-neutral-50 transition-colors hover:border-violet-500 focus:outline-none focus:ring-2 focus:ring-violet-400 focus:ring-offset-2 focus:ring-offset-violet-50"
-      >
-        Send
+      <button type="submit" className="relative p-[3px]">
+        <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-indigo-500 to-violet-500" />
+        <div className="group relative  rounded-[6px] bg-black  px-8 py-2 text-white transition duration-200 hover:bg-transparent">
+          Send
+        </div>
       </button>
     </form>
   );
