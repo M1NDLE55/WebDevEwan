@@ -1,4 +1,5 @@
 import { Github, Linkedin } from "lucide-react";
+import Link from "next/link";
 
 export default function Footer() {
   return (
@@ -16,7 +17,7 @@ export default function Footer() {
           </a>
         </div>
         <p className="text-lg">
-          &copy; {new Date().getFullYear()} | WebDevEwan
+          &copy; {new Date().getFullYear()} | <Link href="/">WebDevEwan</Link>
         </p>
       </div>
     </footer>

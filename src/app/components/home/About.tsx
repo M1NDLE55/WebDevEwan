@@ -15,7 +15,7 @@ export default function About() {
               coding that has only grown since. Now, as a senior BSc. IT student
               at the North-West University (NWU), my academic focus has expanded
               significantly. While the university curriculum emphasized C#, I
-              have also honed my skills in Python, C++, and Java, and utilized
+              have also developed skills in Python, C++, and Java, and utilized
               SQL Server and Oracle for data management.
             </p>
           </div>
@@ -24,7 +24,8 @@ export default function About() {
             <ul className="mt-2 text-lg ">
               <li>Programming Languages: C#, Python, C++, Java, Delphi</li>
               <li>
-                Web Development: HTML, CSS, JavaScript, React, Next.js, Tailwind
+                Web Development: HTML, CSS, JavaScript, React, Next.js,
+                Tailwind, ASP.NET
               </li>
               <li>Data Management: SQL Server, Oracle, Access, Supabase</li>
               <li>Tools & Technologies: Resend for email communication</li>
@@ -49,7 +50,7 @@ export default function About() {
               like React, Next.js, and Tailwind. To manage storage and
               communication for web projects, I&apos;ve utilized Supabase and
               Resend. Alongside my studies, I&apos;m working on a hobby project
-              called EFT-Toolset, a tool designed to assist players in the game
+              called EFT Toolset, a tool designed to assist players in the game
               Escape From Tarkov.
             </p>
           </div>
