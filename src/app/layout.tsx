@@ -1,19 +1,20 @@
 import { Inter } from "next/font/google";
 import { Toaster } from "react-hot-toast";
 import "./globals.css";
-import Header from "./components/global/Header";
 import Footer from "./components/global/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Freelance Web Developer | WebDevEwan",
+  title:
+    "Student and Freelance Web Developer Based in South Africa | WebDevEwan",
   description:
-    "Hey there! I'm Ewan, a freelance web developer based in South Africa.",
+    "Hey there! I'm Ewan, a student and freelance web developer based in South Africa.",
   openGraph: {
-    title: "Freelance Web Developer | WebDevEwan",
+    title:
+      "Student and Freelance Web Developer Based in South Africa | WebDevEwan",
     description:
-      "Hey there! I'm Ewan, a freelance web developer based in South Africa.",
+      "Hey there! I'm Ewan, a student and freelance web developer based in South Africa.",
     type: "website",
   },
   metadataBase: new URL("https://www.webdevewan.com/"),
@@ -21,15 +22,11 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html
-      lang="en"
-      className="scroll-smooth bg-neutral-100 selection:bg-red-500 selection:text-white"
-    >
+    <html lang="en" className="scroll-smooth bg-black">
       <body className={inter.className}>
-        <Header />
         {children}
-        <Footer />
         <Toaster position="bottom-right" />
+        <Footer />
       </body>
     </html>
   );
