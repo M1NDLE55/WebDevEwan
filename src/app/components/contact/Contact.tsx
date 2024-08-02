@@ -59,7 +59,7 @@ export default function ContactForm() {
 
   return (
     <form
-      className="mt-8 flex flex-col gap-4 text-lg text-neutral-50"
+      className="mt-8 flex flex-col gap-4 text-neutral-50 md:text-lg"
       onSubmit={handleSubmit}
     >
       <input
@@ -83,7 +83,7 @@ export default function ContactForm() {
         required
         className={inputCSS}
       />
-      <button type="submit" className="relative p-[3px]">
+      <button disabled={isLoading} type="submit" className="relative p-[3px]">
         <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-indigo-500 to-violet-500" />
         <div className="group relative  rounded-[6px] bg-black  px-8 py-2 text-white transition duration-200 hover:bg-transparent">
           Send
