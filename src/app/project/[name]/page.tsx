@@ -2,6 +2,8 @@ import Contact from "@/app/components/global/Contact";
 import { Spotlight } from "@/app/components/ui/Spotlight";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import { FloatingNav } from "@/app/components/ui/FloatingNavbar";
+import { navItems } from "@/app/components/global/NavItems";
 
 export default function Page({ params }: { params: { name: string } }) {
   const projects = new Map();
@@ -84,7 +86,11 @@ export default function Page({ params }: { params: { name: string } }) {
   const project = projects.get(params.name);
 
   return (
-    <>
+    <main>
+      <FloatingNav
+        navItems={navItems}
+        button={{ name: "Contact", link: "/contact" }}
+      />
       <div className="relative flex h-screen w-full overflow-hidden rounded-md bg-black/[0.96] antialiased bg-grid-white/[0.03] md:items-center md:justify-center">
         <Spotlight
           className="-top-40 left-0 md:-top-20 md:left-60"
@@ -198,6 +204,6 @@ export default function Page({ params }: { params: { name: string } }) {
         </div>
       </div>
       <Contact />
-    </>
+    </main>
   );
 }
