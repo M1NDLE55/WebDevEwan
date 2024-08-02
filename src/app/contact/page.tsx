@@ -1,15 +1,15 @@
 import ContactForm from "../components/contact/Contact";
-import { LampContainer } from "../components/ui/Lamp";
 
 export default function Page() {
   return (
-    <LampContainer>
-      <div className="relative z-10 mx-auto w-full max-w-7xl p-4 pt-20 text-center md:pt-0">
-        <h1 className="bg-opacity-50 bg-gradient-to-b from-neutral-50 to-neutral-400 bg-clip-text text-center text-4xl font-bold text-transparent md:text-8xl">
+    <div className="relative flex min-h-[calc(100vh-65px)] w-full  items-center justify-center bg-black bg-grid-white/[0.1]">
+      <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-black [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
+      <div className="z-20">
+        <h1 className="bg-opacity-50 bg-gradient-to-b from-neutral-50 to-neutral-400 bg-clip-text p-2 text-center text-4xl font-bold text-transparent md:text-8xl">
           Get in Touch
         </h1>
         <ContactForm />
       </div>
-    </LampContainer>
+    </div>
   );
 }
