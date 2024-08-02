@@ -1,5 +1,3 @@
-![WebDevEwan GitHub banner](https://www.webdevewan.com/github-img.png)
-
 # My Personal Portfolio Website
 
 ## Overview

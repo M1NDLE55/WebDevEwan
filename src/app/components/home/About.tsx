@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function About() {
   return (
     <div id="about" className="flex w-full justify-center px-4 pb-20 md:pb-60">
@@ -16,7 +18,14 @@ export default function About() {
               at the North-West University (NWU), my academic focus has expanded
               significantly. While the university curriculum emphasized C#, I
               have also developed skills in Python, C++, and Java, and utilized
-              SQL Server and Oracle for data management.
+              SQL Server and Oracle for data management. Check out my CV{" "}
+              <Link
+                href="/ewan_trollip_cv.pdf"
+                className="underline underline-offset-2"
+              >
+                here
+              </Link>
+              .
             </p>
           </div>
           <div className="rounded-xl border  border-neutral-700 bg-neutral-950 p-4 lg:col-span-2">
