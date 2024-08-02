@@ -30,7 +30,7 @@ export default function About() {
           </div>
           <div className="rounded-xl border  border-neutral-700 bg-neutral-950 p-4 lg:col-span-2">
             <h3 className="text-xl font-bold md:text-3xl">My Skills</h3>
-            <ul className="mt-2 text-lg md:text-lg">
+            <ul className="mt-2 md:text-lg">
               <li>Programming Languages: C#, Python, C++, Java, Delphi</li>
               <li>
                 Web Development: HTML, CSS, JavaScript, React, Next.js,
@@ -44,7 +44,7 @@ export default function About() {
             <h3 className="text-xl font-bold md:text-3xl">
               What I Aspire to Be
             </h3>
-            <p className="mt-2 text-lg md:text-lg">
+            <p className="mt-2 md:text-lg">
               My long-term goal is to become a backend developer, a role that
               aligns with my passion for creating efficient and robust
               server-side applications. However, I&apos;m committed to expanding
@@ -56,7 +56,7 @@ export default function About() {
             <h3 className="text-xl font-bold md:text-3xl">
               What I&apos;m Working On Now
             </h3>
-            <p className="mt-2 text-lg md:text-lg">
+            <p className="mt-2 md:text-lg">
               Currently, my interests have shifted towards web development. Over
               the past year, I&apos;ve immersed myself in HTML, CSS, and
               JavaScript, and have been diving deeper into modern frameworks
