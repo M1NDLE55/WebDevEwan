@@ -29,7 +29,7 @@ export default function Page({ params }: { params: { name: string } }) {
 
   projects.set("webdevewan", {
     name: "WebDevEwan",
-    description: "My personal portfolio website (you're viewing it now).",
+    description: "My personal portfolio website.",
     tech: [
       { name: "Next.js", href: "https://nextjs.org/" },
       { name: "Tailwind", href: "https://tailwindcss.com/" },
@@ -91,19 +91,16 @@ export default function Page({ params }: { params: { name: string } }) {
         navItems={navItems}
         button={{ name: "Contact", link: "/contact" }}
       />
-      <div className="relative flex h-screen w-full overflow-hidden rounded-md bg-black/[0.96] antialiased bg-grid-white/[0.03] md:items-center md:justify-center">
-        <Spotlight
-          className="-top-40 left-0 md:-top-20 md:left-60"
-          fill="white"
-        />
-        <div className="relative z-10 mx-auto w-full max-w-7xl p-4 pt-20 text-center md:pt-0">
-          <span className="mx-auto text-center font-normal italic text-neutral-300">
+      <div className="relative flex w-full overflow-hidden rounded-md bg-black/[0.96] antialiased bg-grid-white/[0.03] md:h-screen md:items-center md:justify-center">
+        <Spotlight className="-left-10 -top-20 md:left-60" fill="white" />
+        <div className="relative z-10 mx-auto w-full max-w-7xl p-4 py-40 text-center md:pb-4 md:pt-0">
+          <span className="mx-auto text-center text-xs font-normal italic text-neutral-300 md:text-base">
             viewing project
           </span>
           <h1 className="bg-opacity-50 bg-gradient-to-b from-neutral-50 to-neutral-400 bg-clip-text p-2 text-center text-4xl font-bold text-transparent md:text-8xl">
             {project.name}
           </h1>
-          <p className="mx-auto mt-4 max-w-lg text-center text-xl font-normal text-neutral-300">
+          <p className="mx-auto mt-4 max-w-lg px-5 text-center text-lg font-normal text-neutral-300 md:text-xl">
             {project.description}
           </p>
           <Link
@@ -114,17 +111,20 @@ export default function Page({ params }: { params: { name: string } }) {
           </Link>
         </div>
       </div>
-      <div id="breakdown" className="flex w-full justify-center px-4 pb-60">
+      <div
+        id="breakdown"
+        className="flex w-full justify-center px-4 pb-20 md:pb-60"
+      >
         <div className="w-full max-w-7xl">
-          <h2 className="bg-gradient-to-b from-neutral-50 to-neutral-400 bg-clip-text pb-4 text-7xl font-bold text-transparent">
+          <h2 className="bg-gradient-to-b from-neutral-50 to-neutral-400 bg-clip-text pb-4 text-3xl font-bold text-transparent md:text-7xl">
             Project Breakdown
           </h2>
-          <div className="grid w-full grid-cols-2 gap-8 text-neutral-50">
+          <div className="grid w-full grid-cols-1 gap-8 text-neutral-50 md:grid-cols-2">
             <div
               className={`rounded-xl border border-neutral-700 bg-neutral-950 p-4 ${project.APIs.length === 0 && "col-span-2"}`}
             >
-              <h3 className="text-3xl font-bold">Technologies</h3>
-              <ul className="mt-2 translate-x-5 list-disc text-lg">
+              <h3 className="text-xl font-bold md:text-3xl">Technologies</h3>
+              <ul className="mt-2 translate-x-5 list-disc md:text-lg">
                 {project.tech.map((tech: { name: string; href: string }) => (
                   <li key={tech.name}>
                     <a
@@ -140,8 +140,8 @@ export default function Page({ params }: { params: { name: string } }) {
             </div>
             {project.APIs.length > 0 && (
               <div className="rounded-xl  border border-neutral-700 bg-neutral-950 p-4">
-                <h3 className="text-3xl font-bold">APIs</h3>
-                <ul className="mt-2 translate-x-5 list-disc text-lg">
+                <h3 className="text-xl font-bold md:text-3xl">APIs</h3>
+                <ul className="mt-2 translate-x-5 list-disc md:text-lg">
                   {project.APIs.map((API: { name: string; href: string }) => (
                     <li key={API.name}>
                       <a
@@ -156,10 +156,10 @@ export default function Page({ params }: { params: { name: string } }) {
                 </ul>
               </div>
             )}
-            <div className="col-span-2 rounded-xl border border-neutral-700 bg-neutral-950 p-4">
-              <h3 className="text-3xl font-bold">Links</h3>
+            <div className="rounded-xl border border-neutral-700 bg-neutral-950 p-4 md:col-span-2">
+              <h3 className="text-xl font-bold md:text-3xl">Links</h3>
               {project.links.website && (
-                <p className="mt-2 text-lg">
+                <p className="mt-2 md:text-lg">
                   View this project&apos;s{" "}
                   <a
                     href={project.links.website}
@@ -188,7 +188,7 @@ export default function Page({ params }: { params: { name: string } }) {
                   </ul>
                 </>
               ) : (
-                <p className="text-lg">
+                <p className="md:text-lg">
                   View this project&apos;s{" "}
                   <a
                     href={project.links.github[0]}

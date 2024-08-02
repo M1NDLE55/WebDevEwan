@@ -1,14 +1,14 @@
 export default function About() {
   return (
-    <div id="about" className="flex w-full justify-center px-4 pb-60">
+    <div id="about" className="flex w-full justify-center px-4 pb-20 md:pb-60">
       <div className="w-full max-w-7xl">
-        <h2 className="bg-gradient-to-b from-neutral-50 to-neutral-400 bg-clip-text pb-4 text-7xl font-bold text-transparent">
+        <h2 className="bg-gradient-to-b from-neutral-50 to-neutral-400 bg-clip-text pb-4 text-3xl font-bold text-transparent md:text-7xl">
           My Story
         </h2>
-        <div className="grid w-full grid-cols-5 gap-8 text-neutral-50">
-          <div className="col-span-3 rounded-xl border border-neutral-700 bg-neutral-950 p-4">
-            <h3 className="text-3xl font-bold">Who Am I</h3>
-            <p className="mt-2 text-lg">
+        <div className="grid w-full grid-cols-1 gap-8 text-neutral-50 lg:grid-cols-5">
+          <div className="rounded-xl border border-neutral-700 bg-neutral-950 p-4 lg:col-span-3">
+            <h3 className="text-xl font-bold md:text-3xl">Who Am I</h3>
+            <p className="mt-2 md:text-lg">
               My journey into the world of programming began in 2019 during high
               school. Introduced to the fundamentals through Delphi and data
               management with SQL using Access, I discovered a passion for
@@ -19,9 +19,9 @@ export default function About() {
               SQL Server and Oracle for data management.
             </p>
           </div>
-          <div className="col-span-2 rounded-xl  border border-neutral-700 bg-neutral-950 p-4">
-            <h3 className="text-3xl font-bold">My Skills</h3>
-            <ul className="mt-2 text-lg ">
+          <div className="rounded-xl border  border-neutral-700 bg-neutral-950 p-4 lg:col-span-2">
+            <h3 className="text-xl font-bold md:text-3xl">My Skills</h3>
+            <ul className="mt-2 text-lg md:text-lg">
               <li>Programming Languages: C#, Python, C++, Java, Delphi</li>
               <li>
                 Web Development: HTML, CSS, JavaScript, React, Next.js,
@@ -31,9 +31,11 @@ export default function About() {
               <li>Tools & Technologies: Resend for email communication</li>
             </ul>
           </div>
-          <div className="col-span-2 rounded-xl  border border-neutral-700 bg-neutral-950 p-4">
-            <h3 className="text-3xl font-bold">What I Aspire to Be</h3>
-            <p className="mt-2 text-lg">
+          <div className="rounded-xl border  border-neutral-700 bg-neutral-950 p-4 lg:col-span-2">
+            <h3 className="text-xl font-bold md:text-3xl">
+              What I Aspire to Be
+            </h3>
+            <p className="mt-2 text-lg md:text-lg">
               My long-term goal is to become a backend developer, a role that
               aligns with my passion for creating efficient and robust
               server-side applications. However, I&apos;m committed to expanding
@@ -41,9 +43,11 @@ export default function About() {
               well-rounded skill set.
             </p>
           </div>
-          <div className="col-span-3 rounded-xl  border border-neutral-700 bg-neutral-950 p-4">
-            <h3 className="text-3xl font-bold">What I&apos;m Working On Now</h3>
-            <p className="mt-2 text-lg">
+          <div className="rounded-xl border  border-neutral-700 bg-neutral-950 p-4 lg:col-span-3">
+            <h3 className="text-xl font-bold md:text-3xl">
+              What I&apos;m Working On Now
+            </h3>
+            <p className="mt-2 text-lg md:text-lg">
               Currently, my interests have shifted towards web development. Over
               the past year, I&apos;ve immersed myself in HTML, CSS, and
               JavaScript, and have been diving deeper into modern frameworks

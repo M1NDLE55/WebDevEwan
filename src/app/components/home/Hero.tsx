@@ -3,16 +3,13 @@ import { Spotlight } from "../ui/Spotlight";
 
 export default function Hero() {
   return (
-    <div className="relative flex h-screen w-full overflow-hidden rounded-md bg-black/[0.96] antialiased bg-grid-white/[0.03] md:items-center md:justify-center">
-      <Spotlight
-        className="-top-40 left-0 md:-top-20 md:left-60"
-        fill="white"
-      />
-      <div className="relative z-10 mx-auto w-full max-w-7xl p-4 pt-20 text-center md:pt-0">
+    <div className="relative flex w-full overflow-hidden rounded-md bg-black/[0.96] antialiased bg-grid-white/[0.03] md:h-screen md:items-center md:justify-center">
+      <Spotlight className="-left-10 -top-20 md:left-60" fill="white" />
+      <div className="relative z-10 mx-auto w-full max-w-7xl p-4 py-40 text-center md:pb-4 md:pt-0">
         <h1 className="bg-opacity-50 bg-gradient-to-b from-neutral-50 to-neutral-400 bg-clip-text p-2 text-center text-4xl font-bold text-transparent md:text-8xl">
           WebDevEwan
         </h1>
-        <p className="mx-auto mt-4 max-w-lg text-center text-xl font-normal text-neutral-300">
+        <p className="mx-auto mt-4 max-w-lg px-5 text-center text-lg font-normal text-neutral-300 md:text-xl">
           Hey there! I&apos;m Ewan, a student and freelance web developer based
           in South Africa.
         </p>
