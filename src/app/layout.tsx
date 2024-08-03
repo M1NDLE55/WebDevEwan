@@ -4,6 +4,8 @@ import "./globals.css";
 import Footer from "./components/global/Footer";
 import React from "react";
 import { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -33,6 +35,8 @@ export default function RootLayout({
         {children}
         <Toaster position="bottom-right" />
         <Footer />
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
