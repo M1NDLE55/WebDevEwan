@@ -5,8 +5,19 @@ import Link from "next/link";
 import { FloatingNav } from "@/app/components/ui/FloatingNavbar";
 import { navItems } from "@/app/components/global/NavItems";
 
+type Project = {
+  name: string;
+  description: string;
+  tech: { name: string; href: string }[];
+  APIs: { name: string; href: string }[];
+  links: {
+    github: string[];
+    website: string | null;
+  };
+};
+
 export default function Page({ params }: { params: { name: string } }) {
-  const projects = new Map();
+  const projects = new Map<string, Project>();
 
   projects.set("eft-toolset", {
     name: "EFT Toolset",
@@ -83,7 +94,7 @@ export default function Page({ params }: { params: { name: string } }) {
     notFound();
   }
 
-  const project = projects.get(params.name);
+  const project = projects.get(params.name) as Project;
 
   return (
     <main>

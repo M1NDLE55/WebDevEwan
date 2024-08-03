@@ -1,7 +1,14 @@
 import Project from "./Project";
 
+export type Project = {
+  title: string;
+  description: string;
+  localHref: string;
+  trueHref: string | null;
+};
+
 export default function Projects() {
-  const projects = [
+  const projects: Project[] = [
     {
       title: "EFT Toolset",
       description:
