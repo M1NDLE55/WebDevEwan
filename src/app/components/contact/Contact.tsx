@@ -3,13 +3,13 @@
 import { sendMessage } from "@/app/lib/actions";
 import { schema } from "@/app/lib/schema";
 import toast from "react-hot-toast";
-import { useState } from "react";
+import React, { useState } from "react";
 
 export default function ContactForm() {
   const [isLoading, setIsLoading] = useState(false);
   const [prevMessage, setPrevMessage] = useState("");
 
-  async function handleAction(formData) {
+  async function handleAction(formData: FormData) {
     setIsLoading(true);
 
     const rawData = {
@@ -49,7 +49,7 @@ export default function ContactForm() {
     setIsLoading(false);
   }
 
-  async function handleSubmit(event) {
+  async function handleSubmit(event: React.BaseSyntheticEvent) {
     event.preventDefault();
     await handleAction(new FormData(event.target));
   }

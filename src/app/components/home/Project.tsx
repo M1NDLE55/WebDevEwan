@@ -3,9 +3,10 @@
 import { PinContainer } from "../ui/3D-Pin";
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import { Project as TProject } from "./Projects";
 
-export default function Project({ project }) {
-  const [image, setImage] = useState(null);
+export default function Project({ project }: { project: TProject }) {
+  const [image, setImage] = useState<string | null>(null);
 
   useEffect(() => {
     async function getMeta(href: string) {
@@ -16,7 +17,7 @@ export default function Project({ project }) {
 
         const data = await response.json();
 
-        const imageURL = data.data.image.url;
+        const imageURL = data.data.image.url as string;
 
         setImage(imageURL);
       } catch (error) {
