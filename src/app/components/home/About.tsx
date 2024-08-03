@@ -18,12 +18,13 @@ export default function About() {
               at the North-West University (NWU), my academic focus has expanded
               significantly. While the university curriculum emphasized C#, I
               have also developed skills in Python, C++, and Java, and utilized
-              SQL Server and Oracle for data management. Check out my CV{" "}
+              SQL Server and Oracle for data management. For more information,
+              check out my{" "}
               <Link
                 href="/ewan_trollip_cv.pdf"
                 className="underline underline-offset-2"
               >
-                here
+                CV
               </Link>
               .
             </p>
