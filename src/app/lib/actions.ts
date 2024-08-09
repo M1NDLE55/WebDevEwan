@@ -3,7 +3,13 @@ import { schema } from "./schema";
 import { Resend } from "resend";
 import EmailTemplate from "../components/contact/EmailTemplate";
 
-export async function sendMessage(clientData) {
+type ClientData = {
+  name: string;
+  email: string;
+  message: string;
+};
+
+export async function sendMessage(clientData: ClientData) {
   const result = schema.safeParse(clientData);
 
   if (!result.success) {
