@@ -17,6 +17,7 @@ export function StaticNav({
     >
       {navItems.map((navItem: any, idx: number) => (
         <Link
+          title={navItem.name + " page"}
           key={`link=${idx}`}
           href={navItem.link}
           className="relative flex items-center space-x-1 py-2 text-neutral-50 hover:text-neutral-300"

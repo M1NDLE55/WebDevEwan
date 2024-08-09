@@ -67,6 +67,7 @@ export const FloatingNav = ({
       >
         {navItems.map((navItem: any, idx: number) => (
           <Link
+            title={navItem.name + " page"}
             key={`link=${idx}`}
             href={navItem.link}
             className={cn(
