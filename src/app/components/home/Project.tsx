@@ -3,9 +3,9 @@
 import { PinContainer } from "../ui/3D-Pin";
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { Project as TProject } from "./Projects";
+import type { Project } from "../global/Projects";
 
-export default function Project({ project }: { project: TProject }) {
+export default function Project({ project }: { project: Project }) {
   const [image, setImage] = useState<string | null>(null);
 
   useEffect(() => {
@@ -25,11 +25,11 @@ export default function Project({ project }: { project: TProject }) {
       }
     }
 
-    if (!project.trueHref) {
+    if (!project.links.website) {
       return;
     }
 
-    getMeta(project.trueHref);
+    getMeta(project.links.website);
   }, []);
 
   return (
@@ -37,15 +37,15 @@ export default function Project({ project }: { project: TProject }) {
       <div className="flex h-[20rem] w-[20rem] basis-full flex-col justify-between p-4 tracking-tight text-slate-100/50 sm:basis-1/2">
         <div>
           <h3 className="!m-0 max-w-xs !pb-2 text-base font-bold text-neutral-50">
-            {project.title}
+            {project.name}
           </h3>
           <div className="!m-0 !p-0 text-base font-normal">
-            <p className="text-neutral-400 ">{project.description}</p>
+            <p className="text-neutral-400 ">{project.shortDescription}</p>
           </div>
         </div>
         {image ? (
           <Image
-            alt={project.title}
+            alt={project.name}
             src={image}
             width={1200}
             height={630}
