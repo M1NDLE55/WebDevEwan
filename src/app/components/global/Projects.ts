@@ -1,5 +1,6 @@
-type Project = {
+export type Project = {
   name: string;
+  shortDescription: string;
   description: string;
   localHref: string;
   tech: { name: string; href: string }[];
@@ -10,11 +11,13 @@ type Project = {
   };
 };
 
-export const projectsMap = new Map<string, Project>([
+export const projects = new Map<string, Project>([
   [
     "eft-toolset",
     {
       name: "EFT Toolset",
+      shortDescription:
+        "A suite of tools to assist players of Escape From Tarkov (EFT) in their gameplay experience.",
       description:
         "This application provides a suite of tools to assist players of Escape From Tarkov (EFT) in their gameplay experience.",
       localHref: "/project/eft-toolset",
@@ -42,6 +45,8 @@ export const projectsMap = new Map<string, Project>([
     "webdevewan",
     {
       name: "WebDevEwan",
+      shortDescription:
+        "My personal portfolio website (you're viewing it now).",
       description: "My personal portfolio website.",
       localHref: "/project/webdevewan",
       tech: [
@@ -73,6 +78,7 @@ export const projectsMap = new Map<string, Project>([
     "brighton-medical",
     {
       name: "Brighton Medical",
+      shortDescription: "This project is an exam submission for the NWU module CMPG 212.",
       description:
         "This project is an exam submission for the NWU module CMPG 212. It consists of a web and desktop application developed for Brighton Medical as part of a case study.",
       localHref: "/project/brighton-medical",
