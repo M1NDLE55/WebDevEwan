@@ -5,6 +5,7 @@ import Link from "next/link";
 import { FloatingNav } from "@/app/components/ui/FloatingNavbar";
 import { navItems } from "@/app/components/global/NavItems";
 import { type Project, projects } from "@/app/components/global/Projects";
+import { Link as LinkIcon } from "lucide-react";
 
 export default function Page({ params }: { params: { name: string } }) {
   if (!projects.has(params.name)) {
@@ -41,20 +42,23 @@ export default function Page({ params }: { params: { name: string } }) {
       </div>
       <div
         id="breakdown"
-        className="flex w-full justify-center break-words px-4 pb-20 md:pb-60"
+        className="flex w-full justify-center break-words px-4 pb-20 sm:px-8 md:pb-60"
       >
         <div className="w-full max-w-7xl">
           <h2 className="bg-gradient-to-b from-neutral-50 to-neutral-400 bg-clip-text pb-4 text-3xl font-bold text-transparent md:text-7xl">
             Project Breakdown
           </h2>
-          <div className="grid w-full grid-cols-1 gap-y-8 text-neutral-50 md:grid-cols-2 md:gap-x-8">
+          <div
+            className={`grid w-full grid-cols-1 gap-y-4 text-neutral-50 sm:gap-y-8 md:grid-cols-2 md:gap-x-8 ${project.APIs && "lg:grid-cols-3"}`}
+          >
             <div
-              className={`rounded-xl border border-neutral-700 bg-neutral-950 p-4 ${!project.APIs && "col-span-2"}`}
+              className={`rounded-xl border border-neutral-700 bg-neutral-950 p-4 ${!project.APIs && "md:col-span-2 lg:col-span-1"}`}
             >
               <h3 className="text-xl font-bold md:text-3xl">Technologies</h3>
-              <ul className="mt-2 translate-x-5 list-disc md:text-lg">
+              <ul className="mt-2 md:text-lg">
                 {project.tech.map((tech: { name: string; href: string }) => (
                   <li key={tech.name}>
+                    <LinkIcon className="mr-2 inline" size={16} />
                     <a
                       href={tech.href}
                       target="blank"
@@ -69,9 +73,10 @@ export default function Page({ params }: { params: { name: string } }) {
             {project.APIs && (
               <div className="rounded-xl  border border-neutral-700 bg-neutral-950 p-4">
                 <h3 className="text-xl font-bold md:text-3xl">APIs</h3>
-                <ul className="mt-2 translate-x-5 list-disc md:text-lg">
+                <ul className="mt-2 md:text-lg">
                   {project.APIs.map((API: { name: string; href: string }) => (
                     <li key={API.name}>
+                      <LinkIcon className="mr-2 inline" size={16} />
                       <a
                         href={API.href}
                         target="blank"
@@ -84,50 +89,48 @@ export default function Page({ params }: { params: { name: string } }) {
                 </ul>
               </div>
             )}
-            <div className="rounded-xl border border-neutral-700 bg-neutral-950 p-4 md:col-span-2">
-              <h3 className="text-xl font-bold md:text-3xl">Links</h3>
-              {project.links.website && (
-                <p className="mt-2 md:text-lg">
-                  View this project&apos;s{" "}
-                  <a
-                    href={project.links.website}
-                    target="blank"
-                    className="underline underline-offset-2"
-                  >
-                    website
-                  </a>
-                </p>
-              )}
-              {project.links.github &&
-                (project.links.github.length > 1 ? (
-                  <>
-                    <p>View this project&apos;s GitHub repos: </p>
-                    <ul>
-                      {project.links.github.map(({ name, href }) => (
-                        <li key={name}>
-                          <a
-                            href={href}
-                            target="blank"
-                            className="underline underline-offset-2"
-                          >
-                            {name}
-                          </a>
-                        </li>
-                      ))}
-                    </ul>
-                  </>
-                ) : (
-                  <p className="md:text-lg">
-                    View this project&apos;s{" "}
+            <div className="rounded-xl border border-neutral-700 bg-neutral-950 p-4 md:col-span-2 lg:col-span-1">
+              <h3 className="text-xl font-bold md:text-3xl">Important Links</h3>
+              <ul className="mt-2">
+                {project.links.website && (
+                  <li className="md:text-lg">
+                    <LinkIcon className="mr-2 inline" size={16} />
                     <a
-                      href={project.links.github[0].href}
+                      href={project.links.website}
                       target="blank"
                       className="underline underline-offset-2"
                     >
-                      {project.links.github[0].name}
+                      Project Website
                     </a>
-                  </p>
-                ))}
+                  </li>
+                )}
+                {project.links.github &&
+                  (project.links.github.length > 1 ? (
+                    project.links.github.map(({ name, href }) => (
+                      <li key={name} className="md:text-lg">
+                        <LinkIcon className="mr-2 inline" size={16} />
+                        <a
+                          href={href}
+                          target="blank"
+                          className="underline underline-offset-2"
+                        >
+                          {name}
+                        </a>
+                      </li>
+                    ))
+                  ) : (
+                    <li className="md:text-lg">
+                      <LinkIcon className="mr-2 inline" size={16} />
+                      <a
+                        href={project.links.github[0].href}
+                        target="blank"
+                        className="underline underline-offset-2"
+                      >
+                        {project.links.github[0].name}
+                      </a>
+                    </li>
+                  ))}
+              </ul>
             </div>
           </div>
         </div>
