@@ -37,11 +37,12 @@ export default function About() {
             <ul className="mt-2 md:text-lg">
               <li>Programming Languages: C#, Python, C++, Java, Delphi</li>
               <li>
-                Web Development: HTML, CSS, JavaScript, React, Next.js,
-                Tailwind, ASP.NET
+                Web Development: HTML, CSS, JavaScript, TypeScript, React,
+                Next.js, Tailwind, ASP.NET
               </li>
               <li>Data Management: SQL Server, Oracle, Access, Supabase</li>
-              <li>Tools & Technologies: Resend for email communication</li>
+              <li>Tools & Technologies: Resend</li>
+              <li>Other: WordPress, Shopify</li>
             </ul>
           </div>
           <div className="rounded-xl border  border-neutral-700 bg-neutral-950 p-4 lg:col-span-2">

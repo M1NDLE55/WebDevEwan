@@ -43,6 +43,18 @@ export default function Project({ project }: { project: Project }) {
             <p className="text-neutral-400 ">{project.shortDescription}</p>
           </div>
         </div>
+        {project.tags && (
+          <div className="mt-3 flex flex-row gap-2">
+            {project.tags.map((tag) => (
+              <div
+                key={tag.name}
+                className={`${tag.color} rounded-full px-2 text-sm text-black`}
+              >
+                {tag.name}
+              </div>
+            ))}
+          </div>
+        )}
         {image ? (
           <Image
             alt={project.name}
