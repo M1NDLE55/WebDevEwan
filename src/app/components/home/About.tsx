@@ -2,12 +2,15 @@ import Link from "next/link";
 
 export default function About() {
   return (
-    <div id="about" className="flex w-full justify-center px-4 pb-20 md:pb-60">
+    <div
+      id="about"
+      className="flex w-full justify-center px-4 pb-20 sm:px-8 md:pb-60"
+    >
       <div className="w-full max-w-7xl">
         <h2 className="bg-gradient-to-b from-neutral-50 to-neutral-400 bg-clip-text pb-4 text-3xl font-bold text-transparent md:text-7xl">
           My Story
         </h2>
-        <div className="grid w-full grid-cols-1 gap-8 text-neutral-50 lg:grid-cols-5">
+        <div className="grid w-full grid-cols-1 gap-4 text-neutral-50 sm:gap-8 lg:grid-cols-5">
           <div className="rounded-xl border border-neutral-700 bg-neutral-950 p-4 lg:col-span-3">
             <h3 className="text-xl font-bold md:text-3xl">Who Am I</h3>
             <p className="mt-2 md:text-lg">
@@ -32,13 +35,16 @@ export default function About() {
           <div className="rounded-xl border  border-neutral-700 bg-neutral-950 p-4 lg:col-span-2">
             <h3 className="text-xl font-bold md:text-3xl">My Skills</h3>
             <ul className="mt-2 md:text-lg">
-              <li>Programming Languages: C#, Python, C++, Java, Delphi</li>
               <li>
-                Web Development: HTML, CSS, JavaScript, React, Next.js,
-                Tailwind, ASP.NET
+                Programming Languages: C#, Python, C++, Java, Delphi,
+                JavaScript, TypeScript
+              </li>
+              <li>
+                Web Development: HTML, CSS, React, Next.js, Tailwind, ASP.NET
               </li>
               <li>Data Management: SQL Server, Oracle, Access, Supabase</li>
-              <li>Tools & Technologies: Resend for email communication</li>
+              <li>Tools & Technologies: Resend</li>
+              <li>Other: WordPress, Shopify</li>
             </ul>
           </div>
           <div className="rounded-xl border  border-neutral-700 bg-neutral-950 p-4 lg:col-span-2">
