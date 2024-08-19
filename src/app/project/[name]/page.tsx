@@ -105,10 +105,10 @@ export default function Page({ params }: { params: { name: string } }) {
                   </li>
                 )}
                 {project.links.github &&
-                  (project.links.github.length > 1 ? (
-                    project.links.github.map(({ name, href }) => (
-                      <li key={name} className="md:text-lg">
-                        <LinkIcon className="mr-2 inline" size={16} />
+                  project.links.github.map(({ name, href }) => (
+                    <li key={name} className="md:text-lg">
+                      <LinkIcon className="mr-2 inline" size={16} />
+                      {href !== "" ? (
                         <a
                           href={href}
                           target="blank"
@@ -116,18 +116,9 @@ export default function Page({ params }: { params: { name: string } }) {
                         >
                           {name}
                         </a>
-                      </li>
-                    ))
-                  ) : (
-                    <li className="md:text-lg">
-                      <LinkIcon className="mr-2 inline" size={16} />
-                      <a
-                        href={project.links.github[0].href}
-                        target="blank"
-                        className="underline underline-offset-2"
-                      >
-                        {project.links.github[0].name}
-                      </a>
+                      ) : (
+                        <span>{name}</span>
+                      )}
                     </li>
                   ))}
               </ul>
