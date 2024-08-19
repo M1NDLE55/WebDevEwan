@@ -35,10 +35,12 @@ export default function About() {
           <div className="rounded-xl border  border-neutral-700 bg-neutral-950 p-4 lg:col-span-2">
             <h3 className="text-xl font-bold md:text-3xl">My Skills</h3>
             <ul className="mt-2 md:text-lg">
-              <li>Programming Languages: C#, Python, C++, Java, Delphi</li>
               <li>
-                Web Development: HTML, CSS, JavaScript, TypeScript, React,
-                Next.js, Tailwind, ASP.NET
+                Programming Languages: C#, Python, C++, Java, Delphi,
+                JavaScript, TypeScript
+              </li>
+              <li>
+                Web Development: HTML, CSS, React, Next.js, Tailwind, ASP.NET
               </li>
               <li>Data Management: SQL Server, Oracle, Access, Supabase</li>
               <li>Tools & Technologies: Resend</li>

@@ -127,9 +127,9 @@ export const projects = new Map<string, Project>([
     {
       name: "HMS T&L System (WIP)",
       shortDescription:
-        "A multi-platform system for lecturers to streamline feedback for video-based student submissions in Human Movement Sciences at NWU",
+        "A multiplatform system for lecturers at NWU to review students' video submissions.",
       description:
-        "The system allows students to upload videos, which are stored and tagged in a database. Lecturers can log in, stream the videos, and provide text feedback, enhancing the feedback process.",
+        "This system allows students to upload videos, which are stored and tagged in a database. Lecturers can log in, stream the videos, and provide text feedback.",
       localHref: "/project/hms-t-and-l-system",
       tech: [tech.Nextjs, tech.Django, tech.Expo],
       links: {
