@@ -68,7 +68,7 @@ export const projects = new Map<string, Project>([
   [
     "eft-toolset",
     {
-      name: "EFT Toolset",
+      name: "EFT Toolset (Beta)",
       shortDescription:
         "A suite of tools to assist players of Escape From Tarkov (EFT) in their gameplay experience.",
       description:
