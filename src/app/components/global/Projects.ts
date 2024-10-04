@@ -66,29 +66,6 @@ export type Project = {
 
 export const projects = new Map<string, Project>([
   [
-    "eft-toolset",
-    {
-      name: "EFT Toolset (Beta)",
-      shortDescription:
-        "A suite of tools to assist players of Escape From Tarkov (EFT) in their gameplay experience.",
-      description:
-        "This application provides a suite of tools to assist players of Escape From Tarkov (EFT) in their gameplay experience.",
-      localHref: "/project/eft-toolset",
-      tech: [tech.Nextjs, tech.Tailwind, tech.JavaScript],
-      APIs: [{ name: "TARKOV.DEV", href: "https://tarkov.dev/" }],
-      links: {
-        github: [
-          {
-            name: "GitHub Repo",
-            href: "https://github.com/M1NDLE55/eft-toolset",
-          },
-        ],
-        website: "https://www.eft-toolset.com/",
-      },
-      tags: [tags.Nextjs, tags.Tailwind],
-    },
-  ],
-  [
     "webdevewan",
     {
       name: "WebDevEwan",
@@ -120,6 +97,29 @@ export const projects = new Map<string, Project>([
         website: "https://www.webdevewan.com/",
       },
       tags: [tags.Nextjs, tags.Tailwind, tags.Framer],
+    },
+  ],
+  [
+    "eft-toolset",
+    {
+      name: "EFT Toolset (Beta)",
+      shortDescription:
+        "A suite of tools to assist players of Escape From Tarkov (EFT) in their gameplay experience.",
+      description:
+        "This application provides a suite of tools to assist players of Escape From Tarkov (EFT) in their gameplay experience.",
+      localHref: "/project/eft-toolset",
+      tech: [tech.Nextjs, tech.Tailwind, tech.JavaScript],
+      APIs: [{ name: "TARKOV.DEV", href: "https://tarkov.dev/" }],
+      links: {
+        github: [
+          {
+            name: "GitHub Repo",
+            href: "https://github.com/M1NDLE55/eft-toolset",
+          },
+        ],
+        website: "https://www.eft-toolset.com/",
+      },
+      tags: [tags.Nextjs, tags.Tailwind],
     },
   ],
   [
