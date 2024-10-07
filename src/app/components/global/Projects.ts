@@ -135,16 +135,16 @@ export const projects = new Map<string, Project>([
       links: {
         github: [
           {
+            name: "Next.js Web App GitHub Repo",
+            href: "https://github.com/bernard-paetzold/HMS-TLS-Web-App-ingenious-plebs",
+          },
+          {
+            name: "Expo Mobile App GitHub Repo",
+            href: "https://github.com/bernard-paetzold/HMS-TLS-App-ingenious-plebs-",
+          },
+          {
             name: "Django Backend GitHub Repo",
             href: "https://github.com/bernard-paetzold/HMS-TLS-ingenious-plebs",
-          },
-          {
-            name: "Next.js Web App GitHub Repo (TBA)",
-            href: "",
-          },
-          {
-            name: "Expo Mobile App GitHub Repo (TBA)",
-            href: "",
           },
         ],
       },
