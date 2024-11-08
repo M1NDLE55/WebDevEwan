@@ -10,15 +10,13 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title:
-    "Student and Freelance Web Developer Based in South Africa | WebDevEwan",
+  title: "Software Developer Based in South Africa | WebDevEwan",
   description:
-    "Hey there! I'm Ewan, a student and freelance web developer based in South Africa.",
+    "Hey there! I'm Ewan, a software developer based in South Africa.",
   openGraph: {
-    title:
-      "Student and Freelance Web Developer Based in South Africa | WebDevEwan",
+    title: "Software Developer Based in South Africa | WebDevEwan",
     description:
-      "Hey there! I'm Ewan, a student and freelance web developer based in South Africa.",
+      "Hey there! I'm Ewan, a software developer based in South Africa.",
     type: "website",
   },
   metadataBase: new URL("https://www.webdevewan.com/"),
