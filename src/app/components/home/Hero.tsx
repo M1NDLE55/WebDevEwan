@@ -10,8 +10,7 @@ export default function Hero() {
           WebDevEwan
         </h1>
         <p className="mx-auto mt-4 max-w-lg px-5 text-center text-lg font-normal text-neutral-300 md:text-xl">
-          Hey there! I&apos;m Ewan, a student and freelance web developer based
-          in South Africa.
+          Hey there! I&apos;m Ewan, a software developer based in South Africa.
         </p>
         <Link
           href="#projects"

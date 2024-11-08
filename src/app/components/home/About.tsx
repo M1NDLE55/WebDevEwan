@@ -14,15 +14,15 @@ export default function About() {
           <div className="rounded-xl border border-neutral-700 bg-neutral-950 p-4 lg:col-span-3">
             <h3 className="text-xl font-bold md:text-3xl">Who Am I</h3>
             <p className="mt-2 md:text-lg">
-              My journey into the world of programming began in 2019 during high
-              school. Introduced to the fundamentals through Delphi and data
-              management with SQL using Access, I discovered a passion for
-              coding that has only grown since. Now, as a senior BSc. IT student
-              at the North-West University (NWU), my academic focus has expanded
-              significantly. While the university curriculum emphasized C#, I
-              have also developed skills in Python, C++, and Java, and utilized
-              SQL Server and Oracle for data management. For more information,
-              check out my{" "}
+              My programming journey began in high school, where I discovered a
+              love for coding that led me to pursue a BSc in IT from North-West
+              University (NWU). Along the way, I gained experience with
+              languages like C#, Python, C++, and Java, and worked with SQL
+              Server, Oracle and PostgreSQL for data management. Now, as a
+              software developer, my focus is on building dynamic, user-centered
+              applications with TypeScript and React, and I&apos;m excited to
+              apply and expand my skills in modern web development technologies.
+              For more information, check out my{" "}
               <Link
                 href="/ewan_trollip_cv.pdf"
                 className="underline underline-offset-2"
@@ -36,14 +36,15 @@ export default function About() {
             <h3 className="text-xl font-bold md:text-3xl">My Skills</h3>
             <ul className="mt-2 md:text-lg">
               <li>
-                Programming Languages: C#, Python, C++, Java, Delphi,
-                JavaScript, TypeScript
+                Programming Languages: TypeScript, JavaScript, C#, Python, C++,
+                Java
               </li>
+              <li>Frameworks: React, Next.js, Expo, Django, ASP.NET</li>
               <li>
-                Web Development: HTML, CSS, React, Next.js, Tailwind, ASP.NET
+                Data Management: PostgreSQL, Supabase, SQL Server, Oracle,
+                Access
               </li>
-              <li>Data Management: SQL Server, Oracle, Access, Supabase</li>
-              <li>Tools & Technologies: Resend</li>
+              <li>Tools & Technologies: Resend, Zod, shadcn/ui, Tailwind</li>
               <li>Other: WordPress, Shopify</li>
             </ul>
           </div>
@@ -52,11 +53,12 @@ export default function About() {
               What I Aspire to Be
             </h3>
             <p className="mt-2 md:text-lg">
-              My long-term goal is to become a backend developer, a role that
-              aligns with my passion for creating efficient and robust
-              server-side applications. However, I&apos;m committed to expanding
-              my capabilities as a full stack developer to ensure I have a
-              well-rounded skill set.
+              I aim to become a well-rounded full stack developer with a strong
+              focus on the React ecosystem, combining dynamic front-end
+              experiences with solid back-end functionality. My goal is to
+              deepen my expertise across the spectrum, ensuring I can seamlessly
+              navigate both client and server-side development to build
+              efficient, cohesive applications.
             </p>
           </div>
           <div className="rounded-xl border  border-neutral-700 bg-neutral-950 p-4 lg:col-span-3">
@@ -64,13 +66,14 @@ export default function About() {
               What I&apos;m Working On Now
             </h3>
             <p className="mt-2 md:text-lg">
-              Currently, my interests have shifted towards web development. Over
-              the past year, I&apos;ve immersed myself in HTML, CSS, and
-              JavaScript, and have been diving deeper into modern frameworks
-              like React, Next.js, and Tailwind. To manage storage and
-              communication for web projects, I&apos;ve utilized Supabase and
-              Resend. Alongside my studies, I&apos;m working on a hobby project
-              called EFT Toolset, a tool designed to assist players in the game
+              As a software developer, my current focus is on web development,
+              with a particular interest in the React ecosystem. Over the past
+              year, I&apos;ve expanded my skills in HTML, CSS, JavaScript and
+              TypeScript, while diving deeper into frameworks like React and
+              Next.js. I&apos;m also exploring tools like Supabase and Resend
+              for handling storage and communication in web applications. In
+              addition to my professional work, I&apos;m developing a hobby
+              project called EFT Toolset, a tool designed to assist players of
               Escape From Tarkov.
             </p>
           </div>
