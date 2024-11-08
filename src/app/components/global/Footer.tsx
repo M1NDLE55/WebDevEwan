@@ -1,4 +1,4 @@
-import { Github, Linkedin } from "lucide-react";
+import { Github, Linkedin, Music2 } from "lucide-react";
 import Link from "next/link";
 
 export default function Footer() {
@@ -20,9 +20,16 @@ export default function Footer() {
           >
             <Linkedin />
           </a>
+          <a
+            title="Spotify account"
+            href="https://open.spotify.com/user/3c15qroehhkyoyupsozfvk2z1?si=R-qwomAPSGeFsRqn8nqeCA"
+            className="px-2 py-1"
+          >
+            <Music2 />
+          </a>
         </div>
         <p className="text-lg">
-          &copy; {new Date().getFullYear()} | <Link href="/">WebDevEwan</Link>
+          &copy; {new Date().getFullYear()} <Link href="/">WebDevEwan</Link>
         </p>
       </div>
     </footer>
