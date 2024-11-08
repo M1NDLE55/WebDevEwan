@@ -1,6 +1,7 @@
 const tags = {
   Nextjs: { name: "Next.js", color: "bg-white" },
   Tailwind: { name: "Tailwind", color: "bg-cyan-300" },
+  shadcn: { name: "shadcn/ui", color: "border border-white text-white" },
   Django: { name: "Django", color: "bg-green-300" },
   Expo: { name: "Expo", color: "bg-orange-300" },
   Framer: { name: "Framer", color: "bg-pink-300" },
@@ -16,6 +17,7 @@ const tech = {
     href: "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
   },
   TypeScript: { name: "TypeScript", href: "https://www.typescriptlang.org/" },
+  shadcn: { name: "shadcn/ui", href: "https://ui.shadcn.com/" },
   Framer: { name: "Framer Motion", href: "https://www.framer.com/motion/" },
   Aceternity: { name: "Aceternity UI", href: "https://ui.aceternity.com/" },
   Zod: { name: "Zod", href: "https://zod.dev/" },
@@ -69,8 +71,7 @@ export const projects = new Map<string, Project>([
     "webdevewan",
     {
       name: "WebDevEwan",
-      shortDescription:
-        "My personal portfolio website (you're viewing it now).",
+      shortDescription: "My personal portfolio website.",
       description: "My personal portfolio website.",
       localHref: "/project/webdevewan",
       tech: [
@@ -102,13 +103,13 @@ export const projects = new Map<string, Project>([
   [
     "eft-toolset",
     {
-      name: "EFT Toolset (Beta)",
+      name: "EFT Toolset",
       shortDescription:
         "A suite of tools to assist players of Escape From Tarkov (EFT) in their gameplay experience.",
       description:
         "This application provides a suite of tools to assist players of Escape From Tarkov (EFT) in their gameplay experience.",
       localHref: "/project/eft-toolset",
-      tech: [tech.Nextjs, tech.Tailwind, tech.JavaScript],
+      tech: [tech.Nextjs, tech.Tailwind, tech.TypeScript, tech.shadcn],
       APIs: [{ name: "TARKOV.DEV", href: "https://tarkov.dev/" }],
       links: {
         github: [
@@ -119,19 +120,26 @@ export const projects = new Map<string, Project>([
         ],
         website: "https://www.eft-toolset.com/",
       },
-      tags: [tags.Nextjs, tags.Tailwind],
+      tags: [tags.Nextjs, tags.Tailwind, tags.shadcn],
     },
   ],
   [
     "hms-t-and-l-system",
     {
-      name: "HMS T&L System (WIP)",
+      name: "Teaching & Learning System",
       shortDescription:
         "A multiplatform system for lecturers at NWU to review students' video submissions.",
       description:
         "This system allows students to upload videos, which are stored and tagged in a database. Lecturers can log in, stream the videos, and provide text feedback.",
       localHref: "/project/hms-t-and-l-system",
-      tech: [tech.Nextjs, tech.Django, tech.Expo],
+      tech: [
+        tech.Nextjs,
+        tech.TypeScript,
+        tech.Zod,
+        tech.shadcn,
+        tech.Django,
+        tech.Expo,
+      ],
       links: {
         github: [
           {
@@ -149,31 +157,6 @@ export const projects = new Map<string, Project>([
         ],
       },
       tags: [tags.Nextjs, tags.Expo, tags.Django],
-    },
-  ],
-  [
-    "brighton-medical",
-    {
-      name: "Brighton Medical",
-      shortDescription:
-        "This project is an exam submission for the NWU module CMPG 212.",
-      description:
-        "This project is an exam submission for the NWU module CMPG 212. It consists of a web and desktop application developed for Brighton Medical as part of a case study.",
-      localHref: "/project/brighton-medical",
-      tech: [tech.AspNet, tech.WinForms, tech.cSharp, tech.sqlServer],
-      links: {
-        github: [
-          {
-            name: "Web App GitHub Repo",
-            href: "https://github.com/M1NDLE55/CMPG-212-Exam-WebApp",
-          },
-          {
-            name: "Desktop App GitHub Repo",
-            href: "https://github.com/M1NDLE55/CMPG-212-Exam-Desktop",
-          },
-        ],
-      },
-      tags: [tags.AspNet, tags.WinForms],
     },
   ],
 ]);
