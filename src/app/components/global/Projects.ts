@@ -7,6 +7,8 @@ const tags = {
   Framer: { name: "Framer", color: "bg-pink-300" },
   AspNet: { name: "ASP.NET", color: "bg-violet-300" },
   WinForms: { name: "WinForms .NET", color: "bg-blue-300" },
+  React: { name: "React", color: "bg-blue-400" },
+  Amplify: { name: "Amplify", color: "bg-indigo-200" },
 };
 
 const tech = {
@@ -50,6 +52,8 @@ const tech = {
     name: "Expo",
     href: "https://expo.dev/",
   },
+  React: { name: "React", href: "https://react.dev/" },
+  Amplify: { name: "Amplify", href: "https://docs.amplify.aws/" },
 };
 
 export type Project = {
@@ -62,11 +66,33 @@ export type Project = {
   links: {
     github?: { name: string; href: string }[];
     website?: string;
+    hideOG?: boolean;
   };
   tags?: { name: string; color: string }[];
 };
 
 export const projects = new Map<string, Project>([
+  [
+    "detweb",
+    {
+      name: "Detweb",
+      shortDescription: "Analysis platform for aerial survey data.",
+      description: "Analysis platform for aerial survey data.",
+      localHref: "/project/detweb",
+      tech: [tech.React, tech.Amplify, tech.TypeScript],
+      links: {
+        github: [
+          {
+            name: "GitHub Repo",
+            href: "https://github.com/WildEyeConservation/Detweb",
+          },
+        ],
+        website: "https://wildeyeconservation.org/elephant-survey-system/",
+        hideOG: true,
+      },
+      tags: [tags.React, tags.Amplify],
+    },
+  ],
   [
     "webdevewan",
     {
