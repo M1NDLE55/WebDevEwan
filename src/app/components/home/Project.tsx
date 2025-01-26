@@ -25,7 +25,7 @@ export default function Project({ project }: { project: Project }) {
       }
     }
 
-    if (!project.links.website) {
+    if (!project.links.website || project.links.hideOG) {
       return;
     }
 

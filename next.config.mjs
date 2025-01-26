@@ -4,6 +4,7 @@ const nextConfig = {
     remotePatterns: [
       { protocol: "https", hostname: "www.webdevewan.com" },
       { protocol: "https", hostname: "www.eft-toolset.com" },
+      { protocol: "https", hostname: "wildeyeconservation.org" },
     ],
   },
 };
