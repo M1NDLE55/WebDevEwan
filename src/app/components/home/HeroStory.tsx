@@ -47,8 +47,7 @@ export default function HeroStory() {
         completed. Some were forged in the heat of academic trials, others in
         the wild lands of freelance work, and still more in the halls of noble
         guilds. Together, they form the arsenal of a mage destined for
-        greatness. For a fuller chronicle of his deeds and studies, see his
-        {" "}
+        greatness. For a fuller chronicle of his deeds and studies, see his{" "}
         <a
           href="/ewan_trollip_cv.pdf"
           target="_blank"
@@ -65,7 +64,7 @@ export default function HeroStory() {
 
       {/* Interlude */}
       <h2 className="mb-4 mt-8 text-2xl font-semibold text-amber-300">
-        Interlude — The Artisan's Chronicles
+        Interlude — The Artisan&apos;s Chronicles
       </h2>
       <p className="font-fantasy mb-6">
         From the forges of experience and the crucibles of curiosity came a
@@ -77,11 +76,11 @@ export default function HeroStory() {
       <div className="mt-6 flex flex-col items-center gap-4">
         <Link
           href="/projects"
-          className="inline-flex min-h-14 items-center justify-center rounded-lg border-4 border-amber-400 bg-gradient-to-br from-neutral-900/80 to-neutral-800/60 px-8 text-xl font-semibold text-amber-100 shadow-lg backdrop-blur transition hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-amber-400 focus:ring-offset-2 focus:ring-offset-neutral-900 text-center"
+          className="inline-flex min-h-14 items-center justify-center rounded-lg border-4 border-amber-400 bg-gradient-to-br from-neutral-900/80 to-neutral-800/60 px-8 text-center text-xl font-semibold text-amber-100 shadow-lg backdrop-blur transition hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-amber-400 focus:ring-offset-2 focus:ring-offset-neutral-900"
           aria-label="Explore The Artisan's Chronicles (projects page)"
           title="The Artisan's Chronicles"
         >
-          Explore The Artisan's Chronicles
+          Explore The Artisan&apos;s Chronicles
         </Link>
       </div>
 
@@ -131,7 +130,7 @@ export default function HeroStory() {
       <div className="mt-6 flex flex-col items-center gap-4">
         <Link
           href="/contact"
-          className="inline-flex min-h-14 items-center justify-center rounded-lg border-4 border-amber-400 bg-gradient-to-br from-neutral-900/80 to-neutral-800/60 px-8 text-xl font-semibold text-amber-100 shadow-lg backdrop-blur transition hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-amber-400 focus:ring-offset-2 focus:ring-offset-neutral-900 text-center"
+          className="inline-flex min-h-14 items-center justify-center rounded-lg border-4 border-amber-400 bg-gradient-to-br from-neutral-900/80 to-neutral-800/60 px-8 text-center text-xl font-semibold text-amber-100 shadow-lg backdrop-blur transition hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-amber-400 focus:ring-offset-2 focus:ring-offset-neutral-900"
           aria-label="Send a raven (contact page)"
         >
           Send a Raven
