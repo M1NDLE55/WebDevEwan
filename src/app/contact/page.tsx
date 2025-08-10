@@ -1,19 +1,26 @@
 import ContactForm from "../components/contact/Contact";
-import { StaticNav } from "../components/ui/StaticNavBar";
-import { navItems } from "../components/global/NavItems";
+import Banner from "../components/home/Banner";
 
 export default function Page() {
   return (
-    <main>
-      <StaticNav navItems={navItems} />
-      <div className="relative flex min-h-[calc(100vh-105px)] w-full items-center  justify-center bg-black bg-grid-white/[0.1] md:min-h-[calc(100vh-65px)]">
-        <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-black [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
-        <div className="z-20 w-full max-w-2xl px-4">
-          <h1 className="bg-opacity-50 bg-gradient-to-b from-neutral-50 to-neutral-400 bg-clip-text p-2 text-center text-4xl font-bold text-transparent md:text-8xl">
-            Get in Touch
-          </h1>
-          <ContactForm />
-        </div>
+    <main className="flex flex-1">
+      <div className="relative flex w-full items-center justify-center">
+        <section className="z-20 w-full max-w-3xl px-6 pb-9">
+          <Banner title="Send a Raven" />
+
+          <h2 className="mb-2 mt-6 text-center text-2xl font-semibold text-amber-300 md:text-3xl">
+            Words to the Court Scribe
+          </h2>
+          <p className="font-fantasy mx-auto max-w-2xl text-center text-neutral-200/90">
+            Speak, traveler. Inscribe thy name, mark thy sigil, and let thy message
+            ride upon swift wings. Whether quest, counsel, or camaraderie, thy words
+            shall find their way to my hall.
+          </p>
+
+          <div className="mt-5 rounded-lg border-4 border-amber-400 bg-gradient-to-br from-neutral-900/80 to-neutral-800/60 p-4 md:p-6 shadow-lg backdrop-blur">
+            <ContactForm />
+          </div>
+        </section>
       </div>
     </main>
   );

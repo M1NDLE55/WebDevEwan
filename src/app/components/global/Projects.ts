@@ -1,14 +1,24 @@
 const tags = {
-  Nextjs: { name: "Next.js", color: "bg-white" },
-  Tailwind: { name: "Tailwind", color: "bg-cyan-300" },
-  shadcn: { name: "shadcn/ui", color: "border border-white text-white" },
-  Django: { name: "Django", color: "bg-green-300" },
-  Expo: { name: "Expo", color: "bg-orange-300" },
-  Framer: { name: "Framer", color: "bg-pink-300" },
-  AspNet: { name: "ASP.NET", color: "bg-violet-300" },
-  WinForms: { name: "WinForms .NET", color: "bg-blue-300" },
-  React: { name: "React", color: "bg-blue-400" },
-  Amplify: { name: "Amplify", color: "bg-indigo-200" },
+  Nextjs: { name: "Next.js", color: "border-stone-300/60" },
+  Tailwind: { name: "Tailwind", color: "border-cyan-400/60" },
+  shadcn: { name: "shadcn/ui", color: "border-zinc-400/60" },
+  Django: { name: "Django", color: "border-green-700/60" },
+  Expo: { name: "Expo", color: "border-orange-600/60" },
+  Framer: { name: "Framer", color: "border-pink-500/60" },
+  AspNet: { name: "ASP.NET", color: "border-violet-600/60" },
+  WinForms: { name: "WinForms .NET", color: "border-blue-600/60" },
+  React: { name: "React", color: "border-sky-500/60" },
+  Amplify: { name: "Amplify", color: "border-indigo-400/60" },
+  DynamoDB: { name: "DynamoDB", color: "border-blue-700/60" },
+  AppSync: { name: "AppSync", color: "border-rose-600/60" },
+  SQS: { name: "SQS", color: "border-purple-600/60" },
+  ECS: { name: "ECS", color: "border-amber-600/60" },
+  Python: { name: "Python", color: "border-yellow-600/60" },
+  TypeScript: { name: "TypeScript", color: "border-sky-500/60" },
+  Zod: { name: "Zod", color: "border-emerald-600/60" },
+  ReactEmail: { name: "React Email", color: "border-red-500/60" },
+  ReactHotToast: { name: "React Hot Toast", color: "border-orange-500/60" },
+  Resend: { name: "Resend", color: "border-blue-500/60" },
 };
 
 const tech = {
@@ -21,7 +31,6 @@ const tech = {
   TypeScript: { name: "TypeScript", href: "https://www.typescriptlang.org/" },
   shadcn: { name: "shadcn/ui", href: "https://ui.shadcn.com/" },
   Framer: { name: "Framer Motion", href: "https://www.framer.com/motion/" },
-  Aceternity: { name: "Aceternity UI", href: "https://ui.aceternity.com/" },
   Zod: { name: "Zod", href: "https://zod.dev/" },
   ReactEmail: { name: "React Email", href: "https://react.email/" },
   ReactHotToast: {
@@ -54,6 +63,14 @@ const tech = {
   },
   React: { name: "React", href: "https://react.dev/" },
   Amplify: { name: "Amplify", href: "https://docs.amplify.aws/" },
+  DynamoDB: {
+    name: "Amazon DynamoDB",
+    href: "https://aws.amazon.com/dynamodb/",
+  },
+  AppSync: { name: "AWS AppSync", href: "https://aws.amazon.com/appsync/" },
+  SQS: { name: "Amazon SQS", href: "https://aws.amazon.com/sqs/" },
+  ECS: { name: "Amazon ECS", href: "https://aws.amazon.com/ecs/" },
+  Python: { name: "Python", href: "https://www.python.org/" },
 };
 
 export type Project = {
@@ -73,13 +90,23 @@ export type Project = {
 
 export const projects = new Map<string, Project>([
   [
-    "detweb",
+    "SurveyScope",
     {
-      name: "Detweb",
-      shortDescription: "Analysis platform for aerial survey data.",
-      description: "Analysis platform for aerial survey data.",
-      localHref: "/project/detweb",
-      tech: [tech.React, tech.Amplify, tech.TypeScript],
+      name: "SurveyScope",
+      shortDescription: "AI Aerial-Census Software",
+      description:
+        "SurveyScope is a powerful web application that leverages the latest artificial intelligence (AI) to assist in the annotation of aerial-census data – by detecting and identifying the animals contained therein.",
+      localHref: "/projects/SurveyScope",
+      tech: [
+        tech.React,
+        tech.TypeScript,
+        tech.Amplify,
+        tech.AppSync,
+        tech.DynamoDB,
+        tech.SQS,
+        tech.ECS,
+        tech.Python,
+      ],
       links: {
         github: [
           {
@@ -87,10 +114,19 @@ export const projects = new Map<string, Project>([
             href: "https://github.com/WildEyeConservation/Detweb",
           },
         ],
-        website: "https://wildeyeconservation.org/elephant-survey-system/",
+        website: "https://wildeyeconservation.org/surveyscope/",
         hideOG: true,
       },
-      tags: [tags.React, tags.Amplify],
+      tags: [
+        tags.React,
+        tags.TypeScript,
+        tags.Amplify,
+        tags.AppSync,
+        tags.DynamoDB,
+        tags.SQS,
+        tags.ECS,
+        tags.Python,
+      ],
     },
   ],
   [
@@ -98,14 +134,14 @@ export const projects = new Map<string, Project>([
     {
       name: "WebDevEwan",
       shortDescription: "My personal portfolio website.",
-      description: "My personal portfolio website.",
-      localHref: "/project/webdevewan",
+      description:
+        "A fast, clean portfolio built with Next.js + Tailwind and TypeScript. Smooth Framer Motion touches, Zod + React Email + Resend for contact, and Microlink for OG previews. Accessible and snappy.",
+      localHref: "/projects/webdevewan",
       tech: [
         tech.Nextjs,
         tech.Tailwind,
         tech.TypeScript,
         tech.Framer,
-        tech.Aceternity,
         tech.Zod,
         tech.ReactEmail,
         tech.ReactHotToast,
@@ -123,7 +159,16 @@ export const projects = new Map<string, Project>([
         ],
         website: "https://www.webdevewan.com/",
       },
-      tags: [tags.Nextjs, tags.Tailwind, tags.Framer],
+      tags: [
+        tags.Nextjs,
+        tags.Tailwind,
+        tags.TypeScript,
+        tags.Framer,
+        tags.Zod,
+        tags.ReactEmail,
+        tags.ReactHotToast,
+        tags.Resend,
+      ],
     },
   ],
   [
@@ -133,8 +178,8 @@ export const projects = new Map<string, Project>([
       shortDescription:
         "A suite of tools to assist players of Escape From Tarkov (EFT) in their gameplay experience.",
       description:
-        "This application provides a suite of tools to assist players of Escape From Tarkov (EFT) in their gameplay experience.",
-      localHref: "/project/eft-toolset",
+        "Quick tools for Escape From Tarkov. Uses fresh TARKOV.DEV data in a clean, mobile UI (Next.js, Tailwind, shadcn/ui). Fast search and filters, type-safe with TypeScript.",
+      localHref: "/projects/eft-toolset",
       tech: [tech.Nextjs, tech.Tailwind, tech.TypeScript, tech.shadcn],
       APIs: [{ name: "TARKOV.DEV", href: "https://tarkov.dev/" }],
       links: {
@@ -146,18 +191,18 @@ export const projects = new Map<string, Project>([
         ],
         website: "https://www.eft-toolset.com/",
       },
-      tags: [tags.Nextjs, tags.Tailwind, tags.shadcn],
+      tags: [tags.Nextjs, tags.Tailwind, tags.TypeScript, tags.shadcn],
     },
   ],
   [
-    "hms-t-and-l-system",
+    "teaching-and-learning-system",
     {
       name: "Teaching & Learning System",
       shortDescription:
         "A multiplatform system for lecturers at NWU to review students' video submissions.",
       description:
         "This system allows students to upload videos, which are stored and tagged in a database. Lecturers can log in, stream the videos, and provide text feedback.",
-      localHref: "/project/hms-t-and-l-system",
+      localHref: "/projects/teaching-and-learning-system",
       tech: [
         tech.Nextjs,
         tech.TypeScript,
@@ -182,7 +227,14 @@ export const projects = new Map<string, Project>([
           },
         ],
       },
-      tags: [tags.Nextjs, tags.Expo, tags.Django],
+      tags: [
+        tags.Nextjs,
+        tags.TypeScript,
+        tags.Zod,
+        tags.shadcn,
+        tags.Django,
+        tags.Expo,
+      ],
     },
   ],
 ]);
