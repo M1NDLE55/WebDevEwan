@@ -17,25 +17,31 @@
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>https://www.webdevewan.com/project/webdevewan</loc>
+  <loc>https://www.webdevewan.com/projects</loc>
   <lastmod>2024-08-19</lastmod>
   <changefreq>monthly</changefreq>
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>https://www.webdevewan.com/project/eft-toolset</loc>
+  <loc>https://www.webdevewan.com/projects/surveyscope</loc>
   <lastmod>2024-08-19</lastmod>
   <changefreq>monthly</changefreq>
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>https://www.webdevewan.com/project/brighton-medical</loc>
+  <loc>https://www.webdevewan.com/projects/webdevewan</loc>
   <lastmod>2024-08-19</lastmod>
   <changefreq>monthly</changefreq>
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>https://www.webdevewan.com/project/hms-t-and-l-system</loc>
+  <loc>https://www.webdevewan.com/projects/eft-toolset</loc>
+  <lastmod>2024-08-19</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>https://www.webdevewan.com/projects/teaching-and-learning-system</loc>
   <lastmod>2024-08-19</lastmod>
   <changefreq>monthly</changefreq>
   <priority>0.8</priority>

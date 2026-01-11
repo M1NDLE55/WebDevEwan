@@ -55,11 +55,11 @@ export default function ContactForm() {
   }
 
   const inputCSS =
-    "rounded-md border border-neutral-700 bg-neutral-950 p-2 focus:outline-none focus:ring-2 focus:ring-violet-400 focus:ring-offset-2 focus:ring-offset-violet-50";
+    "rounded-md border-2 border-amber-700/60 bg-amber-100/90 p-3 text-stone-900 placeholder:text-stone-600 shadow-inner focus:outline-none focus:ring-2 focus:ring-amber-400 focus:ring-offset-2 focus:ring-offset-amber-50";
 
   return (
     <form
-      className="mt-8 flex flex-col gap-4 text-neutral-50 md:text-lg"
+      className="flex flex-col gap-4 text-neutral-50 md:text-lg"
       onSubmit={handleSubmit}
     >
       <input
@@ -83,10 +83,19 @@ export default function ContactForm() {
         required
         className={inputCSS}
       />
-      <button disabled={isLoading} type="submit" className="relative p-[3px]">
-        <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-indigo-500 to-violet-500" />
-        <div className="group relative  rounded-[6px] bg-black  px-8 py-2 text-white transition duration-200 hover:bg-transparent">
-          Send
+      <button
+        disabled={isLoading}
+        type="submit"
+        className="group relative disabled:cursor-not-allowed disabled:opacity-60"
+      >
+        <div className="relative overflow-hidden rounded-lg border-4 border-amber-400 bg-gradient-to-r from-amber-800 via-amber-600 to-amber-800 px-8 py-2 shadow-lg transition-transform duration-200 group-hover:scale-[1.01]">
+          <span className="text-xl font-bold text-amber-100">
+            Send
+          </span>
+          <div
+            aria-hidden
+            className="pointer-events-none absolute left-[-30%] top-0 h-full w-1/3 -skew-x-12 bg-gradient-to-r from-transparent via-white/40 to-transparent opacity-0 transition-[left,opacity] duration-700 group-hover:left-[130%] group-hover:opacity-100"
+          />
         </div>
       </button>
     </form>
