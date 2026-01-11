@@ -1,5 +1,4 @@
-@tailwind base;
-@tailwind components;
+@import "tailwindcss";
 @tailwind utilities;
 
 @layer utilities {
@@ -12,6 +11,20 @@
   }
 }
 
+/* Shimmer animation utility (kept outside layers to ensure availability) */
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.animate-shimmer {
+  animation: shimmer 2s linear infinite;
+}
+
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
@@ -22,10 +35,15 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #262626;
+  background: #fbbf24;
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #333333;
+  background: #fcd34d;
+}
+
+::selection {
+  background: #fcd34d;
+  color: #000000;
 }

@@ -1,8 +1,6 @@
 "use client";
 
 import { useEffect } from "react";
-import { StaticNav } from "./components/ui/StaticNavBar";
-import { navItems } from "./components/global/NavItems";
 
 export default function Error({
   error,
@@ -16,21 +14,19 @@ export default function Error({
   }, [error]);
 
   return (
-    <main className="relative flex min-h-[calc(100vh-105px)] w-full items-center  justify-center bg-black bg-grid-white/[0.1] md:min-h-[calc(100vh-65px)]">
-      <StaticNav navItems={navItems} hasContact />
-      <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-black [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
-      <div className="z-20 text-center">
-        <h1 className="bg-opacity-50 bg-gradient-to-b from-neutral-50 to-neutral-400 bg-clip-text p-2 text-center text-4xl font-bold text-transparent md:text-8xl">
-          Error
+    <main className="flex flex-1 items-center justify-center pb-9">
+      <div className="z-20 mx-4 max-w-xl rounded-2xl border-4 border-amber-600/80 bg-amber-900/40 p-8 text-center shadow-xl backdrop-blur-sm">
+        <h1 className="text-4xl font-bold tracking-wide text-amber-100 md:text-7xl">
+          A Mishap Befell Us
         </h1>
-        <p className="mx-auto mt-4 max-w-lg px-5 text-center text-lg font-normal text-neutral-300 md:text-xl">
-          Something unexpected happend!
+        <p className="mt-4 text-lg text-amber-100/90 md:text-xl">
+          An unexpected error has occurred. Pray, try once more.
         </p>
         <button
           onClick={() => reset()}
-          className="mt-6 inline-flex h-12 animate-shimmer items-center justify-center rounded-md border border-neutral-50 bg-[linear-gradient(110deg,#000103,45%,#4c1d95,55%,#000103)] bg-[length:200%_100%] px-6 font-medium text-neutral-50 transition-colors focus:outline-none focus:ring-2 focus:ring-violet-400 focus:ring-offset-2 focus:ring-offset-violet-50"
+          className="mt-6 inline-flex items-center justify-center rounded-full border-2 border-amber-400 bg-amber-700/30 px-6 py-3 text-amber-100 shadow transition hover:bg-amber-700/50 hover:text-amber-50 focus:outline-none focus:ring-2 focus:ring-amber-400/60"
         >
-          Try again
+          Try Again
         </button>
       </div>
     </main>
