@@ -27,8 +27,9 @@ export async function generateMetadata(props: {
       : `${project.name} | WebDevEwan`;
   const description = project.description;
   const url = `/projects/${name}`;
-  const images = project.links.ogImage
-    ? [{ url: project.links.ogImage, width: 1200, height: 630, alt: project.name }]
+  const socialImage = project.links.socialImage ?? project.links.ogImage;
+  const images = socialImage
+    ? [{ url: socialImage, width: 1200, height: 630, alt: project.name }]
     : undefined;
 
   return {
