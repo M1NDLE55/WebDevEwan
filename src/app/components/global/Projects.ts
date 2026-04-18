@@ -86,6 +86,7 @@ export type Project = {
     github?: { name: string; href: string }[];
     website?: string;
     ogImage?: string;
+    socialImage?: string;
   };
   tags?: { name: string; color: string }[];
   // Scannable metadata for list + detail pages
@@ -126,6 +127,7 @@ export const projects = new Map<string, Project>([
         ],
         website: "https://wildeyeconservation.org/surveyscope/",
         ogImage: "/wildeye-og.png",
+        socialImage: "/wildeye-og-compressed.png",
       },
       tags: [
         tags.React,
