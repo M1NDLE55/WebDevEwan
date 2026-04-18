@@ -1,13 +1,232 @@
 @import "tailwindcss";
 @tailwind utilities;
 
+:root {
+  color-scheme: dark;
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
 
   .shadow-outer {
-    box-shadow: 0 4 30 rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Opt-in backlight: amber halo that fades in on hover, as if a light
+     source ignites behind the element. drop-shadow follows the painted
+     silhouette, so the glow hugs chamfered corners on .notch-plate-sm.
+     Apply on standalone Links; omit when the Link is nested inside a card. */
+  .rune-glow {
+    transition: filter 0.3s ease;
+  }
+  .rune-glow:hover {
+    filter:
+      drop-shadow(0 0 10px rgb(251 191 36 / 0.55))
+      drop-shadow(0 0 30px rgb(251 191 36 / 0.35));
+  }
+
+  /* Stacked-plate "rune frame" — flat offset shadow, no glow */
+  .rune-frame {
+    box-shadow:
+      0 0 0 1px #fbbf24,
+      4px 4px 0 0 #fbbf24;
+  }
+  .rune-frame-sm {
+    box-shadow:
+      0 0 0 1px #fbbf24,
+      3px 3px 0 0 #fbbf24;
+  }
+
+  /* Chamfered corners — "gaming UI" notch */
+  .clip-notch {
+    clip-path: polygon(
+      0 12px,
+      12px 0,
+      calc(100% - 12px) 0,
+      100% 12px,
+      100% calc(100% - 12px),
+      calc(100% - 12px) 100%,
+      12px 100%,
+      0 calc(100% - 12px)
+    );
+  }
+  .clip-notch-sm {
+    clip-path: polygon(
+      0 8px,
+      8px 0,
+      calc(100% - 8px) 0,
+      100% 8px,
+      100% calc(100% - 8px),
+      calc(100% - 8px) 100%,
+      8px 100%,
+      0 calc(100% - 8px)
+    );
+  }
+
+  /*
+   * Notched "plates" that render their own border via layered pseudo-elements.
+   * Use these on elements where clip-path + ring/border would leave gaps at
+   * the diagonal corner cuts. The amber frame shows through on ALL edges,
+   * including the chamfers — no glitches.
+   *
+   * - .notch-plate-xs : 4px corners (use on tiny badges / numeral chips)
+   * - .notch-plate-sm : 8px corners (use on buttons / small cards / badges)
+   * - .notch-plate    : 12px corners (use on cards / containers)
+   *
+   * Tunable via CSS custom properties:
+   *   --notch-bg             : inner fill color (default: #0a0a0a)
+   *   --notch-bg-hover       : inner fill on hover (default: faint amber)
+   *   --notch-border         : outer frame color — overrides the amber default
+   *   --notch-border-a       : amber frame opacity when no --notch-border is set (default: 0.6)
+   *   --notch-border-hover   : outer frame color on hover
+   *   --notch-border-a-hover : amber frame opacity on hover (default: 1 on -sm)
+   *
+   * .notch-plate-sm has built-in button hover (brighter frame + tinted fill).
+   * .notch-plate has no default hover — add per-element via Tailwind
+   * arbitrary variant, e.g. `hover:[--notch-border-a:0.9]`.
+   */
+  .notch-plate,
+  .notch-plate-sm,
+  .notch-plate-xs {
+    position: relative;
+    isolation: isolate;
+    background-color: transparent;
+  }
+  .notch-plate::before,
+  .notch-plate-sm::before,
+  .notch-plate-xs::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    background-color: var(
+      --notch-border,
+      rgb(251 191 36 / var(--notch-border-a, 0.6))
+    );
+    transition: background-color 0.2s;
+  }
+  .notch-plate::after,
+  .notch-plate-sm::after,
+  .notch-plate-xs::after {
+    content: "";
+    position: absolute;
+    inset: 1px;
+    z-index: -1;
+    background-color: var(--notch-bg, #0a0a0a);
+    transition: background-color 0.2s;
+  }
+
+  .notch-plate-xs::before {
+    clip-path: polygon(
+      0 4px,
+      4px 0,
+      calc(100% - 4px) 0,
+      100% 4px,
+      100% calc(100% - 4px),
+      calc(100% - 4px) 100%,
+      4px 100%,
+      0 calc(100% - 4px)
+    );
+  }
+  .notch-plate-xs::after {
+    clip-path: polygon(
+      0 3.5px,
+      3.5px 0,
+      calc(100% - 3.5px) 0,
+      100% 3.5px,
+      100% calc(100% - 3.5px),
+      calc(100% - 3.5px) 100%,
+      3.5px 100%,
+      0 calc(100% - 3.5px)
+    );
+  }
+
+  .notch-plate-sm::before {
+    clip-path: polygon(
+      0 8px,
+      8px 0,
+      calc(100% - 8px) 0,
+      100% 8px,
+      100% calc(100% - 8px),
+      calc(100% - 8px) 100%,
+      8px 100%,
+      0 calc(100% - 8px)
+    );
+  }
+  .notch-plate-sm::after {
+    clip-path: polygon(
+      0 7.5px,
+      7.5px 0,
+      calc(100% - 7.5px) 0,
+      100% 7.5px,
+      100% calc(100% - 7.5px),
+      calc(100% - 7.5px) 100%,
+      7.5px 100%,
+      0 calc(100% - 7.5px)
+    );
+  }
+
+  .notch-plate::before {
+    clip-path: polygon(
+      0 12px,
+      12px 0,
+      calc(100% - 12px) 0,
+      100% 12px,
+      100% calc(100% - 12px),
+      calc(100% - 12px) 100%,
+      12px 100%,
+      0 calc(100% - 12px)
+    );
+  }
+  .notch-plate::after {
+    clip-path: polygon(
+      0 11.5px,
+      11.5px 0,
+      calc(100% - 11.5px) 0,
+      100% 11.5px,
+      100% calc(100% - 11.5px),
+      calc(100% - 11.5px) 100%,
+      11.5px 100%,
+      0 calc(100% - 11.5px)
+    );
+  }
+
+  .notch-plate-sm:hover::before {
+    background-color: var(
+      --notch-border-hover,
+      rgb(251 191 36 / var(--notch-border-a-hover, 1))
+    );
+  }
+/* Illuminated-manuscript drop cap on first paragraph of a chapter */
+  .dropcap::first-letter {
+    float: left;
+    font-size: 3.5rem;
+    line-height: 0.9;
+    padding: 0.25rem 0.75rem 0 0;
+    color: #fcd34d;
+    font-weight: 700;
+  }
+
+  /* Etched rune divider — thin amber hairline with a center diamond */
+  .rune-divider {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: rgba(251, 191, 36, 0.5);
+  }
+  .rune-divider::before,
+  .rune-divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(
+      to right,
+      transparent,
+      rgba(251, 191, 36, 0.5),
+      transparent
+    );
   }
 }
 

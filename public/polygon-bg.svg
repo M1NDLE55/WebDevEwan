@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice" shape-rendering="geometricPrecision">
+  <rect width="1920" height="1080" fill="#0a0a0a"/>
+  <g stroke="#050505" stroke-width="0.5" stroke-linejoin="miter">
+    <polygon points="0,0 320,0 0,270" fill="#0a0a0a"/>
+    <polygon points="320,0 284,215 0,270" fill="#0d0c0a"/>
+    <polygon points="320,0 640,0 284,215" fill="#161618"/>
+    <polygon points="640,0 647,258 284,215" fill="#121214"/>
+    <polygon points="640,0 960,0 647,258" fill="#222224"/>
+    <polygon points="960,0 1010,301 647,258" fill="#1e1e20"/>
+    <polygon points="960,0 1280,0 1010,301" fill="#0e0e0e"/>
+    <polygon points="1280,0 1253,224 1010,301" fill="#0a0a0a"/>
+    <polygon points="1280,0 1600,0 1253,224" fill="#1a1a1c"/>
+    <polygon points="1600,0 1616,267 1253,224" fill="#161618"/>
+    <polygon points="1600,0 1920,0 1616,267" fill="#0d0c0a"/>
+    <polygon points="1920,0 1920,270 1616,267" fill="#222224"/>
+    <polygon points="0,270 284,215 0,540" fill="#1e1e20"/>
+    <polygon points="284,215 265,586 0,540" fill="#1a1a1c"/>
+    <polygon points="284,215 647,258 265,586" fill="#0a0a0a"/>
+    <polygon points="647,258 628,509 265,586" fill="#0d0c0a"/>
+    <polygon points="647,258 1010,301 628,509" fill="#161618"/>
+    <polygon points="1010,301 991,552 628,509" fill="#121214"/>
+    <polygon points="1010,301 1253,224 991,552" fill="#222224"/>
+    <polygon points="1253,224 1234,595 991,552" fill="#1e1e20"/>
+    <polygon points="1253,224 1616,267 1234,595" fill="#0e0e0e"/>
+    <polygon points="1616,267 1597,518 1234,595" fill="#0a0a0a"/>
+    <polygon points="1616,267 1920,270 1597,518" fill="#1a1a1c"/>
+    <polygon points="1920,270 1920,540 1597,518" fill="#161618"/>
+    <polygon points="0,540 265,586 0,810" fill="#121214"/>
+    <polygon points="265,586 366,837 0,810" fill="#0e0e0e"/>
+    <polygon points="265,586 628,509 366,837" fill="#1e1e20"/>
+    <polygon points="628,509 609,760 366,837" fill="#1a1a1c"/>
+    <polygon points="628,509 991,552 609,760" fill="#0a0a0a"/>
+    <polygon points="991,552 972,803 609,760" fill="#0d0c0a"/>
+    <polygon points="991,552 1234,595 972,803" fill="#161618"/>
+    <polygon points="1234,595 1335,846 972,803" fill="#121214"/>
+    <polygon points="1234,595 1597,518 1335,846" fill="#222224"/>
+    <polygon points="1597,518 1578,769 1335,846" fill="#1e1e20"/>
+    <polygon points="1597,518 1920,540 1578,769" fill="#0e0e0e"/>
+    <polygon points="1920,540 1920,810 1578,769" fill="#0a0a0a"/>
+    <polygon points="0,810 366,837 0,1080" fill="#0d0c0a"/>
+    <polygon points="366,837 320,1080 0,1080" fill="#222224"/>
+    <polygon points="366,837 609,760 320,1080" fill="#121214"/>
+    <polygon points="609,760 640,1080 320,1080" fill="#0e0e0e"/>
+    <polygon points="609,760 972,803 640,1080" fill="#1e1e20"/>
+    <polygon points="972,803 960,1080 640,1080" fill="#1a1a1c"/>
+    <polygon points="972,803 1335,846 960,1080" fill="#0a0a0a"/>
+    <polygon points="1335,846 1280,1080 960,1080" fill="#0d0c0a"/>
+    <polygon points="1335,846 1578,769 1280,1080" fill="#161618"/>
+    <polygon points="1578,769 1600,1080 1280,1080" fill="#121214"/>
+    <polygon points="1578,769 1920,810 1600,1080" fill="#222224"/>
+    <polygon points="1920,810 1920,1080 1600,1080" fill="#1e1e20"/>
+  </g>
+  <radialGradient id="vignette" cx="50%" cy="50%" r="75%">
+    <stop offset="0%" stop-color="#000" stop-opacity="0"/>
+    <stop offset="100%" stop-color="#000" stop-opacity="0.55"/>
+  </radialGradient>
+  <rect width="1920" height="1080" fill="url(#vignette)"/>
+</svg>

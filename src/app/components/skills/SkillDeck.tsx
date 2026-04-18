@@ -1,13 +1,30 @@
 "use client";
 
-import React, { useMemo, useState } from "react";
+import React, { useState } from "react";
 import SkillCard from "./SkillCard";
 import { motion, AnimatePresence } from "framer-motion";
+import {
+  Code2,
+  Sparkles,
+  Database,
+  Cloud,
+  Wrench,
+  Globe,
+  ChevronDown,
+} from "lucide-react";
 
-const skillCategories = [
+type Rarity = "common" | "rare" | "legendary";
+
+const skillCategories: {
+  title: string;
+  rarity: Rarity;
+  icon: React.ComponentType<{ size?: number; className?: string }>;
+  skills: { name: string; description: string }[];
+}[] = [
   {
     title: "Languages of Power",
     rarity: "legendary",
+    icon: Code2,
     skills: [
       { name: "TypeScript", description: "Typed magic for safer spells." },
       { name: "JavaScript", description: "The language of the web realms." },
@@ -20,6 +37,7 @@ const skillCategories = [
   {
     title: "Frameworks of the Realms",
     rarity: "rare",
+    icon: Sparkles,
     skills: [
       { name: "React", description: "The enchanted UI library." },
       { name: "Next.js", description: "The portal between pages." },
@@ -35,6 +53,7 @@ const skillCategories = [
   {
     title: "Scrolls of Data",
     rarity: "rare",
+    icon: Database,
     skills: [
       {
         name: "PostgreSQL",
@@ -53,10 +72,11 @@ const skillCategories = [
   {
     title: "Runes of the Cloud",
     rarity: "rare",
+    icon: Cloud,
     skills: [
       {
         name: "AWS Amplify",
-        description: "A swift forge for full‑stack spells.",
+        description: "A swift forge for full-stack spells.",
       },
       {
         name: "AWS AppSync",
@@ -75,6 +95,7 @@ const skillCategories = [
   {
     title: "Tools of Craft",
     rarity: "common",
+    icon: Wrench,
     skills: [
       { name: "Resend", description: "Messenger of enchanted letters." },
       { name: "Zod", description: "Guardian of data shapes." },
@@ -84,15 +105,12 @@ const skillCategories = [
         name: "React Email",
         description: "Scrolls rendered for the couriers.",
       },
-      {
-        name: "Microlink",
-        description: "Windows into distant pages (OG magic).",
-      },
     ],
   },
   {
     title: "Other Enchantments",
     rarity: "common",
+    icon: Globe,
     skills: [
       { name: "WordPress", description: "The builder of content castles." },
       { name: "Shopify", description: "The merchant's magic shop." },
@@ -100,198 +118,193 @@ const skillCategories = [
   },
 ];
 
-export default function SkillDeck() {
-  // Track the opened skill per category (mobile only)
-  const [openMobileByCategory, setOpenMobileByCategory] = useState<
-    Record<number, number | null>
-  >({});
-  // Track flipped state for the opened card (mobile)
-  const [flippedMobileKey, setFlippedMobileKey] = useState<string | null>(null);
+const rarityDot: Record<Rarity, string> = {
+  common: "bg-sky-400",
+  rare: "bg-violet-400",
+  legendary: "bg-amber-400",
+};
 
-  const rarityBadge = useMemo(
-    () => ({
-      common:
-        "bg-gradient-to-br from-blue-700 via-blue-500 to-blue-700 border-blue-300",
-      rare: "bg-gradient-to-br from-violet-700 via-violet-500 to-violet-700 border-violet-300",
-      legendary:
-        "bg-gradient-to-br from-amber-700 via-amber-500 to-amber-700 border-amber-300",
-    }),
-    [],
-  );
+export default function SkillDeck() {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const active = skillCategories[activeIndex];
+  const ActiveIcon = active.icon;
 
   return (
-    <section>
-      {skillCategories.map((category, catIndex) => {
-        const openIndex = openMobileByCategory[catIndex] ?? null;
-        return (
-          <div key={category.title} className="mb-14">
-            <h2 className="mb-3 text-2xl font-bold text-amber-300">
-              {category.title}
-            </h2>
+    <section
+      className="notch-plate p-4 [--notch-bg:#141414] [--notch-border-a:0.3] md:p-6"
+      aria-label="Skill arsenal"
+    >
+      <div className="mb-4 flex items-center justify-between gap-3">
+        <h3 className="text-xs uppercase tracking-[0.3em] text-amber-400/80">
+          Arsenal
+        </h3>
+        <span className="text-xs text-amber-100/50">
+          {active.skills.length}{" "}
+          {active.skills.length === 1 ? "artifact" : "artifacts"}
+        </span>
+      </div>
 
-            <p className="mb-3 text-xs text-stone-300 md:hidden">
-              Tap to view card
-            </p>
-
-            {/* Desktop: original card grid */}
-            <motion.div
-              className="hidden flex-wrap gap-6 md:flex"
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.2 }}
-              variants={{
-                visible: {
-                  transition: {
-                    staggerChildren: 0.15,
-                  },
-                },
-              }}
+      {/* Mobile selector — dropdown button revealing category options */}
+      <div className="mb-4 md:hidden">
+        <button
+          type="button"
+          aria-haspopup="listbox"
+          aria-expanded={mobileOpen}
+          aria-controls="arsenal-mobile-list"
+          onClick={() => setMobileOpen((v) => !v)}
+          className="flex w-full items-center gap-3 border border-amber-500/30 bg-amber-500/5 px-3 py-2.5 text-left text-amber-100 transition hover:border-amber-400/60 hover:bg-amber-500/10"
+        >
+          <ActiveIcon size={16} className="text-amber-300" />
+          <span className="text-xs uppercase tracking-widest">
+            {active.title}
+          </span>
+          <span
+            aria-hidden
+            className={`ml-auto h-1.5 w-1.5 shrink-0 ${rarityDot[active.rarity]}`}
+          />
+          <ChevronDown
+            size={16}
+            className={`text-amber-300 transition-transform duration-200 ${
+              mobileOpen ? "rotate-180" : ""
+            }`}
+          />
+        </button>
+        <AnimatePresence initial={false}>
+          {mobileOpen && (
+            <motion.ul
+              id="arsenal-mobile-list"
+              role="listbox"
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.2, ease: "easeOut" }}
+              className="overflow-hidden border-x border-b border-amber-500/20 bg-black/40"
             >
-              {category.skills.map((skill, index) => (
+              {skillCategories.map((cat, i) => {
+                const isActive = i === activeIndex;
+                const Icon = cat.icon;
+                return (
+                  <li key={cat.title} role="option" aria-selected={isActive}>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setActiveIndex(i);
+                        setMobileOpen(false);
+                      }}
+                      className={`flex w-full items-center gap-3 border-l-2 px-3 py-2.5 text-left text-sm transition ${
+                        isActive
+                          ? "border-amber-400 bg-amber-500/10 text-amber-100"
+                          : "border-transparent text-amber-100/60 hover:border-amber-500/40 hover:bg-amber-500/5 hover:text-amber-100"
+                      }`}
+                    >
+                      <Icon
+                        size={16}
+                        className={
+                          isActive ? "text-amber-300" : "text-amber-100/50"
+                        }
+                      />
+                      <span className="text-xs uppercase tracking-widest">
+                        {cat.title}
+                      </span>
+                      <span
+                        aria-hidden
+                        className={`ml-auto h-1.5 w-1.5 shrink-0 ${rarityDot[cat.rarity]}`}
+                      />
+                    </button>
+                  </li>
+                );
+              })}
+            </motion.ul>
+          )}
+        </AnimatePresence>
+      </div>
+
+      <div className="flex flex-col gap-4 md:flex-row md:gap-6">
+        {/* Tab rail — desktop only; mobile uses the dropdown above */}
+        <div
+          role="tablist"
+          aria-orientation="vertical"
+          className="hidden shrink-0 gap-2 md:flex md:w-56 md:flex-col"
+        >
+          {skillCategories.map((cat, i) => {
+            const isActive = i === activeIndex;
+            const Icon = cat.icon;
+            return (
+              <button
+                key={cat.title}
+                role="tab"
+                aria-selected={isActive}
+                aria-controls={`arsenal-panel-${i}`}
+                id={`arsenal-tab-${i}`}
+                onClick={() => setActiveIndex(i)}
+                className={`group flex shrink-0 items-center gap-3 border-l-2 px-3 py-2.5 text-left text-sm transition md:w-full ${
+                  isActive
+                    ? "border-amber-400 bg-amber-500/10 text-amber-100"
+                    : "border-transparent text-amber-100/60 hover:border-amber-500/40 hover:bg-amber-500/5 hover:text-amber-100"
+                }`}
+              >
+                <Icon
+                  size={16}
+                  className={
+                    isActive ? "text-amber-300" : "text-amber-100/50"
+                  }
+                />
+                <span className="whitespace-nowrap text-xs uppercase tracking-widest md:whitespace-normal">
+                  {cat.title}
+                </span>
+                <span
+                  aria-hidden
+                  className={`ml-auto h-1.5 w-1.5 shrink-0 ${rarityDot[cat.rarity]}`}
+                />
+              </button>
+            );
+          })}
+        </div>
+
+        {/* Panel */}
+        <div
+          role="tabpanel"
+          id={`arsenal-panel-${activeIndex}`}
+          aria-labelledby={`arsenal-tab-${activeIndex}`}
+          className="min-h-[22rem] flex-1"
+        >
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={active.title}
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -12 }}
+              transition={{ duration: 0.25, ease: "easeOut" }}
+              className="flex flex-wrap justify-center gap-3 md:justify-start"
+            >
+              {active.skills.map((skill, index) => (
                 <motion.div
                   key={skill.name}
-                  variants={{
-                    hidden: {
-                      opacity: 0,
-                      rotate: index % 2 === 0 ? -10 : 10,
-                      y: 50,
-                    },
-                    visible: {
-                      opacity: 1,
-                      rotate: 0,
-                      y: 0,
-                      transition: { type: "spring", stiffness: 120 },
-                    },
+                  initial={{ opacity: 0, y: 16 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{
+                    delay: index * 0.05,
+                    duration: 0.3,
+                    ease: "easeOut",
                   }}
                 >
                   <SkillCard
                     name={skill.name}
                     description={skill.description}
-                    category={category.title}
-                    rarity={category.rarity as "common" | "rare" | "legendary"}
+                    category={active.title}
+                    rarity={active.rarity}
                   />
                 </motion.div>
               ))}
             </motion.div>
+          </AnimatePresence>
 
-            {/* Mobile: list of skills with colored card icon, expandable full card */}
-            <div className="md:hidden">
-              <ul className="divide-y divide-stone-800 rounded-lg border border-stone-800">
-                {category.skills.map((skill, skillIndex) => {
-                  const isOpen = openIndex === skillIndex;
-                  return (
-                    <li key={skill.name}>
-                      <button
-                        type="button"
-                        className="flex w-full items-center gap-3 px-4 py-3 text-left hover:bg-stone-900/40"
-                        onClick={() => {
-                          setOpenMobileByCategory((prev) => ({
-                            ...prev,
-                            [catIndex]: isOpen ? null : skillIndex,
-                          }));
-                          // Start with front side visible when opening
-                          setFlippedMobileKey(null);
-                        }}
-                        aria-expanded={isOpen}
-                        aria-controls={`skill-card-${catIndex}-${skillIndex}`}
-                      >
-                        <span
-                          className={`inline-block h-5 w-4 rounded-sm border-2 ${rarityBadge[category.rarity as "common" | "rare" | "legendary"]}`}
-                          aria-hidden="true"
-                        />
-                        <span className="flex-1 text-sm font-medium text-amber-100">
-                          {skill.name}
-                        </span>
-                      </button>
-
-                      <AnimatePresence initial={false} mode="wait">
-                        {isOpen && (
-                          <motion.div
-                            id={`skill-card-${catIndex}-${skillIndex}`}
-                            key={`open-${catIndex}-${skillIndex}`}
-                            className="overflow-hidden px-4"
-                            initial={{
-                              opacity: 0,
-                              height: 0,
-                              marginTop: 0,
-                              paddingTop: 0,
-                              paddingBottom: 0,
-                            }}
-                            animate={{
-                              opacity: 1,
-                              height: "auto",
-                              marginTop: 8,
-                              paddingTop: 16,
-                              paddingBottom: 16,
-                            }}
-                            exit={{
-                              opacity: 0,
-                              height: 0,
-                              marginTop: 0,
-                              paddingTop: 0,
-                              paddingBottom: 0,
-                            }}
-                            transition={{ duration: 0.25, ease: "easeInOut" }}
-                          >
-                            <div className="flex flex-col items-center gap-2">
-                              <motion.div
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 0.8 }}
-                                exit={{ opacity: 0 }}
-                                className="text-xs text-stone-300"
-                              >
-                                Tap card to flip
-                              </motion.div>
-
-                              <SkillCard
-                                name={skill.name}
-                                description={skill.description}
-                                category={category.title}
-                                rarity={
-                                  category.rarity as
-                                    | "common"
-                                    | "rare"
-                                    | "legendary"
-                                }
-                                disableHover
-                                forceFlipped={
-                                  flippedMobileKey ===
-                                  `${catIndex}-${skillIndex}`
-                                }
-                                onClick={() =>
-                                  setFlippedMobileKey((prev) =>
-                                    prev === `${catIndex}-${skillIndex}`
-                                      ? null
-                                      : `${catIndex}-${skillIndex}`,
-                                  )
-                                }
-                              />
-
-                              <button
-                                type="button"
-                                className="mt-1 rounded-md border border-stone-700 px-3 py-1 text-xs text-stone-200 hover:bg-stone-800"
-                                onClick={() => {
-                                  setOpenMobileByCategory((prev) => ({
-                                    ...prev,
-                                    [catIndex]: null,
-                                  }));
-                                  setFlippedMobileKey(null);
-                                }}
-                              >
-                                Close card
-                              </button>
-                            </div>
-                          </motion.div>
-                        )}
-                      </AnimatePresence>
-                    </li>
-                  );
-                })}
-              </ul>
-            </div>
-          </div>
-        );
-      })}
+          <p className="mt-4 text-[11px] uppercase tracking-widest text-amber-100/40">
+            Hover a card to reveal its lore
+          </p>
+        </div>
+      </div>
     </section>
   );
 }
