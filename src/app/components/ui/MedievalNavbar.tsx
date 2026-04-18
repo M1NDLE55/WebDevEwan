@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Menu, X, Home, ScrollText, Mail } from "lucide-react";
 
 type NavLink = {
@@ -10,71 +10,138 @@ type NavLink = {
   icon?: React.ReactNode;
 };
 
+const EMAIL = "ewantrollip@webdevewan.com";
+
 const links: NavLink[] = [
-  { name: "Home", href: "/", icon: <Home size={18} /> },
-  { name: "Projects", href: "/projects", icon: <ScrollText size={18} /> },
-  { name: "Contact", href: "/contact", icon: <Mail size={18} /> },
+  { name: "Home", href: "/", icon: <Home size={16} /> },
+  { name: "Projects", href: "/projects", icon: <ScrollText size={16} /> },
+  { name: "Contact", href: `mailto:${EMAIL}`, icon: <Mail size={16} /> },
 ];
 
 export default function MedievalNavbar() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    let ticking = false;
+    const update = () => {
+      const y = window.scrollY;
+      setScrolled((prev) => {
+        if (prev && y < 8) return false;
+        if (!prev && y > 32) return true;
+        return prev;
+      });
+      ticking = false;
+    };
+    const onScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(update);
+        ticking = true;
+      }
+    };
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  // Close the mobile menu when the user scrolls the page
+  useEffect(() => {
+    if (!open) return;
+    const close = () => setOpen(false);
+    window.addEventListener("scroll", close, { passive: true });
+    return () => window.removeEventListener("scroll", close);
+  }, [open]);
 
   return (
-    <nav className="pointer-events-none fixed inset-x-0 top-4 z-[5000] flex justify-center px-4">
-      <div className="pointer-events-auto flex w-full max-w-5xl items-center justify-between rounded-full border-4 border-amber-500 bg-gradient-to-r from-amber-900/90 via-amber-700/90 to-amber-900/90 px-4 py-2 shadow-lg backdrop-blur-md">
+    <header
+      className={`sticky top-0 z-[5000] w-full transition-[background-color,border-color,backdrop-filter,box-shadow] duration-300 ${
+        scrolled
+          ? "border-b border-amber-500/40 bg-neutral-950/90 shadow-[0_1px_0_0_rgba(251,191,36,0.15)] backdrop-blur-md"
+          : "border-b border-transparent bg-neutral-950/30 backdrop-blur-sm"
+      }`}
+    >
+      <nav
+        className={`mx-auto flex max-w-6xl items-center justify-between px-4 transition-[padding] duration-300 md:px-6 ${
+          scrolled ? "py-2.5" : "py-4"
+        }`}
+        aria-label="Primary"
+      >
         {/* Brand */}
         <Link
           href="/"
-          className="select-none text-lg font-bold tracking-wide text-amber-100 hover:text-amber-200"
+          className={`select-none font-bold uppercase tracking-[0.2em] text-amber-200 transition hover:text-amber-100 ${
+            scrolled ? "text-sm" : "text-base"
+          }`}
           aria-label="Go to home page"
         >
-          WebDevEwan
+          WebDev<span className="text-amber-400">/</span>Ewan
         </Link>
 
         {/* Desktop links */}
-        <div className="hidden items-center gap-2 md:flex">
-          {links.map((link) => (
-            <Link
-              key={link.name}
-              href={link.href}
-              className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-amber-100 transition hover:bg-amber-800/40 hover:text-amber-50"
-            >
-              <span className="opacity-80">{link.icon}</span>
-              <span className="text-sm">{link.name}</span>
-            </Link>
-          ))}
+        <div className="hidden items-center gap-1 md:flex">
+          {links.map((link) => {
+            const isExternal = link.href.startsWith("mailto:");
+            const className =
+              "inline-flex items-center gap-2 border border-transparent px-3 py-1.5 text-sm uppercase tracking-widest text-amber-100/90 transition hover:border-amber-500/50 hover:bg-amber-500/10 hover:text-amber-100";
+            return isExternal ? (
+              <a key={link.name} href={link.href} className={className}>
+                <span className="opacity-80">{link.icon}</span>
+                <span>{link.name}</span>
+              </a>
+            ) : (
+              <Link key={link.name} href={link.href} className={className}>
+                <span className="opacity-80">{link.icon}</span>
+                <span>{link.name}</span>
+              </Link>
+            );
+          })}
         </div>
 
         {/* Mobile toggle */}
         <button
           type="button"
-          className="inline-flex items-center justify-center rounded-full border-2 border-amber-400 p-2 text-amber-100 transition hover:bg-amber-800/40 md:hidden"
+          className="notch-plate-sm inline-flex items-center justify-center p-2 text-amber-100 transition md:hidden"
           aria-label="Toggle navigation menu"
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
         >
           {open ? <X size={18} /> : <Menu size={18} />}
         </button>
-      </div>
+      </nav>
 
-      {/* Mobile menu */}
+      {/* Mobile menu — drops below the nav bar */}
       {open && (
-        <div className="pointer-events-auto absolute left-1/2 top-16 w-[calc(100%-2rem)] max-w-5xl -translate-x-1/2 rounded-2xl border-4 border-amber-500 bg-gradient-to-b from-amber-900/95 to-amber-800/95 p-2 shadow-xl md:hidden">
-          <div className="flex flex-col divide-y divide-amber-600/40">
-            {links.map((link) => (
-              <Link
-                key={link.name}
-                href={link.href}
-                className="flex items-center gap-3 px-4 py-3 text-amber-100 hover:bg-amber-700/40"
-                onClick={() => setOpen(false)}
-              >
-                <span className="opacity-80">{link.icon}</span>
-                <span>{link.name}</span>
-              </Link>
-            ))}
+        <div className="border-t border-amber-500/30 bg-neutral-950/95 backdrop-blur-md md:hidden">
+          <div className="mx-auto flex max-w-6xl flex-col divide-y divide-amber-500/15 px-2 py-1">
+            {links.map((link) => {
+              const isExternal = link.href.startsWith("mailto:");
+              const className =
+                "flex items-center gap-3 px-4 py-3 uppercase tracking-widest text-amber-100 transition hover:bg-amber-500/10";
+              return isExternal ? (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  className={className}
+                  onClick={() => setOpen(false)}
+                >
+                  <span className="opacity-80">{link.icon}</span>
+                  <span>{link.name}</span>
+                </a>
+              ) : (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  className={className}
+                  onClick={() => setOpen(false)}
+                >
+                  <span className="opacity-80">{link.icon}</span>
+                  <span>{link.name}</span>
+                </Link>
+              );
+            })}
           </div>
         </div>
       )}
-    </nav>
+    </header>
   );
 }

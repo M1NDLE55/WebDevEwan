@@ -1,12 +1,55 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import Link from "next/link";
 import { type Project, projects } from "@/app/components/global/Projects";
-import Banner from "@/app/components/home/Banner";
+import ProjectHero from "@/app/components/projects/ProjectHero";
+import ProjectNav from "@/app/components/projects/ProjectNav";
 import {
-  Link as LinkIcon,
-  Hammer,
-  FlaskConical,
   ExternalLink,
+  Github,
+  Scroll,
+  Flame,
+  Trophy,
+  Sparkles,
+  ArrowLeft,
 } from "lucide-react";
+
+export async function generateMetadata(props: {
+  params: Promise<{ name: string }>;
+}): Promise<Metadata> {
+  const { name } = await props.params;
+  const project = projects.get(name);
+  if (!project) return {};
+
+  const title =
+    project.name === "WebDevEwan"
+      ? "WebDevEwan — Portfolio"
+      : `${project.name} | WebDevEwan`;
+  const description = project.description;
+  const url = `/projects/${name}`;
+  const images = project.links.ogImage
+    ? [{ url: project.links.ogImage, width: 1200, height: 630, alt: project.name }]
+    : undefined;
+
+  return {
+    title,
+    description,
+    alternates: { canonical: url },
+    openGraph: {
+      title,
+      description,
+      url,
+      type: "article",
+      images,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: images?.map((img) => img.url),
+    },
+  };
+}
 
 export default async function Page(props: {
   params: Promise<{ name: string }>;
@@ -18,121 +61,185 @@ export default async function Page(props: {
 
   const project = projects.get(params.name) as Project;
 
+  // Prev/Next from the ordered Map
+  const entries = Array.from(projects.values());
+  const currentIdx = entries.findIndex((p) => p.localHref === project.localHref);
+  const prev = currentIdx > 0 ? entries[currentIdx - 1] : null;
+  const next =
+    currentIdx >= 0 && currentIdx < entries.length - 1
+      ? entries[currentIdx + 1]
+      : null;
+
   return (
-    <main className="flex flex-1 flex-col justify-center">
-      <section className="items-center justify-center px-6">
-        <div className="mx-auto w-full max-w-6xl text-center">
-          <Banner title={project.name} />
-          <p className="mx-auto mt-6 max-w-2xl text-amber-100/90 md:text-lg">
-            {project.description}
-          </p>
-        </div>
-      </section>
-      <div
-        id="breakdown"
-        className="flex w-full justify-center break-words px-4 pb-9 pt-5 sm:px-8 md:pt-12"
-      >
-        <div className="w-full max-w-7xl">
-          <h2 className="bg-gradient-to-b from-amber-100 to-amber-300 bg-clip-text pb-6 text-center text-3xl font-extrabold tracking-wide text-transparent sm:text-4xl md:text-5xl">
-            The Ledger of Works
-          </h2>
-          <div
-            className={`grid w-full grid-cols-1 gap-y-6 text-amber-50 sm:gap-y-8 md:grid-cols-2 md:gap-x-8 ${project.APIs && "lg:grid-cols-3"}`}
+    <main className="flex flex-1 flex-col">
+      <div className="mx-auto w-full max-w-6xl px-4 pb-12 pt-6 md:px-6 md:pt-10">
+        {/* Back crumb */}
+        <div className="mb-5">
+          <Link
+            href="/projects"
+            className="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-amber-300/80 transition hover:text-amber-200"
           >
-            <div
-              className={`rounded-2xl border-4 border-amber-700/70 bg-gradient-to-br from-amber-900/60 to-stone-900/70 p-5 shadow-xl backdrop-blur-sm ${!project.APIs && "md:col-span-2 lg:col-span-1"}`}
-            >
-              <div className="flex items-center gap-2">
-                <Hammer className="text-amber-300" />
-                <h3 className="text-2xl font-bold md:text-3xl">
-                  Forge & Tools
-                </h3>
+            <ArrowLeft size={12} />
+            Back to Chronicles
+          </Link>
+        </div>
+
+        {/* Hero */}
+        <ProjectHero project={project} />
+
+        {/* Stack + links strip */}
+        <div className="mt-6 flex flex-col gap-4 border-y border-amber-500/20 py-4 md:mt-8 md:flex-row md:items-center md:justify-between md:gap-6">
+          <ChipList
+            items={[
+              ...project.tech.map((t) => ({ name: t.name, href: t.href })),
+              ...(project.APIs ?? []),
+            ]}
+          />
+
+          {(project.links.website || project.links.github) && (
+            <div className="flex flex-wrap gap-4 text-sm">
+              {project.links.website && (
+                <a
+                  href={project.links.website}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-amber-200 hover:text-amber-100"
+                >
+                  <ExternalLink size={14} className="opacity-70" />
+                  Visit the Keep
+                </a>
+              )}
+              {project.links.github?.map(({ name, href }) => (
+                <a
+                  key={name}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-amber-200 hover:text-amber-100"
+                >
+                  <Github size={14} className="opacity-70" />
+                  {name}
+                </a>
+              ))}
+            </div>
+          )}
+        </div>
+
+        {/* Narrative */}
+        <article className="mt-8 flex flex-col gap-8 md:mt-12">
+          {project.quest && (
+            <NarrativeSection
+              id="quest"
+              icon={Scroll}
+              title="The Quest"
+              body={project.quest}
+            />
+          )}
+          {project.forging && (
+            <NarrativeSection
+              id="forging"
+              icon={Flame}
+              title="The Forging"
+              body={project.forging}
+            />
+          )}
+          {project.victory && (
+            <NarrativeSection
+              id="victory"
+              icon={Trophy}
+              title="The Victory"
+              body={project.victory}
+            />
+          )}
+
+          {project.highlights && project.highlights.length > 0 && (
+            <section id="highlights">
+              <div className="mb-4 flex items-center gap-3">
+                <Sparkles className="text-amber-300" size={20} />
+                <h2 className="text-xl font-bold text-amber-100 md:text-2xl">
+                  Notable Enchantments
+                </h2>
               </div>
-              <ul className="mt-3 flex flex-wrap gap-2 md:text-lg">
-                {project.tech.map((tech: { name: string; href: string }) => (
-                  <li key={tech.name} className="group">
-                    <a
-                      href={tech.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 rounded-full border border-amber-600/50 bg-amber-800/20 px-3 py-1.5 text-amber-100 transition hover:bg-amber-700/30"
-                    >
-                      <LinkIcon size={16} className="opacity-80" />
-                      <span>{tech.name}</span>
-                    </a>
+              <ul className="flex flex-col gap-2">
+                {project.highlights.map((h) => (
+                  <li
+                    key={h.label}
+                    className="flex flex-col gap-0.5 border-l border-amber-500/30 pl-3 sm:flex-row sm:items-baseline sm:gap-3"
+                  >
+                    <span className="text-sm font-semibold text-amber-100">
+                      {h.label}
+                    </span>
+                    {h.detail && (
+                      <span className="text-xs text-amber-100/70">
+                        <span className="hidden sm:inline">— </span>
+                        {h.detail}
+                      </span>
+                    )}
                   </li>
                 ))}
               </ul>
-            </div>
-            {project.APIs && (
-              <div className="rounded-2xl border-4 border-amber-700/70 bg-gradient-to-br from-amber-900/60 to-stone-900/70 p-5 shadow-xl backdrop-blur-sm">
-                <div className="flex items-center gap-2">
-                  <FlaskConical className="text-amber-300" />
-                  <h3 className="text-2xl font-bold md:text-3xl">
-                    Allied Guilds (APIs)
-                  </h3>
-                </div>
-                <ul className="mt-3 flex flex-wrap gap-2 md:text-lg">
-                  {project.APIs.map((API: { name: string; href: string }) => (
-                    <li key={API.name}>
-                      <a
-                        href={API.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 rounded-full border border-amber-600/50 bg-amber-800/20 px-3 py-1.5 text-amber-100 transition hover:bg-amber-700/30"
-                      >
-                        <LinkIcon size={16} className="opacity-80" />
-                        <span>{API.name}</span>
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+            </section>
+          )}
+
+          {/* Empty-state hint visible only if no narrative content exists yet */}
+          {!project.quest &&
+            !project.forging &&
+            !project.victory &&
+            !(project.highlights && project.highlights.length) && (
+              <section className="text-center text-sm italic text-amber-100/50">
+                The full chronicle for this quest is still being transcribed.
+              </section>
             )}
-            <div className="rounded-2xl border-4 border-amber-700/70 bg-gradient-to-br from-amber-900/60 to-stone-900/70 p-5 shadow-xl backdrop-blur-sm md:col-span-2 lg:col-span-1">
-              <div className="flex items-center gap-2">
-                <ExternalLink className="text-amber-300" />
-                <h3 className="text-2xl font-bold md:text-3xl">
-                  Portals & Tomes
-                </h3>
-              </div>
-              <ul className="mt-3 flex flex-wrap gap-2">
-                {project.links.website && (
-                  <li className="md:text-lg">
-                    <a
-                      href={project.links.website}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 rounded-full border border-amber-600/50 bg-amber-800/20 px-3 py-1.5 text-amber-100 transition hover:bg-amber-700/30"
-                    >
-                      <LinkIcon size={16} className="opacity-80" />
-                      <span>Visit the Keep</span>
-                    </a>
-                  </li>
-                )}
-                {project.links.github &&
-                  project.links.github.map(({ name, href }) => (
-                    <li key={name} className="md:text-lg">
-                      {href !== "" ? (
-                        <a
-                          href={href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 rounded-full border border-amber-600/50 bg-amber-800/20 px-3 py-1.5 text-amber-100 transition hover:bg-amber-700/30"
-                        >
-                          <LinkIcon size={16} className="opacity-80" />
-                          <span>Tome: {name}</span>
-                        </a>
-                      ) : (
-                        <span className="text-amber-200/80">{name}</span>
-                      )}
-                    </li>
-                  ))}
-              </ul>
-            </div>
-          </div>
+        </article>
+
+        {/* Prev / Next */}
+        <div className="mt-10 md:mt-14">
+          <ProjectNav prev={prev} next={next} />
         </div>
       </div>
     </main>
+  );
+}
+
+/* ---------- Small pieces ---------- */
+
+function NarrativeSection({
+  id,
+  icon: Icon,
+  title,
+  body,
+}: {
+  id: string;
+  icon: React.ComponentType<{ size?: number; className?: string }>;
+  title: string;
+  body: string;
+}) {
+  return (
+    <section id={id}>
+      <div className="mb-3 flex items-center gap-3">
+        <Icon className="text-amber-300" size={20} />
+        <h2 className="text-xl font-bold text-amber-100 md:text-2xl">{title}</h2>
+      </div>
+      <p className="text-amber-100/85 md:text-lg">{body}</p>
+    </section>
+  );
+}
+
+function ChipList({ items }: { items: { name: string; href: string }[] }) {
+  return (
+    <ul className="flex flex-wrap gap-1.5">
+      {items.map((item) => (
+        <li key={item.name}>
+          <a
+            href={item.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 border border-amber-500/40 bg-neutral-900/60 px-2 py-1 text-[11px] uppercase tracking-widest text-amber-100/90 transition hover:border-amber-400 hover:text-amber-100"
+          >
+            {item.name}
+          </a>
+        </li>
+      ))}
+    </ul>
   );
 }

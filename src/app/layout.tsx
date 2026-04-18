@@ -1,5 +1,4 @@
 import { Cinzel } from "next/font/google";
-import { Toaster } from "react-hot-toast";
 import "./globals.css";
 import Footer from "./components/global/Footer";
 import React from "react";
@@ -14,13 +13,13 @@ const cinzel = Cinzel({
 });
 
 export const metadata: Metadata = {
-  title: "Software Developer Based in South Africa | WebDevEwan",
+  title: "Full-stack dev. Conservation tech. South Africa. | WebDevEwan",
   description:
-    "Hey there! I'm Ewan, a software developer based in South Africa.",
+    "Hey! I'm Ewan, a full-stack developer from Johannesburg who builds web apps, AI tools, and conservation tech.",
   openGraph: {
-    title: "Software Developer Based in South Africa | WebDevEwan",
+    title: "Full-stack dev. Conservation tech. South Africa. | WebDevEwan",
     description:
-      "Hey there! I'm Ewan, a software developer based in South Africa.",
+      "Hey! I'm Ewan, a full-stack developer from Johannesburg who builds web apps, AI tools, and conservation tech.",
     type: "website",
   },
   metadataBase: new URL("https://www.webdevewan.com/"),
@@ -34,12 +33,15 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className="scroll-smooth bg-[url('/black-stone.jpg')] bg-cover bg-zinc-800 bg-fixed bg-center font-serif text-amber-50 mt-28"
+      className="scroll-smooth bg-neutral-950 font-serif text-amber-50"
     >
-      <body className={`${cinzel.className} min-h-[calc(100vh-112px)] flex flex-col`}>
+      <body className={`${cinzel.className} flex min-h-screen flex-col`}>
+        <div
+          aria-hidden
+          className="pointer-events-none fixed -left-[5vw] -top-[5lvh] -z-10 h-[110lvh] w-[110vw] bg-[url('/polygon-bg.svg')] bg-cover bg-center"
+        />
         <MedievalNavbar />
         {children}
-        <Toaster position="bottom-right" />
         <Footer />
         <Analytics />
         <SpeedInsights />

@@ -73,9 +73,11 @@ const tech = {
   Python: { name: "Python", href: "https://www.python.org/" },
 };
 
+export type ProjectType = "client" | "academic" | "personal";
+export type ProjectRole = "solo" | "team";
+
 export type Project = {
   name: string;
-  shortDescription: string;
   description: string;
   localHref: string;
   tech: { name: string; href: string }[];
@@ -83,9 +85,18 @@ export type Project = {
   links: {
     github?: { name: string; href: string }[];
     website?: string;
-    hideOG?: boolean;
+    ogImage?: string;
   };
   tags?: { name: string; color: string }[];
+  // Scannable metadata for list + detail pages
+  year?: string; // e.g. "2024" or "2023–2024"
+  role?: ProjectRole;
+  type?: ProjectType;
+  // Optional narrative sections (STAR, themed). If omitted, sections are hidden.
+  quest?: string; // The problem / brief
+  forging?: string; // Role + approach
+  victory?: string; // Outcome / impact
+  highlights?: { label: string; detail?: string }[]; // 3–5 distinctive features
 };
 
 export const projects = new Map<string, Project>([
@@ -93,9 +104,8 @@ export const projects = new Map<string, Project>([
     "SurveyScope",
     {
       name: "SurveyScope",
-      shortDescription: "AI Aerial-Census Software",
       description:
-        "SurveyScope is a powerful web application that leverages the latest artificial intelligence (AI) to assist in the annotation of aerial-census data – by detecting and identifying the animals contained therein.",
+        "AI-assisted annotation for aerial wildlife census data, built with WildEye Conservation.",
       localHref: "/projects/SurveyScope",
       tech: [
         tech.React,
@@ -115,7 +125,7 @@ export const projects = new Map<string, Project>([
           },
         ],
         website: "https://wildeyeconservation.org/surveyscope/",
-        hideOG: true,
+        ogImage: "/wildeye-og.png",
       },
       tags: [
         tags.React,
@@ -127,29 +137,49 @@ export const projects = new Map<string, Project>([
         tags.ECS,
         tags.Python,
       ],
+      year: `2024–${new Date().getFullYear()}`,
+      role: "team",
+      type: "client",
+      quest:
+        "Conservation researchers need to count and identify wildlife across huge volumes of aerial-census imagery. Doing it by hand doesn't scale, and off-the-shelf tools don't fit the specialised workflow.",
+      forging:
+        "I work as lead developer on SurveyScope in collaboration with WildEye Conservation, building across React, TypeScript, and AWS (Amplify, AppSync, DynamoDB, SQS, ECS) with Python services behind the scenes. Recent focus has been backend optimisation and expanding the platform's workflow capabilities — model-guided annotation, quality-control pipelines, homography generation, and individual animal identification.",
+      victory:
+        "SurveyScope is live and actively used by conservationists, with ongoing development broadening what researchers can do with their imagery.",
+      highlights: [
+        {
+          label: "Model-guided annotation",
+          detail: "AI assists human annotators on aerial imagery.",
+        },
+        {
+          label: "Quality-control pipelines",
+          detail: "Structured review flow for census data.",
+        },
+        {
+          label: "Homography generation",
+          detail:
+            "Aligns overlapping aerial frames so the same ground area can be compared.",
+        },
+        {
+          label: "Individual animal identification",
+          detail:
+            "Re-identifies specific animals across frames to support tracking and prevent double-counts.",
+        },
+        {
+          label: "AWS-native architecture",
+          detail: "Amplify + AppSync + DynamoDB + SQS + ECS.",
+        },
+      ],
     },
   ],
   [
     "webdevewan",
     {
       name: "WebDevEwan",
-      shortDescription: "My personal portfolio website.",
       description:
-        "A fast, clean portfolio built with Next.js + Tailwind and TypeScript. Smooth Framer Motion touches, Zod + React Email + Resend for contact, and Microlink for OG previews. Accessible and snappy.",
+        "My personal portfolio — built with Next.js, Tailwind, and TypeScript.",
       localHref: "/projects/webdevewan",
-      tech: [
-        tech.Nextjs,
-        tech.Tailwind,
-        tech.TypeScript,
-        tech.Framer,
-        tech.Zod,
-        tech.ReactEmail,
-        tech.ReactHotToast,
-      ],
-      APIs: [
-        { name: "Resend", href: "https://resend.com/" },
-        { name: "Microlink", href: "https://microlink.io/" },
-      ],
+      tech: [tech.Nextjs, tech.Tailwind, tech.TypeScript, tech.Framer],
       links: {
         github: [
           {
@@ -158,16 +188,24 @@ export const projects = new Map<string, Project>([
           },
         ],
         website: "https://www.webdevewan.com/",
+        ogImage: "/webdevewan-og.png",
       },
-      tags: [
-        tags.Nextjs,
-        tags.Tailwind,
-        tags.TypeScript,
-        tags.Framer,
-        tags.Zod,
-        tags.ReactEmail,
-        tags.ReactHotToast,
-        tags.Resend,
+      tags: [tags.Nextjs, tags.Tailwind, tags.TypeScript, tags.Framer],
+      year: "2024",
+      role: "solo",
+      type: "personal",
+      quest:
+        "I wanted a portfolio that felt distinctly mine — not another template — and doubled as a sandbox for trying ideas.",
+      forging:
+        "Built solo with Next.js, Tailwind, and TypeScript. Small Framer Motion touches and a hand-triangulated SVG background for atmosphere. Kept it accessible, fast, and easy to extend as new projects land.",
+      victory:
+        "Live at webdevewan.com and serving as the home for everything I build.",
+      highlights: [
+        { label: "Hand-triangulated SVG background" },
+        { label: "Framer Motion micro-interactions" },
+        {
+          label: "Typed project registry",
+        },
       ],
     },
   ],
@@ -175,10 +213,8 @@ export const projects = new Map<string, Project>([
     "eft-toolset",
     {
       name: "EFT Toolset",
-      shortDescription:
-        "A suite of tools to assist players of Escape From Tarkov (EFT) in their gameplay experience.",
       description:
-        "Quick tools for Escape From Tarkov. Uses fresh TARKOV.DEV data in a clean, mobile UI (Next.js, Tailwind, shadcn/ui). Fast search and filters, type-safe with TypeScript.",
+        "A mobile-first Escape From Tarkov companion powered by live TARKOV.DEV data.",
       localHref: "/projects/eft-toolset",
       tech: [tech.Nextjs, tech.Tailwind, tech.TypeScript, tech.shadcn],
       APIs: [{ name: "TARKOV.DEV", href: "https://tarkov.dev/" }],
@@ -190,18 +226,37 @@ export const projects = new Map<string, Project>([
           },
         ],
         website: "https://www.eft-toolset.com/",
+        ogImage: "/eft-toolset-og.png",
       },
       tags: [tags.Nextjs, tags.Tailwind, tags.TypeScript, tags.shadcn],
+      year: "2024",
+      role: "solo",
+      type: "personal",
+      quest:
+        "Escape From Tarkov players constantly look things up mid-session — items, quests, traders. Existing tools felt heavy, especially on mobile.",
+      forging:
+        "A small, mobile-first companion built with Next.js, Tailwind, shadcn/ui, and TypeScript, pulling live data from the TARKOV.DEV GraphQL API. The focus was fast search, clean filters, and a UI that doesn't get in the way.",
+      victory:
+        "Live at eft-toolset.com — a lightweight reference I actually use while playing.",
+      highlights: [
+        {
+          label: "Live TARKOV.DEV data",
+          detail: "Always fresh item, quest, and trader info.",
+        },
+        { label: "Mobile-first layout" },
+        {
+          label: "Type-safe end to end",
+        },
+        { label: "Fast search & filters" },
+      ],
     },
   ],
   [
     "teaching-and-learning-system",
     {
       name: "Teaching & Learning System",
-      shortDescription:
-        "A multiplatform system for lecturers at NWU to review students' video submissions.",
       description:
-        "This system allows students to upload videos, which are stored and tagged in a database. Lecturers can log in, stream the videos, and provide text feedback.",
+        "A multiplatform system for NWU lecturers to review and feedback on student video submissions.",
       localHref: "/projects/teaching-and-learning-system",
       tech: [
         tech.Nextjs,
@@ -234,6 +289,24 @@ export const projects = new Map<string, Project>([
         tags.shadcn,
         tags.Django,
         tags.Expo,
+      ],
+      year: "2023",
+      role: "team",
+      type: "academic",
+      quest:
+        "An academic brief at North-West University: give lecturers a way to review student video submissions, across both web and mobile, with structured written feedback.",
+      forging:
+        "A team project split across three repos — a Next.js web app (TypeScript, Zod, shadcn/ui), an Expo mobile app, and a Django backend handling auth, storage, and tagging. Students upload and tag videos; lecturers log in, stream them, and leave text feedback.",
+      victory:
+        "Delivered end-to-end as a multiplatform system for the module, covering the full upload → review → feedback loop.",
+      highlights: [
+        {
+          label: "Multiplatform",
+          detail: "Web (Next.js) and mobile (Expo) clients.",
+        },
+        { label: "Django REST backend" },
+        { label: "Video upload + tagging" },
+        { label: "Lecturer feedback flow" },
       ],
     },
   ],

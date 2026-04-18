@@ -5,6 +5,7 @@ import {
   BookOpenIcon,
   WrenchScrewdriverIcon,
   GlobeAltIcon,
+  CloudIcon,
 } from "@heroicons/react/24/solid";
 import clsx from "clsx";
 
@@ -19,17 +20,42 @@ interface SkillCardProps {
 }
 
 const categoryIcons: Record<string, JSX.Element> = {
-  "Languages of Power": <CodeBracketIcon className="h-8 w-8" />,
-  "Frameworks of the Realms": <SparklesIcon className="h-8 w-8" />,
-  "Scrolls of Data": <BookOpenIcon className="h-8 w-8" />,
-  "Tools of Craft": <WrenchScrewdriverIcon className="h-8 w-8" />,
-  "Other Enchantments": <GlobeAltIcon className="h-8 w-8" />,
+  "Languages of Power": <CodeBracketIcon className="h-6 w-6" />,
+  "Frameworks of the Realms": <SparklesIcon className="h-6 w-6" />,
+  "Scrolls of Data": <BookOpenIcon className="h-6 w-6" />,
+  "Runes of the Cloud": <CloudIcon className="h-6 w-6" />,
+  "Tools of Craft": <WrenchScrewdriverIcon className="h-6 w-6" />,
+  "Other Enchantments": <GlobeAltIcon className="h-6 w-6" />,
 };
 
-const rarityColors: Record<string, string> = {
-  common: "from-blue-700 via-blue-500 to-blue-700 border-blue-300",
-  rare: "from-violet-700 via-violet-500 to-violet-700 border-violet-300",
-  legendary: "from-amber-700 via-amber-500 to-amber-700 border-amber-300",
+const rarityBorder: Record<string, string> = {
+  common: "rgb(56 189 248 / 0.7)",
+  rare: "rgb(167 139 250 / 0.7)",
+  legendary: "rgb(251 191 36 / 0.8)",
+};
+
+const rarityAccent: Record<string, string> = {
+  common: "text-sky-300",
+  rare: "text-violet-300",
+  legendary: "text-amber-300",
+};
+
+const rarityCorner: Record<string, string> = {
+  common: "bg-sky-400",
+  rare: "bg-violet-400",
+  legendary: "bg-amber-400",
+};
+
+const rarityChaser: Record<string, string> = {
+  common: "rgb(125 211 252)",
+  rare: "rgb(196 181 253)",
+  legendary: "rgb(252 211 77)",
+};
+
+const rarityFrontBg: Record<string, string> = {
+  common: "#0c1a28",
+  rare: "#170e26",
+  legendary: "#231808",
 };
 
 export default function SkillCard({
@@ -46,31 +72,120 @@ export default function SkillCard({
     : disableHover
       ? ""
       : "group-hover:[transform:rotateY(180deg)]";
+
+  // Shared plate styling for both faces — rarity-colored border, neutral fill,
+  // hover pinned to the same values so the built-in button hover on
+  // `.notch-plate-sm` doesn't cause an amber flash during the flip.
+  const frontPlateStyle = {
+    "--notch-border": rarityBorder[rarity],
+    "--notch-border-hover": rarityBorder[rarity],
+    "--notch-bg": rarityFrontBg[rarity],
+    "--notch-bg-hover": rarityFrontBg[rarity],
+    // Override the utility's `isolation: isolate` — it would flatten the face
+    // under `preserve-3d` and kill the back face's border on rotation.
+    isolation: "auto",
+    // The utility also forces `position: relative`, which would override the
+    // `absolute` class in cascade and collapse the face to content size.
+    position: "absolute",
+  } as React.CSSProperties;
+
+  const backPlateStyle = {
+    ...frontPlateStyle,
+    "--notch-bg": "#171717",
+    "--notch-bg-hover": "#171717",
+  } as React.CSSProperties;
+
   return (
-    <div className="group h-64 w-48 [perspective:1000px]" onClick={onClick}>
+    <div
+      className="group h-40 w-32 [perspective:1000px]"
+      onClick={onClick}
+    >
+      {/*
+       * `z-0` establishes a stacking context on the flip wrapper so the face
+       * pseudos (z-index: -1/-2) stay scoped here — without this they'd leak
+       * behind other page content once `isolation` is dropped from the faces.
+       * `z-0` is safe on a `preserve-3d` parent; `isolation`/`clip-path`/etc
+       * would flatten the 3D.
+       */}
       <div
-        className={`relative h-full w-full transition-transform duration-500 [transform-style:preserve-3d] ${flipInteractionClass}`}
+        className={`relative z-0 h-full w-full transition-transform duration-500 [transform-style:preserve-3d] ${flipInteractionClass}`}
       >
         {/* Front */}
         <div
-          className={clsx(
-            "absolute inset-0 flex flex-col justify-between rounded-xl p-4 [backface-visibility:hidden]",
-            "bg-gradient-to-br",
-            rarityColors[rarity],
-            "overflow-hidden border-2 shadow-lg",
-          )}
+          className="notch-plate-sm absolute inset-0 flex flex-col items-center justify-center gap-2 p-3 text-center text-white [backface-visibility:hidden]"
+          style={frontPlateStyle}
         >
-          {/* Shimmer overlay */}
-          <div className="absolute inset-0 animate-shimmer bg-gradient-to-r from-transparent via-white/20 to-transparent" />
-          <div className="relative z-10 flex h-full flex-col items-center justify-center text-center text-white">
-            <div className="mb-3">{categoryIcons[category]}</div>
-            <h3 className="text-xl font-bold">{name}</h3>
-            <p className="mt-1 text-xs capitalize">{rarity}</p>
+          {/* border chaser — a rotating conic-gradient arc, clipped to the
+              notched silhouette; the cover span hides the center so only the
+              outer ring of the arc shows, tracing the border */}
+          <span
+            aria-hidden
+            className="pointer-events-none absolute inset-0 overflow-hidden clip-notch-sm"
+          >
+            <span
+              className="absolute left-1/2 top-1/2 aspect-square w-[200%] -translate-x-1/2 -translate-y-1/2 animate-[spin_3s_linear_infinite]"
+              style={{
+                background: `conic-gradient(from 0deg, transparent 0deg, transparent 300deg, ${rarityChaser[rarity]} 345deg, transparent 360deg)`,
+              }}
+            />
+          </span>
+          <span
+            aria-hidden
+            className="pointer-events-none absolute inset-[2px] clip-notch-sm"
+            style={{ background: rarityFrontBg[rarity] }}
+          />
+
+          {/* corner ticks */}
+          <span
+            aria-hidden
+            className={clsx(
+              "absolute left-1.5 top-1.5 h-1.5 w-1.5",
+              rarityCorner[rarity],
+            )}
+          />
+          <span
+            aria-hidden
+            className={clsx(
+              "absolute right-1.5 top-1.5 h-1.5 w-1.5",
+              rarityCorner[rarity],
+            )}
+          />
+          <span
+            aria-hidden
+            className={clsx(
+              "absolute bottom-1.5 left-1.5 h-1.5 w-1.5",
+              rarityCorner[rarity],
+            )}
+          />
+          <span
+            aria-hidden
+            className={clsx(
+              "absolute bottom-1.5 right-1.5 h-1.5 w-1.5",
+              rarityCorner[rarity],
+            )}
+          />
+
+          <div className={clsx("relative mb-1", rarityAccent[rarity])}>
+            {categoryIcons[category]}
           </div>
+          <h3 className="relative text-sm font-bold leading-tight text-amber-50">
+            {name}
+          </h3>
+          <p
+            className={clsx(
+              "relative text-[10px] uppercase tracking-widest",
+              rarityAccent[rarity],
+            )}
+          >
+            {rarity}
+          </p>
         </div>
 
         {/* Back */}
-        <div className="absolute inset-0 flex items-center justify-center rounded-xl border-2 border-stone-700 bg-stone-900 p-4 text-center text-sm text-amber-100 [backface-visibility:hidden] [transform:rotateY(180deg)]">
+        <div
+          className="notch-plate-sm absolute inset-0 flex items-center justify-center p-3 text-center text-xs text-amber-100 [backface-visibility:hidden] [transform:rotateY(180deg)]"
+          style={backPlateStyle}
+        >
           {description || "A mysterious skill of great power."}
         </div>
       </div>
