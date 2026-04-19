@@ -47,9 +47,12 @@ export default function MedievalNavbar() {
   // Close the mobile menu when the user scrolls the page
   useEffect(() => {
     if (!open) return;
-    const close = () => setOpen(false);
-    window.addEventListener("scroll", close, { passive: true });
-    return () => window.removeEventListener("scroll", close);
+    const startY = window.scrollY;
+    const onScroll = () => {
+      if (Math.abs(window.scrollY - startY) > 8) setOpen(false);
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, [open]);
 
   return (
