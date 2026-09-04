@@ -80,7 +80,7 @@ export default function ProjectListItem({
       <div className={`shrink-0 ${featured ? "w-full" : "sm:w-56 md:w-48"}`}>
         {imageUrl ? (
           <Image
-            alt={project.name}
+            alt={project.imageAlt ?? project.name}
             src={imageUrl}
             width={featured ? 1280 : 640}
             height={featured ? 720 : 360}

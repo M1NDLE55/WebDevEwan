@@ -19,7 +19,7 @@ export default function FeaturedQuest() {
           <div className="relative aspect-[1200/630] w-full shrink-0 overflow-hidden md:w-56">
             {imageUrl ? (
               <Image
-                alt={project.name}
+                alt={project.imageAlt ?? project.name}
                 src={imageUrl}
                 width={1200}
                 height={630}

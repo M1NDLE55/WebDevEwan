@@ -43,7 +43,7 @@ export default function ProjectHero({ project }: { project: Project }) {
         <div className="clip-notch-sm absolute inset-[1px] overflow-hidden bg-gradient-to-br from-neutral-900 to-neutral-950">
           {imageUrl ? (
             <Image
-              alt={project.name}
+              alt={project.imageAlt ?? project.name}
               src={imageUrl}
               fill
               priority
@@ -68,6 +68,11 @@ export default function ProjectHero({ project }: { project: Project }) {
       <h1 className="text-3xl font-bold tracking-wide text-amber-100 md:text-5xl">
         {project.name}
       </h1>
+
+      {/* Lead: mirrors the meta description so search engines prefer it as the snippet */}
+      <p className="max-w-3xl text-base text-amber-100/80 md:text-lg">
+        {project.summary}
+      </p>
     </div>
   );
 }

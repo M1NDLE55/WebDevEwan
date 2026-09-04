@@ -4,7 +4,7 @@ import Link from "next/link";
 import { type Project, projects } from "@/app/components/global/Projects";
 import ProjectHero from "@/app/components/projects/ProjectHero";
 import ProjectNav from "@/app/components/projects/ProjectNav";
-import { SITE_NAME } from "@/app/lib/site";
+import { SITE_NAME, SITE_URL } from "@/app/lib/site";
 import {
   ExternalLink,
   Github,
@@ -22,13 +22,24 @@ export async function generateMetadata(props: {
   const project = projects.get(name);
   if (!project) return {};
 
-  const title =
-    project.name === "WebDevEwan" ? "WebDevEwan Portfolio" : project.name;
-  const description = project.description;
+  const title = project.absoluteTitle
+    ? { absolute: project.seoTitle }
+    : project.seoTitle;
+  const fullTitle = project.absoluteTitle
+    ? project.seoTitle
+    : `${project.seoTitle} | ${SITE_NAME}`;
+  const description = project.summary;
   const url = `/projects/${name}`;
   const socialImage = project.links.socialImage ?? project.links.ogImage;
   const images = socialImage
-    ? [{ url: socialImage, width: 1200, height: 630, alt: project.name }]
+    ? [
+        {
+          url: socialImage,
+          width: 1200,
+          height: 630,
+          alt: project.imageAlt ?? project.name,
+        },
+      ]
     : undefined;
 
   return {
@@ -36,7 +47,7 @@ export async function generateMetadata(props: {
     description,
     alternates: { canonical: url },
     openGraph: {
-      title: `${title} | ${SITE_NAME}`,
+      title: fullTitle,
       description,
       url,
       type: "article",
@@ -44,9 +55,70 @@ export async function generateMetadata(props: {
     },
     twitter: {
       card: "summary_large_image",
-      title: `${title} | ${SITE_NAME}`,
+      title: fullTitle,
       description,
       images: images?.map((img) => img.url),
+    },
+  };
+}
+
+/**
+ * Structured data for the project page. Google reads `image` from here (not
+ * og:image) when choosing a search-result thumbnail, and the breadcrumb keeps
+ * the "webdevewan.com › projects › name" trail in results.
+ */
+function projectJsonLd(project: Project, slug: string) {
+  const pageUrl = `${SITE_URL}/projects/${slug}`;
+  const imagePath = project.links.socialImage ?? project.links.ogImage;
+  const image = imagePath ? `${SITE_URL}${imagePath}` : undefined;
+  const author = { "@type": "Person", name: "Ewan Trollip", url: SITE_URL };
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": pageUrl,
+    url: pageUrl,
+    name: project.seoTitle,
+    description: project.summary,
+    inLanguage: "en",
+    isPartOf: { "@type": "WebSite", name: SITE_NAME, url: SITE_URL },
+    author,
+    ...(image && {
+      image,
+      primaryImageOfPage: {
+        "@type": "ImageObject",
+        url: image,
+        width: 1200,
+        height: 630,
+        caption: project.imageAlt ?? project.name,
+      },
+    }),
+    breadcrumb: {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Projects",
+          item: `${SITE_URL}/projects`,
+        },
+        { "@type": "ListItem", position: 3, name: project.name, item: pageUrl },
+      ],
+    },
+    mainEntity: {
+      "@type": "SoftwareApplication",
+      name: project.name,
+      description: project.summary,
+      url: project.links.website ?? pageUrl,
+      ...(image && { image }),
+      applicationCategory: "WebApplication",
+      operatingSystem: "Web",
+      author,
+      ...(project.year && { dateCreated: project.year.slice(0, 4) }),
+      ...(project.links.github?.length && {
+        sameAs: project.links.github.map((g) => g.href),
+      }),
     },
   };
 }
@@ -80,6 +152,15 @@ export default async function Page(props: {
 
   return (
     <main className="flex flex-1 flex-col">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(projectJsonLd(project, params.name)).replace(
+            /</g,
+            "\\u003c",
+          ),
+        }}
+      />
       <div className="mx-auto w-full max-w-6xl px-4 pt-6 pb-12 md:px-6 md:pt-10">
         {/* Back crumb */}
         <div className="mb-5">

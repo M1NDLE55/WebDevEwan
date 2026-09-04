@@ -58,7 +58,12 @@ npm run lint   # Run ESLint
 Project content lives in
 [`src/app/components/global/Projects.ts`](src/app/components/global/Projects.ts).
 Adding an entry there automatically updates the project index, static project
-routes, and XML sitemap. Shared site metadata is defined in
+routes, XML sitemap, and per-project metadata. Each project carries its own
+search-facing copy: `seoTitle` (the `<title>`), `summary` (the meta description,
+also rendered as the lead paragraph so search engines prefer it as the snippet),
+and `imageAlt`. Project pages also emit JSON-LD (`WebPage` with breadcrumb,
+primary image, and a `SoftwareApplication` entity), which is what Google uses
+to pick a result thumbnail. Shared site metadata is defined in
 [`src/app/lib/site.ts`](src/app/lib/site.ts).
 
 ## License
