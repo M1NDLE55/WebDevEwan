@@ -4,6 +4,7 @@ import Link from "next/link";
 import { type Project, projects } from "@/app/components/global/Projects";
 import ProjectHero from "@/app/components/projects/ProjectHero";
 import ProjectNav from "@/app/components/projects/ProjectNav";
+import { SITE_NAME, SITE_URL } from "@/app/lib/site";
 import {
   ExternalLink,
   Github,
@@ -21,15 +22,24 @@ export async function generateMetadata(props: {
   const project = projects.get(name);
   if (!project) return {};
 
-  const title =
-    project.name === "WebDevEwan"
-      ? "WebDevEwan — Portfolio"
-      : `${project.name} | WebDevEwan`;
-  const description = project.description;
+  const title = project.absoluteTitle
+    ? { absolute: project.seoTitle }
+    : project.seoTitle;
+  const fullTitle = project.absoluteTitle
+    ? project.seoTitle
+    : `${project.seoTitle} | ${SITE_NAME}`;
+  const description = project.summary;
   const url = `/projects/${name}`;
   const socialImage = project.links.socialImage ?? project.links.ogImage;
   const images = socialImage
-    ? [{ url: socialImage, width: 1200, height: 630, alt: project.name }]
+    ? [
+        {
+          url: socialImage,
+          width: 1200,
+          height: 630,
+          alt: project.imageAlt ?? project.name,
+        },
+      ]
     : undefined;
 
   return {
@@ -37,7 +47,7 @@ export async function generateMetadata(props: {
     description,
     alternates: { canonical: url },
     openGraph: {
-      title,
+      title: fullTitle,
       description,
       url,
       type: "article",
@@ -45,12 +55,79 @@ export async function generateMetadata(props: {
     },
     twitter: {
       card: "summary_large_image",
-      title,
+      title: fullTitle,
       description,
       images: images?.map((img) => img.url),
     },
   };
 }
+
+/**
+ * Structured data for the project page. Google reads `image` from here (not
+ * og:image) when choosing a search-result thumbnail, and the breadcrumb keeps
+ * the "webdevewan.com › projects › name" trail in results.
+ */
+function projectJsonLd(project: Project, slug: string) {
+  const pageUrl = `${SITE_URL}/projects/${slug}`;
+  const imagePath = project.links.socialImage ?? project.links.ogImage;
+  const image = imagePath ? `${SITE_URL}${imagePath}` : undefined;
+  const author = { "@type": "Person", name: "Ewan Trollip", url: SITE_URL };
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": pageUrl,
+    url: pageUrl,
+    name: project.seoTitle,
+    description: project.summary,
+    inLanguage: "en",
+    isPartOf: { "@type": "WebSite", name: SITE_NAME, url: SITE_URL },
+    author,
+    ...(image && {
+      image,
+      primaryImageOfPage: {
+        "@type": "ImageObject",
+        url: image,
+        width: 1200,
+        height: 630,
+        caption: project.imageAlt ?? project.name,
+      },
+    }),
+    breadcrumb: {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Projects",
+          item: `${SITE_URL}/projects`,
+        },
+        { "@type": "ListItem", position: 3, name: project.name, item: pageUrl },
+      ],
+    },
+    mainEntity: {
+      "@type": "SoftwareApplication",
+      name: project.name,
+      description: project.summary,
+      url: project.links.website ?? pageUrl,
+      ...(image && { image }),
+      applicationCategory: "WebApplication",
+      operatingSystem: "Web",
+      author,
+      ...(project.year && { dateCreated: project.year.slice(0, 4) }),
+      ...(project.links.github?.length && {
+        sameAs: project.links.github.map((g) => g.href),
+      }),
+    },
+  };
+}
+
+export function generateStaticParams() {
+  return Array.from(projects.keys()).map((name) => ({ name }));
+}
+
+export const dynamicParams = false;
 
 export default async function Page(props: {
   params: Promise<{ name: string }>;
@@ -64,7 +141,9 @@ export default async function Page(props: {
 
   // Prev/Next from the ordered Map
   const entries = Array.from(projects.values());
-  const currentIdx = entries.findIndex((p) => p.localHref === project.localHref);
+  const currentIdx = entries.findIndex(
+    (p) => p.localHref === project.localHref,
+  );
   const prev = currentIdx > 0 ? entries[currentIdx - 1] : null;
   const next =
     currentIdx >= 0 && currentIdx < entries.length - 1
@@ -73,12 +152,21 @@ export default async function Page(props: {
 
   return (
     <main className="flex flex-1 flex-col">
-      <div className="mx-auto w-full max-w-6xl px-4 pb-12 pt-6 md:px-6 md:pt-10">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(projectJsonLd(project, params.name)).replace(
+            /</g,
+            "\\u003c",
+          ),
+        }}
+      />
+      <div className="mx-auto w-full max-w-6xl px-4 pt-6 pb-12 md:px-6 md:pt-10">
         {/* Back crumb */}
         <div className="mb-5">
           <Link
             href="/projects"
-            className="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-amber-300/80 transition hover:text-amber-200"
+            className="inline-flex items-center gap-2 text-xs tracking-widest text-amber-300/80 uppercase transition hover:text-amber-200"
           >
             <ArrowLeft size={12} />
             Back to Chronicles
@@ -187,7 +275,7 @@ export default async function Page(props: {
             !project.forging &&
             !project.victory &&
             !(project.highlights && project.highlights.length) && (
-              <section className="text-center text-sm italic text-amber-100/50">
+              <section className="text-center text-sm text-amber-100/50 italic">
                 The full chronicle for this quest is still being transcribed.
               </section>
             )}
@@ -219,7 +307,9 @@ function NarrativeSection({
     <section id={id}>
       <div className="mb-3 flex items-center gap-3">
         <Icon className="text-amber-300" size={20} />
-        <h2 className="text-xl font-bold text-amber-100 md:text-2xl">{title}</h2>
+        <h2 className="text-xl font-bold text-amber-100 md:text-2xl">
+          {title}
+        </h2>
       </div>
       <p className="text-amber-100/85 md:text-lg">{body}</p>
     </section>
@@ -235,7 +325,7 @@ function ChipList({ items }: { items: { name: string; href: string }[] }) {
             href={item.href}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 border border-amber-500/40 bg-neutral-900/60 px-2 py-1 text-[11px] uppercase tracking-widest text-amber-100/90 transition hover:border-amber-400 hover:text-amber-100"
+            className="inline-flex items-center gap-1.5 border border-amber-500/40 bg-neutral-900/60 px-2 py-1 text-[11px] tracking-widest text-amber-100/90 uppercase transition hover:border-amber-400 hover:text-amber-100"
           >
             {item.name}
           </a>

@@ -16,14 +16,28 @@ type ProjectListItemProps = {
   featured?: boolean;
 };
 
-function pickIconByProject(project: Project) {
+function ProjectIcon({
+  project,
+  className,
+  size,
+}: {
+  project: Project;
+  className: string;
+  size: number;
+}) {
   const key = project.name.toLowerCase();
-  if (key.includes("survey") || key.includes("scope")) return Glasses;
-  if (key.includes("tarkov") || key.includes("eft")) return Swords;
+  if (key.includes("survey") || key.includes("scope")) {
+    return <Glasses className={className} size={size} />;
+  }
+  if (key.includes("tarkov") || key.includes("eft")) {
+    return <Swords className={className} size={size} />;
+  }
   if (key.includes("teaching") || key.includes("learning"))
-    return GraduationCap;
-  if (key.includes("web") || key.includes("portfolio")) return Code2;
-  return ScrollText;
+    return <GraduationCap className={className} size={size} />;
+  if (key.includes("web") || key.includes("portfolio")) {
+    return <Code2 className={className} size={size} />;
+  }
+  return <ScrollText className={className} size={size} />;
 }
 
 export default function ProjectListItem({
@@ -32,7 +46,6 @@ export default function ProjectListItem({
   featured = false,
 }: ProjectListItemProps) {
   const imageUrl = project.links.ogImage ?? null;
-  const Icon = pickIconByProject(project);
 
   // Featured: stacked hero layout, image at top full-width.
   // Compact: side-by-side, smaller image.
@@ -56,7 +69,7 @@ export default function ProjectListItem({
         className="absolute inset-0 z-10"
       />
       {featured && (
-        <div className="flex items-center gap-3 text-xs uppercase tracking-[0.3em] text-amber-400/80">
+        <div className="flex items-center gap-3 text-xs tracking-[0.3em] text-amber-400/80 uppercase">
           <span className="h-px flex-1 bg-amber-500/30" />
           <span>Featured Quest</span>
           <span className="h-px flex-1 bg-amber-500/30" />
@@ -64,12 +77,10 @@ export default function ProjectListItem({
       )}
 
       {/* Visual */}
-      <div
-        className={`shrink-0 ${featured ? "w-full" : "sm:w-56 md:w-48"}`}
-      >
+      <div className={`shrink-0 ${featured ? "w-full" : "sm:w-56 md:w-48"}`}>
         {imageUrl ? (
           <Image
-            alt={project.name}
+            alt={project.imageAlt ?? project.name}
             src={imageUrl}
             width={featured ? 1280 : 640}
             height={featured ? 720 : 360}
@@ -82,7 +93,8 @@ export default function ProjectListItem({
               featured ? "w-full" : "w-full sm:w-56 md:w-48"
             }`}
           >
-            <Icon
+            <ProjectIcon
+              project={project}
               className="text-amber-400/70"
               size={featured ? 72 : 48}
             />
@@ -117,13 +129,13 @@ export default function ProjectListItem({
               .map((tag) => (
                 <span
                   key={tag.name}
-                  className={`border bg-neutral-900/60 px-2 py-0.5 text-[10px] uppercase tracking-widest text-amber-100/80 ${tag.color}`}
+                  className={`border bg-neutral-900/60 px-2 py-0.5 text-[10px] tracking-widest text-amber-100/80 uppercase ${tag.color}`}
                 >
                   {tag.name}
                 </span>
               ))}
             {!featured && project.tags.length > 5 && (
-              <span className="border border-amber-500/30 bg-neutral-900/60 px-2 py-0.5 text-[10px] uppercase tracking-widest text-amber-100/50">
+              <span className="border border-amber-500/30 bg-neutral-900/60 px-2 py-0.5 text-[10px] tracking-widest text-amber-100/50 uppercase">
                 +{project.tags.length - 5}
               </span>
             )}
@@ -133,7 +145,7 @@ export default function ProjectListItem({
         <div className="mt-auto pt-1">
           <Link
             href={project.localHref}
-            className="notch-plate-sm relative z-20 inline-flex items-center gap-2 px-4 py-2 text-xs uppercase tracking-widest text-amber-100 transition hover:text-amber-50"
+            className="notch-plate-sm relative z-20 inline-flex items-center gap-2 px-4 py-2 text-xs tracking-widest text-amber-100 uppercase transition hover:text-amber-50"
             aria-label={`Open project page for ${project.name}`}
           >
             Enter the Chronicle

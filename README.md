@@ -1,44 +1,71 @@
-# My Personal Portfolio Website
+# WebDevEwan
 
-## Overview
+The source for [webdevewan.com](https://www.webdevewan.com), Ewan Trollip's
+personal portfolio. The site presents Ewan's background and skills as a
+fantasy-themed narrative, with a separate project index and individual project
+case studies.
 
-Welcome to my personal portfolio website! Here, you can learn about who I am, explore the projects I've worked on, and get in touch with me. This site serves as a comprehensive showcase of my skills, experiences, and the work I am passionate about.
+## What is included
 
-## Features
+- Narrative home page with responsive chapter navigation
+- Filter-free project index generated from a typed project registry
+- Statically generated project case-study pages
+- Downloadable CV and direct email contact link
+- Open Graph, Twitter card, canonical, robots, sitemap, and Person structured
+  metadata
+- Vercel Web Analytics and Speed Insights
+- Content Security Policy and defensive browser headers
 
-### Tech
+The site has no database, authentication, contact form, or email-sending API.
+The Contact link opens the visitor's configured email client using `mailto:`.
 
-- [Next.js](https://nextjs.org/)
-- [Tailwind](https://tailwindcss.com/)
-- [TypeScript](https://www.typescriptlang.org/)
+## Stack
+
+- [Next.js](https://nextjs.org/) App Router
+- [React](https://react.dev/) and [TypeScript](https://www.typescriptlang.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
 - [Framer Motion](https://www.framer.com/motion/)
-- [Aceternity UI](https://ui.aceternity.com/)
-- [Zod](https://zod.dev/)
-- [React Email](https://react.email/)
-- [React Hot Toast](https://react-hot-toast.com/)
+- [Lucide](https://lucide.dev/) and
+  [Heroicons](https://heroicons.com/) icons
+- [Vercel Analytics](https://vercel.com/docs/analytics) and
+  [Speed Insights](https://vercel.com/docs/speed-insights)
 
-### APIs
+## Local development
 
-- [Resend](https://resend.com/)
-- [Microlink](https://microlink.io/)
+Requires Node.js 20.9 or newer.
 
-## Installation
+```bash
+git clone https://github.com/M1NDLE55/WebDevEwan.git
+cd WebDevEwan
+npm install
+npm run dev
+```
 
-To run this project locally, follow these steps:
+Open [http://localhost:3000](http://localhost:3000). No environment variables
+are required.
 
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/M1NDLE55/webdevewan.git
-   ```
-2. **Navigate to the project directory:**
-   ```bash
-   cd webdevewan
-   ```
-3. **Install the dependencies:**
-   ```bash
-   npm install
-   ```
-4. **Run the development server:**
-   ```bash
-   npm run dev
-   ```
+## Commands
+
+```bash
+npm run dev    # Start the local Turbopack development server
+npm run build  # Create and type-check the production build
+npm run start  # Serve the production build
+npm run lint   # Run ESLint
+```
+
+## Content and SEO
+
+Project content lives in
+[`src/app/components/global/Projects.ts`](src/app/components/global/Projects.ts).
+Adding an entry there automatically updates the project index, static project
+routes, XML sitemap, and per-project metadata. Each project carries its own
+search-facing copy: `seoTitle` (the `<title>`), `summary` (the meta description,
+also rendered as the lead paragraph so search engines prefer it as the snippet),
+and `imageAlt`. Project pages also emit JSON-LD (`WebPage` with breadcrumb,
+primary image, and a `SoftwareApplication` entity), which is what Google uses
+to pick a result thumbnail. Shared site metadata is defined in
+[`src/app/lib/site.ts`](src/app/lib/site.ts).
+
+## License
+
+Licensed under the [MIT License](LICENSE).

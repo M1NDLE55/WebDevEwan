@@ -1,5 +1,28 @@
+import type { Metadata } from "next";
 import Banner from "../components/home/Banner";
 import ProjectList from "../components/projects/ProjectList";
+import { SITE_NAME } from "../lib/site";
+
+const title = "Projects";
+const description =
+  "Explore Ewan Trollip's full-stack, AI, conservation technology, and software projects.";
+
+export const metadata: Metadata = {
+  title,
+  description,
+  alternates: { canonical: "/projects" },
+  openGraph: {
+    title: `${title} | ${SITE_NAME}`,
+    description,
+    url: "/projects",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${title} | ${SITE_NAME}`,
+    description,
+  },
+};
 
 export default function ProjectsPage() {
   return (

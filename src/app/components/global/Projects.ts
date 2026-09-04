@@ -16,9 +16,6 @@ const tags = {
   Python: { name: "Python", color: "border-yellow-600/60" },
   TypeScript: { name: "TypeScript", color: "border-sky-500/60" },
   Zod: { name: "Zod", color: "border-emerald-600/60" },
-  ReactEmail: { name: "React Email", color: "border-red-500/60" },
-  ReactHotToast: { name: "React Hot Toast", color: "border-orange-500/60" },
-  Resend: { name: "Resend", color: "border-blue-500/60" },
 };
 
 const tech = {
@@ -32,11 +29,6 @@ const tech = {
   shadcn: { name: "shadcn/ui", href: "https://ui.shadcn.com/" },
   Framer: { name: "Framer Motion", href: "https://www.framer.com/motion/" },
   Zod: { name: "Zod", href: "https://zod.dev/" },
-  ReactEmail: { name: "React Email", href: "https://react.email/" },
-  ReactHotToast: {
-    name: "React Hot Toast",
-    href: "https://react-hot-toast.com/",
-  },
   AspNet: {
     name: "ASP.NET",
     href: "https://dotnet.microsoft.com/en-us/apps/aspnet",
@@ -78,7 +70,13 @@ export type ProjectRole = "solo" | "team";
 
 export type Project = {
   name: string;
-  description: string;
+  description: string; // Short tagline for cards and prev/next navigation
+  // Search-facing copy. Google shows seoTitle as the result title and prefers
+  // summary as the snippet when the same text also appears on the page.
+  seoTitle: string; // ~50–60 chars incl. " | WebDevEwan"; set absoluteTitle to skip the suffix
+  absoluteTitle?: boolean;
+  summary: string; // ~140–160 chars, first person, rendered as the lead paragraph
+  imageAlt?: string; // Descriptive alt text for the cover image
   localHref: string;
   tech: { name: string; href: string }[];
   APIs?: { name: string; href: string }[];
@@ -107,6 +105,11 @@ export const projects = new Map<string, Project>([
       name: "SurveyScope",
       description:
         "AI-assisted annotation for aerial wildlife census data, built with WildEye Conservation.",
+      seoTitle: "SurveyScope by WildEye: AI Aerial Wildlife Census Platform",
+      summary:
+        "I'm the lead developer on SurveyScope, WildEye Conservation's AI-assisted platform for annotating aerial census imagery and identifying wildlife at scale.",
+      imageAlt:
+        "Close-up of a lion's face in warm sepia tones beside the WildEye Conservation logo",
       localHref: "/projects/SurveyScope",
       tech: [
         tech.React,
@@ -122,7 +125,7 @@ export const projects = new Map<string, Project>([
         github: [
           {
             name: "GitHub Repo",
-            href: "https://github.com/WildEyeConservation/Detweb",
+            href: "https://github.com/WildEyeConservation/SurveyScope",
           },
         ],
         website: "https://wildeyeconservation.org/surveyscope/",
@@ -180,6 +183,11 @@ export const projects = new Map<string, Project>([
       name: "WebDevEwan",
       description:
         "My personal portfolio — built with Next.js, Tailwind, and TypeScript.",
+      seoTitle: "WebDevEwan Portfolio | Built with Next.js by Ewan Trollip",
+      absoluteTitle: true,
+      summary:
+        "The portfolio you're reading: a hand-built Next.js, Tailwind and TypeScript site with a medieval theme, custom SVG background and Framer Motion touches.",
+      imageAlt: "WebDev/Ewan wordmark in bold white type on a dark background",
       localHref: "/projects/webdevewan",
       tech: [tech.Nextjs, tech.Tailwind, tech.TypeScript, tech.Framer],
       links: {
@@ -217,6 +225,11 @@ export const projects = new Map<string, Project>([
       name: "EFT Toolset",
       description:
         "A mobile-first Escape From Tarkov companion powered by live TARKOV.DEV data.",
+      seoTitle: "EFT Toolset: Escape From Tarkov Companion App",
+      summary:
+        "A mobile-first Escape From Tarkov companion I built to look up items, quests and traders fast, using live TARKOV.DEV data, Next.js, shadcn/ui and TypeScript.",
+      imageAlt:
+        "EFT Toolset wordmark in distressed white stencil type on a dark background",
       localHref: "/projects/eft-toolset",
       tech: [tech.Nextjs, tech.Tailwind, tech.TypeScript, tech.shadcn],
       APIs: [{ name: "TARKOV.DEV", href: "https://tarkov.dev/" }],
@@ -259,6 +272,9 @@ export const projects = new Map<string, Project>([
       name: "Teaching & Learning System",
       description:
         "A multiplatform system for NWU lecturers to review and feedback on student video submissions.",
+      seoTitle: "Teaching & Learning System: NWU Video Feedback App",
+      summary:
+        "A North-West University team project I worked on: Next.js web app, Expo mobile app and Django backend letting lecturers review student videos and leave feedback.",
       localHref: "/projects/teaching-and-learning-system",
       tech: [
         tech.Nextjs,
