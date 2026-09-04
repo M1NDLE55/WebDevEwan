@@ -114,7 +114,7 @@ export const projects = new Map<string, Project>([
         github: [
           {
             name: "GitHub Repo",
-            href: "https://github.com/WildEyeConservation/Detweb",
+            href: "https://github.com/WildEyeConservation/SurveyScope",
           },
         ],
         website: "https://wildeyeconservation.org/surveyscope/",
