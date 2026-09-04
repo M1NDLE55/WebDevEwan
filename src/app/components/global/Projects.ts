@@ -16,9 +16,6 @@ const tags = {
   Python: { name: "Python", color: "border-yellow-600/60" },
   TypeScript: { name: "TypeScript", color: "border-sky-500/60" },
   Zod: { name: "Zod", color: "border-emerald-600/60" },
-  ReactEmail: { name: "React Email", color: "border-red-500/60" },
-  ReactHotToast: { name: "React Hot Toast", color: "border-orange-500/60" },
-  Resend: { name: "Resend", color: "border-blue-500/60" },
 };
 
 const tech = {
@@ -32,11 +29,6 @@ const tech = {
   shadcn: { name: "shadcn/ui", href: "https://ui.shadcn.com/" },
   Framer: { name: "Framer Motion", href: "https://www.framer.com/motion/" },
   Zod: { name: "Zod", href: "https://zod.dev/" },
-  ReactEmail: { name: "React Email", href: "https://react.email/" },
-  ReactHotToast: {
-    name: "React Hot Toast",
-    href: "https://react-hot-toast.com/",
-  },
   AspNet: {
     name: "ASP.NET",
     href: "https://dotnet.microsoft.com/en-us/apps/aspnet",

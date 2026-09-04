@@ -231,7 +231,7 @@ export default function HeroStory() {
             >
               <strong>Scrolls of GitHub</strong>
             </a>
-            , or by sending a raven through the royal couriers. The legend of
+            , or by sending a raven from your own mail client. The legend of
             Ewan Trollip is still being written — and the next chapter awaits.
           </p>
 
@@ -241,7 +241,7 @@ export default function HeroStory() {
               className="notch-plate-sm rune-glow inline-flex min-h-12 items-center justify-center px-5 text-sm font-semibold tracking-[0.2em] whitespace-nowrap text-amber-100 uppercase transition [--notch-border-a:0.9] hover:text-amber-50 focus:ring-2 focus:ring-amber-400 focus:ring-offset-2 focus:ring-offset-neutral-900 focus:outline-none sm:px-8"
               aria-label="Send an email to Ewan"
             >
-              Send a Raven
+              Email Ewan
             </a>
           </div>
         </Chapter>

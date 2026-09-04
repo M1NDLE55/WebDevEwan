@@ -97,14 +97,9 @@ const skillCategories: {
     rarity: "common",
     icon: Wrench,
     skills: [
-      { name: "Resend", description: "Messenger of enchanted letters." },
       { name: "Zod", description: "Guardian of data shapes." },
       { name: "shadcn/ui", description: "UI components forged in shadow." },
       { name: "Tailwind", description: "Winds that shape the design." },
-      {
-        name: "React Email",
-        description: "Scrolls rendered for the couriers.",
-      },
     ],
   },
   {
@@ -136,7 +131,7 @@ export default function SkillDeck() {
       aria-label="Skill arsenal"
     >
       <div className="mb-4 flex items-center justify-between gap-3">
-        <h3 className="text-xs uppercase tracking-[0.3em] text-amber-400/80">
+        <h3 className="text-xs tracking-[0.3em] text-amber-400/80 uppercase">
           Arsenal
         </h3>
         <span className="text-xs text-amber-100/50">
@@ -156,7 +151,7 @@ export default function SkillDeck() {
           className="flex w-full items-center gap-3 border border-amber-500/30 bg-amber-500/5 px-3 py-2.5 text-left text-amber-100 transition hover:border-amber-400/60 hover:bg-amber-500/10"
         >
           <ActiveIcon size={16} className="text-amber-300" />
-          <span className="text-xs uppercase tracking-widest">
+          <span className="text-xs tracking-widest uppercase">
             {active.title}
           </span>
           <span
@@ -204,7 +199,7 @@ export default function SkillDeck() {
                           isActive ? "text-amber-300" : "text-amber-100/50"
                         }
                       />
-                      <span className="text-xs uppercase tracking-widest">
+                      <span className="text-xs tracking-widest uppercase">
                         {cat.title}
                       </span>
                       <span
@@ -246,11 +241,9 @@ export default function SkillDeck() {
               >
                 <Icon
                   size={16}
-                  className={
-                    isActive ? "text-amber-300" : "text-amber-100/50"
-                  }
+                  className={isActive ? "text-amber-300" : "text-amber-100/50"}
                 />
-                <span className="whitespace-nowrap text-xs uppercase tracking-widest md:whitespace-normal">
+                <span className="text-xs tracking-widest whitespace-nowrap uppercase md:whitespace-normal">
                   {cat.title}
                 </span>
                 <span
@@ -300,7 +293,7 @@ export default function SkillDeck() {
             </motion.div>
           </AnimatePresence>
 
-          <p className="mt-4 text-[11px] uppercase tracking-widest text-amber-100/40">
+          <p className="mt-4 text-[11px] tracking-widest text-amber-100/40 uppercase">
             Hover a card to reveal its lore
           </p>
         </div>
