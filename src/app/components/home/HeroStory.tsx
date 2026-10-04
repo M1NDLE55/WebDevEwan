@@ -145,8 +145,7 @@ export default function HeroStory() {
             </Link>
             . Aerial images became the maps for this shared quest: find the
             animals, check what was missed, and carry the survey through to
-            population estimates. It was here that Ewan learned to navigate the
-            cloud citadels of AWS.
+            population estimates.
           </p>
           <p className="mb-6 text-amber-50/90">
             His chapter with Innoventix closed in <strong>May 2026</strong>.
@@ -228,8 +227,7 @@ export default function HeroStory() {
             <strong> Hermes Agent</strong>, bots, and the review and testing
             services that keep the experiments moving.{" "}
             <strong>Tailscale</strong> lays the hidden paths back to those
-            chambers. AWS first drew him beyond well-trodden ground through
-            work; AI has since led him much further into the unmapped realms.
+            chambers. AI has led him much further into the unmapped realms.
             SurveyScope&apos;s forge still needs tending, but there is always
             another door in the tower, and Ewan has never been this eager to see
             what lies behind it.
