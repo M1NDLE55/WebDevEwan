@@ -66,6 +66,20 @@ primary image, and a `SoftwareApplication` entity), which is what Google uses
 to pick a result thumbnail. Shared site metadata is defined in
 [`src/app/lib/site.ts`](src/app/lib/site.ts).
 
+## Refreshing the CV download
+
+The download at `public/ewan_trollip_cv.pdf` is rendered from the approved CV
+Markdown, preserving its wording and hyperlinks. The source file is read only.
+To regenerate it locally with [uv](https://docs.astral.sh/uv/):
+
+```bash
+uv run scripts/export-cv.py --source /home/m1ndle55/Documents/Notes/CV.md
+```
+
+The script uses ReportLab, markdown-it-py, and the system DejaVu Sans fonts
+(`/usr/share/fonts/truetype/dejavu` by default; override with `--font-dir`).
+After regeneration, render and visually inspect every PDF page before publishing.
+
 ## License
 
 Licensed under the [MIT License](LICENSE).

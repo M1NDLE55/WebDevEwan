@@ -1,6 +1,6 @@
 export const SITE_URL = "https://www.webdevewan.com";
 export const SITE_NAME = "WebDevEwan";
 export const SITE_TITLE =
-  "Full-Stack Developer & Conservation Technologist | Ewan Trollip";
+  "Ewan Trollip | Code Mage, AI Agents & Web Development";
 export const SITE_DESCRIPTION =
-  "Ewan Trollip is a Johannesburg-based full-stack developer building AI-powered conservation platforms, responsive web applications, and cloud systems.";
+  "A South African developer’s mage chronicle: AI agents, code review, testing, self-hosted tools, and SurveyScope, the wildlife survey platform I lead development on.";

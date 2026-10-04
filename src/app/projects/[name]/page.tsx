@@ -114,7 +114,10 @@ function projectJsonLd(project: Project, slug: string) {
       ...(image && { image }),
       applicationCategory: "WebApplication",
       operatingSystem: "Web",
-      author,
+      ...(project.role === "team" ? { contributor: author } : { author }),
+      ...(project.publisher && {
+        publisher: { "@type": "Organization", ...project.publisher },
+      }),
       ...(project.year && { dateCreated: project.year.slice(0, 4) }),
       ...(project.links.github?.length && {
         sameAs: project.links.github.map((g) => g.href),

@@ -4,8 +4,6 @@ import {
   SparklesIcon,
   BookOpenIcon,
   WrenchScrewdriverIcon,
-  GlobeAltIcon,
-  CloudIcon,
 } from "@heroicons/react/24/solid";
 import clsx from "clsx";
 
@@ -20,12 +18,10 @@ interface SkillCardProps {
 }
 
 const categoryIcons: Record<string, JSX.Element> = {
-  "Languages of Power": <CodeBracketIcon className="h-6 w-6" />,
-  "Frameworks of the Realms": <SparklesIcon className="h-6 w-6" />,
-  "Scrolls of Data": <BookOpenIcon className="h-6 w-6" />,
-  "Runes of the Cloud": <CloudIcon className="h-6 w-6" />,
-  "Tools of Craft": <WrenchScrewdriverIcon className="h-6 w-6" />,
-  "Other Enchantments": <GlobeAltIcon className="h-6 w-6" />,
+  "Current Spellbook": <CodeBracketIcon className="h-6 w-6" />,
+  "AI & Automation": <SparklesIcon className="h-6 w-6" />,
+  "Past Adventures": <WrenchScrewdriverIcon className="h-6 w-6" />,
+  "Academy Scrolls": <BookOpenIcon className="h-6 w-6" />,
 };
 
 const rarityBorder: Record<string, string> = {
@@ -96,10 +92,7 @@ export default function SkillCard({
   } as React.CSSProperties;
 
   return (
-    <div
-      className="group h-40 w-32 [perspective:1000px]"
-      onClick={onClick}
-    >
+    <div className="group h-40 w-32 [perspective:1000px]" onClick={onClick}>
       {/*
        * `z-0` establishes a stacking context on the flip wrapper so the face
        * pseudos (z-index: -1/-2) stay scoped here — without this they'd leak
@@ -120,10 +113,10 @@ export default function SkillCard({
               outer ring of the arc shows, tracing the border */}
           <span
             aria-hidden
-            className="pointer-events-none absolute inset-0 overflow-hidden clip-notch-sm"
+            className="clip-notch-sm pointer-events-none absolute inset-0 overflow-hidden"
           >
             <span
-              className="absolute left-1/2 top-1/2 aspect-square w-[200%] -translate-x-1/2 -translate-y-1/2 animate-[spin_3s_linear_infinite]"
+              className="absolute top-1/2 left-1/2 aspect-square w-[200%] -translate-x-1/2 -translate-y-1/2 animate-[spin_3s_linear_infinite]"
               style={{
                 background: `conic-gradient(from 0deg, transparent 0deg, transparent 300deg, ${rarityChaser[rarity]} 345deg, transparent 360deg)`,
               }}
@@ -131,7 +124,7 @@ export default function SkillCard({
           </span>
           <span
             aria-hidden
-            className="pointer-events-none absolute inset-[2px] clip-notch-sm"
+            className="clip-notch-sm pointer-events-none absolute inset-[2px]"
             style={{ background: rarityFrontBg[rarity] }}
           />
 
@@ -139,14 +132,14 @@ export default function SkillCard({
           <span
             aria-hidden
             className={clsx(
-              "absolute left-1.5 top-1.5 h-1.5 w-1.5",
+              "absolute top-1.5 left-1.5 h-1.5 w-1.5",
               rarityCorner[rarity],
             )}
           />
           <span
             aria-hidden
             className={clsx(
-              "absolute right-1.5 top-1.5 h-1.5 w-1.5",
+              "absolute top-1.5 right-1.5 h-1.5 w-1.5",
               rarityCorner[rarity],
             )}
           />
@@ -160,7 +153,7 @@ export default function SkillCard({
           <span
             aria-hidden
             className={clsx(
-              "absolute bottom-1.5 right-1.5 h-1.5 w-1.5",
+              "absolute right-1.5 bottom-1.5 h-1.5 w-1.5",
               rarityCorner[rarity],
             )}
           />
@@ -168,22 +161,28 @@ export default function SkillCard({
           <div className={clsx("relative mb-1", rarityAccent[rarity])}>
             {categoryIcons[category]}
           </div>
-          <h3 className="relative text-sm font-bold leading-tight text-amber-50">
+          <h3 className="relative text-sm leading-tight font-bold text-amber-50">
             {name}
           </h3>
           <p
             className={clsx(
-              "relative text-[10px] uppercase tracking-widest",
+              "relative text-[10px] tracking-widest uppercase",
               rarityAccent[rarity],
             )}
           >
-            {rarity}
+            {category === "Current Spellbook"
+              ? "Equipped"
+              : category === "AI & Automation"
+                ? "Exploring"
+                : category === "Past Adventures"
+                  ? "Dabbled"
+                  : "Academic"}
           </p>
         </div>
 
         {/* Back */}
         <div
-          className="notch-plate-sm absolute inset-0 flex items-center justify-center p-3 text-center text-xs text-amber-100 [backface-visibility:hidden] [transform:rotateY(180deg)]"
+          className="notch-plate-sm absolute inset-0 flex [transform:rotateY(180deg)] items-center justify-center p-3 text-center text-xs text-amber-100 [backface-visibility:hidden]"
           style={backPlateStyle}
         >
           {description || "A mysterious skill of great power."}

@@ -8,7 +8,9 @@ const tags = {
   AspNet: { name: "ASP.NET", color: "border-violet-600/60" },
   WinForms: { name: "WinForms .NET", color: "border-blue-600/60" },
   React: { name: "React", color: "border-sky-500/60" },
-  Amplify: { name: "Amplify", color: "border-indigo-400/60" },
+  Vite: { name: "Vite", color: "border-violet-400/60" },
+  TanStack: { name: "TanStack", color: "border-red-400/60" },
+  Amplify: { name: "Amplify Gen 2", color: "border-indigo-400/60" },
   DynamoDB: { name: "DynamoDB", color: "border-blue-700/60" },
   AppSync: { name: "AppSync", color: "border-rose-600/60" },
   SQS: { name: "SQS", color: "border-purple-600/60" },
@@ -54,7 +56,12 @@ const tech = {
     href: "https://expo.dev/",
   },
   React: { name: "React", href: "https://react.dev/" },
-  Amplify: { name: "Amplify", href: "https://docs.amplify.aws/" },
+  Vite: { name: "Vite", href: "https://vite.dev/" },
+  TanStack: { name: "TanStack", href: "https://tanstack.com/" },
+  Amplify: {
+    name: "AWS / Amplify Gen 2",
+    href: "https://docs.amplify.aws/react/",
+  },
   DynamoDB: {
     name: "Amazon DynamoDB",
     href: "https://aws.amazon.com/dynamodb/",
@@ -65,7 +72,7 @@ const tech = {
   Python: { name: "Python", href: "https://www.python.org/" },
 };
 
-export type ProjectType = "client" | "academic" | "personal";
+export type ProjectType = "client" | "professional" | "academic" | "personal";
 export type ProjectRole = "solo" | "team";
 
 export type Project = {
@@ -90,12 +97,14 @@ export type Project = {
   // Scannable metadata for list + detail pages
   year?: string; // e.g. "2024" or "2023–2024"
   role?: ProjectRole;
+  roleLabel?: string; // More specific role, while retaining solo/team attribution
+  publisher?: { name: string; url: string };
   type?: ProjectType;
   // Optional narrative sections (STAR, themed). If omitted, sections are hidden.
   quest?: string; // The problem / brief
   forging?: string; // Role + approach
   victory?: string; // Outcome / impact
-  highlights?: { label: string; detail?: string }[]; // 3–5 distinctive features
+  highlights?: { label: string; detail?: string }[]; // Distinctive features
 };
 
 export const projects = new Map<string, Project>([
@@ -104,22 +113,20 @@ export const projects = new Map<string, Project>([
     {
       name: "SurveyScope",
       description:
-        "AI-assisted annotation for aerial wildlife census data, built with WildEye Conservation.",
+        "WildEye Conservation’s aerial wildlife survey platform, from model-guided annotation and quality checks to population estimates.",
       seoTitle: "SurveyScope by WildEye: AI Aerial Wildlife Census Platform",
       summary:
-        "I'm the lead developer on SurveyScope, WildEye Conservation's AI-assisted platform for annotating aerial census imagery and identifying wildlife at scale.",
+        "I’m the lead developer on SurveyScope, WildEye Conservation’s platform for aerial imagery annotation, quality checks, and wildlife population estimates.",
       imageAlt:
         "Close-up of a lion's face in warm sepia tones beside the WildEye Conservation logo",
       localHref: "/projects/SurveyScope",
       tech: [
-        tech.React,
         tech.TypeScript,
-        tech.Amplify,
-        tech.AppSync,
-        tech.DynamoDB,
-        tech.SQS,
-        tech.ECS,
+        tech.Vite,
+        tech.TanStack,
+        tech.React,
         tech.Python,
+        tech.Amplify,
       ],
       links: {
         github: [
@@ -133,46 +140,53 @@ export const projects = new Map<string, Project>([
         socialImage: "/wildeye-og-compressed.png",
       },
       tags: [
-        tags.React,
         tags.TypeScript,
-        tags.Amplify,
-        tags.AppSync,
-        tags.DynamoDB,
-        tags.SQS,
-        tags.ECS,
+        tags.Vite,
+        tags.TanStack,
+        tags.React,
         tags.Python,
+        tags.Amplify,
       ],
-      year: `2024–${new Date().getFullYear()}`,
+      year: "2024–present",
       role: "team",
-      type: "client",
+      roleLabel: "Lead Developer",
+      publisher: {
+        name: "WildEye Conservation",
+        url: "https://wildeyeconservation.org/",
+      },
+      type: "professional",
       quest:
-        "Conservation researchers need to count and identify wildlife across huge volumes of aerial-census imagery. Doing it by hand doesn't scale, and off-the-shelf tools don't fit the specialised workflow.",
+        "Aerial wildlife surveys need a path from imagery to population estimates. SurveyScope brings annotation, checks for missed animals, quality control, and analysis into one platform, with AI models helping along the way.",
       forging:
-        "I work as lead developer on SurveyScope in collaboration with WildEye Conservation, building across React, TypeScript, and AWS (Amplify, AppSync, DynamoDB, SQS, ECS) with Python services behind the scenes. Recent focus has been backend optimisation and expanding the platform's workflow capabilities — model-guided annotation, quality-control pipelines, homography generation, and individual animal identification.",
+        "I was already lead developer on SurveyScope at Innoventix Consulting (November 2024–May 2026), in collaboration with WildEye Conservation. When WildEye became an independent company, I moved there full time in June 2026 and continued as Lead Developer. The current stack is TypeScript, Vite, TanStack, React, and Python, with AWS wrapped in Amplify Gen 2. I also built and use my own AI code review and testing tools to check changes before release.",
       victory:
-        "SurveyScope is live and actively used by conservationists, with ongoing development broadening what researchers can do with their imagery.",
+        "We’ve built SurveyScope into a platform covering model-guided annotation, false-negative review, quality control and user testing, homography creation, chain linking, and Jolly II results. I’m proud of how far it’s come. These days I spend a lot of time on performance and usability, which sometimes means rebuilding functionality I’ve already built.",
       highlights: [
         {
           label: "Model-guided annotation",
-          detail: "AI assists human annotators on aerial imagery.",
+          detail: "AI models help with annotating aerial survey imagery.",
         },
         {
-          label: "Quality-control pipelines",
-          detail: "Structured review flow for census data.",
+          label: "False-negative review",
+          detail: "A workflow to find animals the models missed.",
         },
         {
-          label: "Homography generation",
+          label: "Quality control & user testing",
           detail:
-            "Aligns overlapping aerial frames so the same ground area can be compared.",
+            "Quality control workflows and user testing are part of the platform’s development.",
         },
         {
-          label: "Individual animal identification",
+          label: "Automatic & manual homography creation",
+          detail: "Aligning overlapping images for comparison.",
+        },
+        {
+          label: "Chain linking",
           detail:
-            "Re-identifies specific animals across frames to support tracking and prevent double-counts.",
+            "Identifying the same animal across overlapping images to avoid counting it twice.",
         },
         {
-          label: "AWS-native architecture",
-          detail: "Amplify + AppSync + DynamoDB + SQS + ECS.",
+          label: "Jolly II results",
+          detail: "Result generation and analysis for population estimates.",
         },
       ],
     },
@@ -182,11 +196,11 @@ export const projects = new Map<string, Project>([
     {
       name: "WebDevEwan",
       description:
-        "My personal portfolio — built with Next.js, Tailwind, and TypeScript.",
+        "My Next.js portfolio, where I tell my story as a fantasy mage’s chronicle.",
       seoTitle: "WebDevEwan Portfolio | Built with Next.js by Ewan Trollip",
       absoluteTitle: true,
       summary:
-        "The portfolio you're reading: a hand-built Next.js, Tailwind and TypeScript site with a medieval theme, custom SVG background and Framer Motion touches.",
+        "The portfolio you’re reading: my story as a fantasy mage’s chronicle, built with Next.js, Tailwind, TypeScript, and Framer Motion.",
       imageAlt: "WebDev/Ewan wordmark in bold white type on a dark background",
       localHref: "/projects/webdevewan",
       tech: [tech.Nextjs, tech.Tailwind, tech.TypeScript, tech.Framer],
@@ -205,11 +219,11 @@ export const projects = new Map<string, Project>([
       role: "solo",
       type: "personal",
       quest:
-        "I wanted a portfolio that felt distinctly mine — not another template — and doubled as a sandbox for trying ideas.",
+        "I wanted a place to share what I build and what I get carried away with. A fantasy mage’s chronicle felt like a fitting home for it.",
       forging:
-        "Built solo with Next.js, Tailwind, and TypeScript. Small Framer Motion touches and a hand-triangulated SVG background for atmosphere. Kept it accessible, fast, and easy to extend as new projects land.",
+        "Built solo with Next.js, Tailwind, and TypeScript, with Framer Motion touches and a hand-triangulated SVG background for atmosphere. The chapter navigation and typed project registry hold the story and case studies together. This portfolio remains Next.js, even though my current day-to-day stack uses Vite and TanStack.",
       victory:
-        "Live at webdevewan.com and serving as the home for everything I build.",
+        "Live at webdevewan.com: a home for my story and selected projects, from the day job to things I use while gaming.",
       highlights: [
         { label: "Hand-triangulated SVG background" },
         { label: "Framer Motion micro-interactions" },
@@ -224,7 +238,7 @@ export const projects = new Map<string, Project>([
     {
       name: "EFT Toolset",
       description:
-        "A mobile-first Escape From Tarkov companion powered by live TARKOV.DEV data.",
+        "A Tarkov companion I built and use while playing, for quick item, quest, and trader lookups using TARKOV.DEV data.",
       seoTitle: "EFT Toolset: Escape From Tarkov Companion App",
       summary:
         "A mobile-first Escape From Tarkov companion I built to look up items, quests and traders fast, using live TARKOV.DEV data, Next.js, shadcn/ui and TypeScript.",
@@ -248,7 +262,7 @@ export const projects = new Map<string, Project>([
       role: "solo",
       type: "personal",
       quest:
-        "Escape From Tarkov players constantly look things up mid-session — items, quests, traders. Existing tools felt heavy, especially on mobile.",
+        "I kept looking up items, quests, and traders while playing Escape From Tarkov, so I built a companion for those quick mid-session lookups.",
       forging:
         "A small, mobile-first companion built with Next.js, Tailwind, shadcn/ui, and TypeScript, pulling live data from the TARKOV.DEV GraphQL API. The focus was fast search, clean filters, and a UI that doesn't get in the way.",
       victory:
@@ -256,7 +270,8 @@ export const projects = new Map<string, Project>([
       highlights: [
         {
           label: "Live TARKOV.DEV data",
-          detail: "Always fresh item, quest, and trader info.",
+          detail:
+            "Item, quest, and trader information from the TARKOV.DEV API.",
         },
         { label: "Mobile-first layout" },
         {
@@ -271,7 +286,7 @@ export const projects = new Map<string, Project>([
     {
       name: "Teaching & Learning System",
       description:
-        "A multiplatform system for NWU lecturers to review and feedback on student video submissions.",
+        "A university group project for lecturers to review student videos and leave feedback on web and mobile.",
       seoTitle: "Teaching & Learning System: NWU Video Feedback App",
       summary:
         "A North-West University team project I worked on: Next.js web app, Expo mobile app and Django backend letting lecturers review student videos and leave feedback.",

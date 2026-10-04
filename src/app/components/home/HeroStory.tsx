@@ -37,15 +37,16 @@ export default function HeroStory() {
               <MapPin size={14} />
               <span className="tracking-widest uppercase">TL;DR</span>
             </span>
-            <span className="hidden sm:inline">
-              Full-stack developer from South Africa, lead developer on{" "}
+            <span className="text-center sm:text-left">
+              South African developer, carried away with AI agents, review
+              loops, and a busy home server. Also lead developer on{" "}
               <Link
                 href="/projects/SurveyScope"
                 className="text-amber-300 underline decoration-amber-500/50 underline-offset-4 hover:text-amber-200"
               >
                 SurveyScope
               </Link>{" "}
-              (AI wildlife census) — told as a mage&apos;s chronicle. Skip to{" "}
+              — told as a mage&apos;s chronicle. Skip to{" "}
               <a
                 href="#chapter-arsenal"
                 className="text-amber-300 underline decoration-amber-500/50 underline-offset-4 hover:text-amber-200"
@@ -81,16 +82,21 @@ export default function HeroStory() {
           title="Prologue — The Whisper of the Runes"
         >
           <p className="dropcap mb-6 text-amber-50/90">
-            In the quiet hills of <strong>Noordheuwel</strong>, under the
-            watchful gaze of the Southern Stars, a young apprentice named{" "}
-            <strong>Ewan</strong> stumbled upon an ancient tome — the{" "}
-            <em>Runes of Delphi</em>. His earliest trials at the village school
-            yielded <strong>five distinctions</strong>, an early omen that his
-            path would be no ordinary one. With trembling hands, he traced the
-            tome&apos;s symbols, and the air shimmered with the first sparks of
-            magic. It was here that his journey began — a path not of sword and
-            shield, but of logic and light, where spells were written in code
-            and kingdoms were built in the realm unseen.
+            These days, the mage&apos;s tower is a home server, and Ewan is
+            spending a lot of time seeing how much <strong>AI agents</strong>{" "}
+            can do for themselves. He builds tools to review their code, conjure
+            test environments, and send them back to fix things. His main
+            spellbook is <strong>T3 Code</strong>, accompanied by a variety of
+            AI subscriptions — <em>“because I&apos;m insane.”</em> He&apos;s
+            never been this motivated to mess with how he works.
+          </p>
+          <p className="mb-6 text-amber-50/90">
+            By day, he&apos;s the lead developer on <strong>SurveyScope</strong>{" "}
+            at WildEye Conservation, and proud of how far the platform has come.
+            Away from that quest, it&apos;s local models, bots, and self-hosted
+            tools that keep drawing him into another experiment. The chronicle
+            began rather earlier, at <strong>Noordheuwel High School</strong>,
+            with five distinctions and the first steps into the Digital Realms.
           </p>
         </Chapter>
 
@@ -101,15 +107,14 @@ export default function HeroStory() {
           title="Chapter I — The Forging of the Mage"
         >
           <p className="dropcap mb-6 text-amber-50/90">
-            Ewan&apos;s quest led him to the{" "}
-            <strong>Great Academy of North-West University</strong>, where he
-            trained under the Masters of C#, Python, C++, Java, and the sacred
-            arts of SQL. Through trials and sleepless nights, he forged his
-            first enchanted tools — the <em>Crystal of PostgreSQL</em>, the{" "}
-            <em>Blade of ASP.NET</em>, and the <em>Mirror of WinForms</em> —
-            emerging from the Academy crowned <strong>cum laude</strong>, each
-            artifact granting him new powers in the ever-expanding Digital
-            Realms.
+            From <strong>2022 to 2024</strong>, Ewan trained at the Great
+            Academy of <strong>North-West University</strong>, graduating with a
+            <strong> BSc IT (cum laude)</strong>. C#, Java, C++, and the arts of
+            databases were among the academic trials, alongside ASP.NET and
+            WinForms .NET. Not every spell from the Academy travels in his
+            everyday kit, but those years gave him plenty to build on —
+            including a group project for lecturers to review student videos and
+            leave feedback on web and mobile.
           </p>
         </Chapter>
 
@@ -120,24 +125,30 @@ export default function HeroStory() {
           title="Chapter II — The Guild of Noble Craft"
         >
           <p className="dropcap mb-6 text-amber-50/90">
-            With the Academy behind him, Ewan ventured first into the wild lands
-            as a <strong>freelance artificer</strong> — crafting storefronts and
-            sites for merchants across Shopify and custom stacks, sharpening his
-            trade with TypeScript, React, and Next.js at his side. In time, a
-            call came from the halls of <strong>Innoventix Consulting</strong>,
-            where he was welcomed as a Software Developer and entrusted with a
-            quest of true consequence: lead developer on{" "}
+            In <strong>2024</strong>, Ewan worked as a freelance artificer,
+            building and maintaining client websites on Shopify and custom
+            stacks, mainly with TypeScript, React, and Next.js. From
+            <strong> November 2024 to May 2026</strong>, he worked with the
+            guild at
+            <strong> Innoventix Consulting</strong> as a Software Developer. He
+            was already lead developer on{" "}
             <Link
-              href="projects/SurveyScope/"
+              href="/projects/SurveyScope"
               className="text-amber-300 underline decoration-amber-500/50 underline-offset-4 transition hover:text-amber-200"
             >
               <strong>SurveyScope</strong>
             </Link>
-            , an AI-powered aerial-census platform forged in league with{" "}
-            <strong>WildEye Conservation</strong>. There, amid React,
-            TypeScript, and the arcane cloud lattices of AWS, he wields spells
-            that help researchers count and identify wildlife across vast skies
-            — where code serves not coin alone, but the creatures of the realm.
+            , in collaboration with <strong>WildEye Conservation</strong>,
+            working across React, Next.js, TypeScript, Python, and AWS.
+          </p>
+          <p className="mb-6 text-amber-50/90">
+            When WildEye became an independent company, he moved there full time
+            in <strong>June 2026</strong>, continuing as
+            <strong> Lead Developer</strong> on SurveyScope. The working stack
+            now is TypeScript, Vite, TanStack, React, and Python, with AWS
+            wrapped in Amplify Gen 2. He picked up AWS through work; AI has
+            since taken him much further beyond his usual stack. His own code
+            review and testing tools now help check changes before release.
           </p>
         </Chapter>
 
@@ -148,11 +159,11 @@ export default function HeroStory() {
           title="Chapter III — The Mage's Arsenal"
         >
           <p className="dropcap mb-8 text-amber-50/90">
-            Over the years, Ewan gathered a formidable collection of magical
-            artifacts and spells — each one a testament to battles fought and
-            quests completed. Some were forged in the heat of academic trials,
-            others in the wild lands of freelance work, and still more in the
-            halls of noble guilds.
+            A mage accumulates more artifacts than he carries into every quest.
+            Here&apos;s the stack Ewan works with now, the AI and automation
+            tools occupying his evenings, and a separate shelf for things
+            he&apos;s dabbled with through projects, freelance work, or
+            university.
           </p>
 
           <SkillDeck />
@@ -165,10 +176,12 @@ export default function HeroStory() {
           title="Interlude — The Artisan's Chronicles"
         >
           <p className="dropcap mb-6 text-amber-50/90">
-            From the forges of experience and the crucibles of curiosity came a
-            series of crafted works — living artifacts shaped by code and guided
-            by purpose. One such work stands above the rest, a quest of true
-            consequence forged in the wild skies of conservation.
+            Some artifacts belong to the day job, some to a university guild,
+            and some exist because Ewan wanted a tool while playing Tarkov.
+            SurveyScope is the biggest shared quest here: it has grown from
+            annotation into a platform for quality checks and population
+            estimates. There&apos;s a lot in it now, and he&apos;s proud of what
+            the team has built.
           </p>
 
           <FeaturedQuest />
@@ -191,14 +204,20 @@ export default function HeroStory() {
           title="Chapter IV — The Quest Ahead"
         >
           <p className="dropcap mb-6 text-amber-50/90">
-            The mage&apos;s ambition is no longer to reach the summit — it is to
-            widen the path. With each new spell, Ewan seeks to deepen his
-            mastery of the <strong>cloud citadels of AWS</strong> and the
-            emerging arts of machine intuition, forging tools that bridge
-            research and software. His vision: to scale the work of{" "}
-            <strong>conservation technology</strong> — systems that turn raw
-            data into living knowledge, and aid those who steward the wild
-            places of the world.
+            The next quest keeps leading back to <strong>AI agents</strong>: how
+            far can they get when they have the tools to review and test their
+            own work? Ewan is building loops that check every commit, spin up
+            local environments with <strong>Docker and QEMU</strong>, and send
+            agents back through fixes until they can report back having made it
+            through review and testing.
+          </p>
+          <p className="mb-6 text-amber-50/90">
+            Meanwhile, local models, <strong>Hermes Agent</strong>, bots, and
+            self-hosted review and testing services are giving his home server a
+            workout, with access over <strong>Tailscale</strong>. There&apos;s
+            plenty left to explore beyond his usual spellbook. SurveyScope
+            remains an ongoing quest too: making it faster and nicer to use,
+            even when that means rebuilding something he&apos;s already built.
           </p>
         </Chapter>
 

@@ -5,7 +5,7 @@ import { SITE_NAME } from "../lib/site";
 
 const title = "Projects";
 const description =
-  "Explore Ewan Trollip's full-stack, AI, conservation technology, and software projects.";
+  "Ewan Trollip’s project chronicles: SurveyScope, a Tarkov companion, this Next.js portfolio, and a university group project for video feedback.";
 
 export const metadata: Metadata = {
   title,

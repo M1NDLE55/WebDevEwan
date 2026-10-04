@@ -3,112 +3,133 @@
 import React, { useState } from "react";
 import SkillCard from "./SkillCard";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  Code2,
-  Sparkles,
-  Database,
-  Cloud,
-  Wrench,
-  Globe,
-  ChevronDown,
-} from "lucide-react";
+import { Code2, Sparkles, BookOpen, Wrench, ChevronDown } from "lucide-react";
 
 type Rarity = "common" | "rare" | "legendary";
 
 const skillCategories: {
   title: string;
   rarity: Rarity;
+  description: string;
   icon: React.ComponentType<{ size?: number; className?: string }>;
   skills: { name: string; description: string }[];
 }[] = [
   {
-    title: "Languages of Power",
+    title: "Current Spellbook",
     rarity: "legendary",
+    description:
+      "My current development stack. AWS came through work, wrapped in Amplify Gen 2.",
     icon: Code2,
     skills: [
-      { name: "TypeScript", description: "Typed magic for safer spells." },
-      { name: "JavaScript", description: "The language of the web realms." },
-      { name: "C#", description: "Strong and versatile incantations." },
-      { name: "Python", description: "Elegant scripts of great wisdom." },
-      { name: "C++", description: "Powerful but dangerous magic." },
-      { name: "Java", description: "Reliable spells for vast kingdoms." },
+      { name: "TypeScript", description: "The language I mostly develop in." },
+      { name: "Vite", description: "Part of my current stack on SurveyScope." },
+      { name: "TanStack", description: "Part of the toolkit I work with now." },
+      { name: "React", description: "The UI library in my current stack." },
+      {
+        name: "Python",
+        description: "Alongside TypeScript in my current development work.",
+      },
+      {
+        name: "AWS / Amplify Gen 2",
+        description:
+          "AWS learned through work, with Amplify Gen 2 wrapping it.",
+      },
     ],
   },
   {
-    title: "Frameworks of the Realms",
-    rarity: "rare",
+    title: "AI & Automation",
+    rarity: "legendary",
+    description:
+      "The tools and experiments I'm spending time on: agents, review, testing, and my home server.",
     icon: Sparkles,
     skills: [
-      { name: "React", description: "The enchanted UI library." },
-      { name: "Next.js", description: "The portal between pages." },
-      { name: "Expo", description: "Mobile magic for all devices." },
-      { name: "Django", description: "The Python fortress." },
-      { name: "ASP.NET", description: "The C# citadel." },
       {
-        name: "Framer Motion",
-        description: "Subtle animations and micro-charms.",
+        name: "T3 Code",
+        description: "My main setup, with a variety of AI subscriptions.",
+      },
+      {
+        name: "Review & Test Loops",
+        description:
+          "Home-grown tools to review commits, test changes, and send agents back to fix them.",
+      },
+      {
+        name: "Docker & QEMU",
+        description:
+          "Local test environments spun up so agents can test their own work.",
+      },
+      {
+        name: "Local Models",
+        description: "Running and experimenting with models on my home server.",
+      },
+      {
+        name: "Hermes Agent & Bots",
+        description: "More agents and bots in the home-server experiments.",
+      },
+      {
+        name: "Tailscale",
+        description: "Access to my self-hosted review and testing services.",
       },
     ],
   },
   {
-    title: "Scrolls of Data",
+    title: "Past Adventures",
     rarity: "rare",
-    icon: Database,
-    skills: [
-      {
-        name: "PostgreSQL",
-        description: "The crystal of structured knowledge.",
-      },
-      { name: "Supabase", description: "The instant backend scroll." },
-      { name: "SQL Server", description: "The iron vault of data." },
-      {
-        name: "DynamoDB",
-        description: "A swift NoSQL codex of the AWS realms.",
-      },
-      { name: "Oracle", description: "Ancient database magic." },
-      { name: "Access", description: "The humble village ledger." },
-    ],
-  },
-  {
-    title: "Runes of the Cloud",
-    rarity: "rare",
-    icon: Cloud,
-    skills: [
-      {
-        name: "AWS Amplify",
-        description: "A swift forge for full-stack spells.",
-      },
-      {
-        name: "AWS AppSync",
-        description: "GraphQL wards that bind data realms.",
-      },
-      {
-        name: "Amazon SQS",
-        description: "Queues that ferry messages between guilds.",
-      },
-      {
-        name: "Amazon ECS",
-        description: "Fleets of containers marching in order.",
-      },
-    ],
-  },
-  {
-    title: "Tools of Craft",
-    rarity: "common",
+    description:
+      "Dabbled with over the years in projects and freelance work. Next.js still powers this portfolio.",
     icon: Wrench,
     skills: [
-      { name: "Zod", description: "Guardian of data shapes." },
-      { name: "shadcn/ui", description: "UI components forged in shadow." },
-      { name: "Tailwind", description: "Winds that shape the design." },
+      {
+        name: "Next.js & JavaScript",
+        description:
+          "Used in projects and freelance work; this site is still Next.js.",
+      },
+      {
+        name: "Data Stores",
+        description:
+          "Convex, PostgreSQL, and Supabase from projects over the years.",
+      },
+      {
+        name: "UI & Validation",
+        description: "Tailwind CSS, shadcn/ui, and Zod from previous projects.",
+      },
+      {
+        name: "Expo & Resend",
+        description: "Tools I've dabbled with in projects over the years.",
+      },
+      {
+        name: "WordPress & Shopify",
+        description:
+          "Website and storefront tools from projects and freelance work.",
+      },
     ],
   },
   {
-    title: "Other Enchantments",
+    title: "Academy Scrolls",
     rarity: "common",
-    icon: Globe,
+    description:
+      "Academic experience from BSc IT at North-West University, 2022–2024. Separate from my current working stack.",
+    icon: BookOpen,
     skills: [
-      { name: "WordPress", description: "The builder of content castles." },
-      { name: "Shopify", description: "The merchant's magic shop." },
+      {
+        name: "C#",
+        description: "An academic language from my university years.",
+      },
+      {
+        name: "Java & C++",
+        description: "Languages explored through academic work.",
+      },
+      {
+        name: "SQL Server & Oracle",
+        description: "Databases used academically.",
+      },
+      {
+        name: "Access",
+        description: "Part of my academic database experience.",
+      },
+      {
+        name: "ASP.NET & WinForms",
+        description: ".NET frameworks used academically.",
+      },
     ],
   },
 ];
@@ -262,6 +283,7 @@ export default function SkillDeck() {
           aria-labelledby={`arsenal-tab-${activeIndex}`}
           className="min-h-[22rem] flex-1"
         >
+          <p className="mb-4 text-sm text-amber-100/70">{active.description}</p>
           <AnimatePresence mode="wait">
             <motion.div
               key={active.title}

@@ -1,12 +1,28 @@
 import type { Project } from "../global/Projects";
-import { Calendar, User, Users, Briefcase, GraduationCap, Sparkles } from "lucide-react";
+import {
+  Calendar,
+  User,
+  Users,
+  Briefcase,
+  GraduationCap,
+  Sparkles,
+} from "lucide-react";
 
 const typeConfig: Record<
   NonNullable<Project["type"]>,
-  { label: string; className: string; icon: React.ComponentType<{ size?: number; className?: string }> }
+  {
+    label: string;
+    className: string;
+    icon: React.ComponentType<{ size?: number; className?: string }>;
+  }
 > = {
   client: {
     label: "Client",
+    className: "border-emerald-400/60 text-emerald-200",
+    icon: Briefcase,
+  },
+  professional: {
+    label: "Professional",
     className: "border-emerald-400/60 text-emerald-200",
     icon: Briefcase,
   },
@@ -33,9 +49,7 @@ export default function ProjectMeta({
   if (!hasAny) return null;
 
   const pill =
-    size === "md"
-      ? "text-xs px-2.5 py-1"
-      : "text-[10px] px-2 py-0.5";
+    size === "md" ? "text-xs px-2.5 py-1" : "text-[10px] px-2 py-0.5";
   const iconSize = size === "md" ? 13 : 11;
 
   const typeInfo = project.type ? typeConfig[project.type] : null;
@@ -46,7 +60,7 @@ export default function ProjectMeta({
     <div className="flex flex-wrap gap-1.5">
       {project.year && (
         <span
-          className={`inline-flex items-center gap-1.5 border border-amber-500/40 bg-neutral-900/60 uppercase tracking-widest text-amber-100/80 ${pill}`}
+          className={`inline-flex items-center gap-1.5 border border-amber-500/40 bg-neutral-900/60 tracking-widest text-amber-100/80 uppercase ${pill}`}
         >
           <Calendar size={iconSize} className="opacity-70" />
           {project.year}
@@ -54,15 +68,16 @@ export default function ProjectMeta({
       )}
       {project.role && (
         <span
-          className={`inline-flex items-center gap-1.5 border border-amber-500/40 bg-neutral-900/60 uppercase tracking-widest text-amber-100/80 ${pill}`}
+          className={`inline-flex items-center gap-1.5 border border-amber-500/40 bg-neutral-900/60 tracking-widest text-amber-100/80 uppercase ${pill}`}
         >
           <RoleIcon size={iconSize} className="opacity-70" />
-          {project.role === "solo" ? "Solo Mage" : "Guild Member"}
+          {project.roleLabel ??
+            (project.role === "solo" ? "Solo Mage" : "Guild Member")}
         </span>
       )}
       {typeInfo && TypeIcon && (
         <span
-          className={`inline-flex items-center gap-1.5 border bg-neutral-900/60 uppercase tracking-widest ${typeInfo.className} ${pill}`}
+          className={`inline-flex items-center gap-1.5 border bg-neutral-900/60 tracking-widest uppercase ${typeInfo.className} ${pill}`}
         >
           <TypeIcon size={iconSize} className="opacity-80" />
           {typeInfo.label}
