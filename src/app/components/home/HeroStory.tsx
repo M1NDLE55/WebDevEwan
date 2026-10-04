@@ -87,8 +87,8 @@ export default function HeroStory() {
             <strong>AI constructs</strong>, setting them quests, and forging the
             wards that send them back when their spells go awry. His home server
             hums beneath the experiments; at the workbench,
-            <strong> T3 Code</strong> sits alongside rather too many AI
-            subscriptions — <em>“because I&apos;m insane,”</em> as he puts it.
+            <strong> T3 Code</strong> sits alongside more AI subscriptions than
+            any sensible mage would keep.
           </p>
           <p className="mb-6 text-amber-50/90">
             But every mage begins as an apprentice. In the quiet hills of
