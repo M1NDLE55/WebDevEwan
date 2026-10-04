@@ -34,7 +34,7 @@ def inline_markup(token):
         elif child.type == "em_close":
             parts.append("</i>")
         elif child.type == "link_open":
-            parts.append(f'<a href="{escape(child.attrGet("href"), quote=True)}" color="#5b4526">')
+            parts.append(f'<a href="{escape(child.attrGet("href"), quote=True)}" color="#000000">')
         elif child.type == "link_close":
             parts.append("</a>")
         else:
@@ -55,11 +55,11 @@ def export_cv(source, output, font_dir):
     )
     body = ParagraphStyle(
         "Body", fontName="CV", fontSize=9.2, leading=12.6,
-        textColor=colors.HexColor("#282828"), spaceAfter=5.5, alignment=TA_LEFT,
+        textColor=colors.black, spaceAfter=5.5, alignment=TA_LEFT,
     )
     styles = {
         "h1": ParagraphStyle("Name", parent=body, fontName="CV-Bold", fontSize=22, leading=28, spaceAfter=6),
-        "h2": ParagraphStyle("Section", parent=body, fontName="CV-Bold", fontSize=12, leading=16, spaceBefore=10, spaceAfter=6, keepWithNext=True, textColor=colors.HexColor("#5b4526")),
+        "h2": ParagraphStyle("Section", parent=body, fontName="CV-Bold", fontSize=12, leading=16, spaceBefore=10, spaceAfter=6, keepWithNext=True),
         "h3": ParagraphStyle("Subsection", parent=body, fontName="CV-Bold", fontSize=9.5, leading=13, spaceBefore=5, spaceAfter=5, keepWithNext=True),
     }
     story = []
@@ -80,7 +80,7 @@ def export_cv(source, output, font_dir):
             if heading == "h1" and not title_seen:
                 title_seen = True
                 story.append(Paragraph(inline_markup(token), ParagraphStyle(
-                    "Label", parent=body, fontSize=9, textColor=colors.HexColor("#696969"), spaceAfter=5,
+                    "Label", parent=body, fontSize=9, spaceAfter=5,
                 )))
                 continue
             if heading == "h2" and token.content == "Experience":
@@ -100,10 +100,10 @@ def export_cv(source, output, font_dir):
     def footer(canvas, doc):
         canvas.saveState()
         width, _ = A4
-        canvas.setStrokeColor(colors.HexColor("#d7cbb9"))
+        canvas.setStrokeColor(colors.black)
         canvas.line(42, 34, width - 42, 34)
         canvas.setFont("CV", 8)
-        canvas.setFillColor(colors.HexColor("#696969"))
+        canvas.setFillColor(colors.black)
         canvas.drawString(42, 21, "Ewan Trollip · Curriculum Vitae")
         canvas.drawRightString(width - 42, 21, str(doc.page))
         canvas.restoreState()
