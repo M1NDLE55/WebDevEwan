@@ -18,10 +18,10 @@ interface SkillCardProps {
 }
 
 const categoryIcons: Record<string, JSX.Element> = {
-  "Current Spellbook": <CodeBracketIcon className="h-6 w-6" />,
-  "AI & Automation": <SparklesIcon className="h-6 w-6" />,
-  "Past Adventures": <WrenchScrewdriverIcon className="h-6 w-6" />,
-  "Academy Scrolls": <BookOpenIcon className="h-6 w-6" />,
+  "The Worn Spellbook": <CodeBracketIcon className="h-6 w-6" />,
+  "The Summoning Circle": <SparklesIcon className="h-6 w-6" />,
+  "Relics of Past Quests": <WrenchScrewdriverIcon className="h-6 w-6" />,
+  "Scrolls of the Academy": <BookOpenIcon className="h-6 w-6" />,
 };
 
 const rarityBorder: Record<string, string> = {
@@ -170,13 +170,13 @@ export default function SkillCard({
               rarityAccent[rarity],
             )}
           >
-            {category === "Current Spellbook"
+            {category === "The Worn Spellbook"
               ? "Equipped"
-              : category === "AI & Automation"
-                ? "Exploring"
-                : category === "Past Adventures"
-                  ? "Dabbled"
-                  : "Academic"}
+              : category === "The Summoning Circle"
+                ? "Summoned"
+                : category === "Relics of Past Quests"
+                  ? "Relic"
+                  : "Academy"}
           </p>
         </div>
 

@@ -15,120 +15,140 @@ const skillCategories: {
   skills: { name: string; description: string }[];
 }[] = [
   {
-    title: "Current Spellbook",
+    title: "The Worn Spellbook",
     rarity: "legendary",
     description:
-      "My current development stack. AWS came through work, wrapped in Amplify Gen 2.",
+      "The spells kept within reach for daily quests: TypeScript runes, swift forges, and the cloud gates of Amplify Gen 2.",
     icon: Code2,
     skills: [
-      { name: "TypeScript", description: "The language I mostly develop in." },
-      { name: "Vite", description: "Part of my current stack on SurveyScope." },
-      { name: "TanStack", description: "Part of the toolkit I work with now." },
-      { name: "React", description: "The UI library in my current stack." },
+      {
+        name: "TypeScript",
+        description:
+          "Typed runes that catch wayward spells before the casting.",
+      },
+      {
+        name: "Vite",
+        description: "A swift forge, keeping fresh spells close to the fire.",
+      },
+      {
+        name: "TanStack",
+        description:
+          "A chest of charms for journeys through interfaces and data.",
+      },
+      {
+        name: "React",
+        description: "Enchanted pieces assembled into living interfaces.",
+      },
       {
         name: "Python",
-        description: "Alongside TypeScript in my current development work.",
+        description:
+          "A versatile familiar for scripts and quests beyond the browser.",
       },
       {
         name: "AWS / Amplify Gen 2",
         description:
-          "AWS learned through work, with Amplify Gen 2 wrapping it.",
+          "Cloud citadels reached through the gates of Amplify Gen 2.",
       },
     ],
   },
   {
-    title: "AI & Automation",
+    title: "The Summoning Circle",
     rarity: "legendary",
     description:
-      "The tools and experiments I'm spending time on: agents, review, testing, and my home server.",
+      "Here, AI familiars meet home-forged wards of review and testing. The tower hums with unfinished experiments.",
     icon: Sparkles,
     skills: [
       {
         name: "T3 Code",
-        description: "My main setup, with a variety of AI subscriptions.",
+        description:
+          "The summoning desk where coding familiars receive their quests.",
       },
       {
         name: "Review & Test Loops",
         description:
-          "Home-grown tools to review commits, test changes, and send agents back to fix them.",
+          "Home-forged wards send errant familiars back to mend their spells.",
       },
       {
         name: "Docker & QEMU",
         description:
-          "Local test environments spun up so agents can test their own work.",
+          "Pocket realms conjured for familiars to put their spells to the trial.",
       },
       {
         name: "Local Models",
-        description: "Running and experimenting with models on my home server.",
+        description: "Small oracles housed within the mage's own tower.",
       },
       {
         name: "Hermes Agent & Bots",
-        description: "More agents and bots in the home-server experiments.",
+        description: "Messengers and familiars roaming the tower's workshops.",
       },
       {
         name: "Tailscale",
-        description: "Access to my self-hosted review and testing services.",
+        description:
+          "Hidden paths back to the tower's review and testing chambers.",
       },
     ],
   },
   {
-    title: "Past Adventures",
+    title: "Relics of Past Quests",
     rarity: "rare",
     description:
-      "Dabbled with over the years in projects and freelance work. Next.js still powers this portfolio.",
+      "Treasures gathered on projects and merchant quests, some only briefly tried. Next.js still holds the walls of this chronicle.",
     icon: Wrench,
     skills: [
       {
         name: "Next.js & JavaScript",
         description:
-          "Used in projects and freelance work; this site is still Next.js.",
+          "Runes from earlier quests; Next.js still shelters this chronicle.",
       },
       {
-        name: "Data Stores",
+        name: "Crystals of Data",
         description:
-          "Convex, PostgreSQL, and Supabase from projects over the years.",
+          "Convex, PostgreSQL, and Supabase: vaults visited on earlier quests.",
       },
       {
-        name: "UI & Validation",
-        description: "Tailwind CSS, shadcn/ui, and Zod from previous projects.",
+        name: "Charms of Form",
+        description:
+          "Tailwind CSS and shadcn/ui shape the vessel; Zod guards its runes.",
       },
       {
         name: "Expo & Resend",
-        description: "Tools I've dabbled with in projects over the years.",
+        description:
+          "Portals for travelling spells and departing ravens, tried on past quests.",
       },
       {
         name: "WordPress & Shopify",
         description:
-          "Website and storefront tools from projects and freelance work.",
+          "Castle builders and merchant enchantments from earlier commissions.",
       },
     ],
   },
   {
-    title: "Academy Scrolls",
+    title: "Scrolls of the Academy",
     rarity: "common",
     description:
-      "Academic experience from BSc IT at North-West University, 2022–2024. Separate from my current working stack.",
+      "Scrolls carried home from North-West University: enchantments studied in the Academy, rather than spells in the daily kit.",
     icon: BookOpen,
     skills: [
       {
         name: "C#",
-        description: "An academic language from my university years.",
+        description: "A sturdy blade first wielded in the Academy.",
       },
       {
         name: "Java & C++",
-        description: "Languages explored through academic work.",
+        description: "Two demanding tomes opened during the academic trials.",
       },
       {
         name: "SQL Server & Oracle",
-        description: "Databases used academically.",
+        description: "Great vaults of knowledge explored beneath the Academy.",
       },
       {
         name: "Access",
-        description: "Part of my academic database experience.",
+        description: "The village ledger among the Academy's grander vaults.",
       },
       {
         name: "ASP.NET & WinForms",
-        description: ".NET frameworks used academically.",
+        description:
+          "The citadel and the mirror, studied in the Academy's workshops.",
       },
     ],
   },
