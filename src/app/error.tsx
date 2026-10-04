@@ -24,8 +24,8 @@ export default function Error({
 
         <div className="mb-4 flex items-center justify-center gap-2 text-amber-400">
           <AlertTriangle size={14} />
-          <span className="text-xs uppercase tracking-[0.3em]">
-            A Rune Misfired
+          <span className="text-xs tracking-[0.3em] uppercase">
+            A Gear Slipped
           </span>
         </div>
 
@@ -34,19 +34,19 @@ export default function Error({
         </h1>
 
         <p className="mt-4 text-lg text-amber-50/90 md:text-xl">
-          The spell faltered mid-incantation.
+          The mechanism stalled in the workshop.
         </p>
         <p className="mt-2 text-sm text-amber-200/70">
-          Pray, gather your focus and attempt the conjuration once more.
+          Gather your tools and give the mechanism another try.
         </p>
 
         <div className="mt-8 flex justify-center">
           <button
             onClick={() => reset()}
-            className="notch-plate-sm rune-glow inline-flex min-h-12 items-center justify-center px-8 text-sm font-semibold uppercase tracking-[0.2em] text-amber-100 transition hover:text-amber-50 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:ring-offset-2 focus:ring-offset-neutral-900 [--notch-border-a:0.9]"
-            aria-label="Re-cast the spell and try again"
+            className="notch-plate-sm rune-glow inline-flex min-h-12 items-center justify-center px-8 text-sm font-semibold tracking-[0.2em] text-amber-100 uppercase transition [--notch-border-a:0.9] hover:text-amber-50 focus:ring-2 focus:ring-amber-400 focus:ring-offset-2 focus:ring-offset-neutral-900 focus:outline-none"
+            aria-label="Try the page again"
           >
-            Re-cast the Spell
+            Try Again
           </button>
         </div>
       </div>

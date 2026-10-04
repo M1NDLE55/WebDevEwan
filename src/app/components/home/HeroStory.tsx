@@ -38,7 +38,7 @@ export default function HeroStory() {
               <span className="tracking-widest uppercase">TL;DR</span>
             </span>
             <span className="text-center sm:text-left">
-              A code mage from South Africa, summoning AI familiars and filling
+              A code mage from South Africa, building AI constructs and filling
               his home tower with experiments. Lead developer on{" "}
               <Link
                 href="/projects/SurveyScope"
@@ -83,11 +83,11 @@ export default function HeroStory() {
         >
           <p className="dropcap mb-6 text-amber-50/90">
             In a tower in the southern realms, the runes are still glowing.
-            <strong> Ewan</strong> has been summoning{" "}
-            <strong>AI familiars</strong>, setting them quests, and forging the
+            <strong> Ewan</strong> has been building{" "}
+            <strong>AI constructs</strong>, setting them quests, and forging the
             wards that send them back when their spells go awry. His home server
-            hums beneath the experiments; the grimoire of{" "}
-            <strong>T3 Code</strong> lies open beside rather too many AI
+            hums beneath the experiments; at the workbench,
+            <strong> T3 Code</strong> sits alongside rather too many AI
             subscriptions — <em>“because I&apos;m insane,”</em> as he puts it.
           </p>
           <p className="mb-6 text-amber-50/90">
@@ -131,7 +131,7 @@ export default function HeroStory() {
           <p className="dropcap mb-6 text-amber-50/90">
             In <strong>2024</strong>, the young artificer took his craft to the
             merchants, building and tending storefronts with Shopify,
-            TypeScript, React, and Next.js. That November, a summons arrived
+            TypeScript, React, and Next.js. That November, an invitation arrived
             from
             <strong> Innoventix Consulting</strong>. Within its halls he served
             as a Software Developer, and together with{" "}
@@ -169,7 +169,7 @@ export default function HeroStory() {
         >
           <p className="dropcap mb-8 text-amber-50/90">
             The tower&apos;s shelves tell their own story. Within reach lies the
-            worn spellbook of daily work; nearby, a summoning circle glows with
+            worn spellbook of daily work; nearby, a clockwork workshop hums with
             agents and unfinished experiments. Further back rest relics from
             earlier quests and scrolls carried home from the Academy. Ewan has
             tried many enchantments over the years. These are the ones he keeps
@@ -216,20 +216,20 @@ export default function HeroStory() {
         >
           <p className="dropcap mb-6 text-amber-50/90">
             A new trail has caught the mage&apos;s eye. What happens when a
-            familiar can try its own spells, face the review wards, and return
-            to the forge without waiting for its summoner? Ewan has been
-            building just such a circle: every commit meets a review, while
-            <strong> Docker and QEMU</strong> conjure pocket realms for testing.
-            The agents go around again, mending their work, before returning
-            with news that they have passed the trials.
+            construct can try its own spells, face the review wards, and return
+            to the forge without waiting for its maker? Ewan has been building
+            just such a workshop: every commit meets a review, while
+            <strong> Docker and QEMU</strong> open pocket test chambers. The
+            agents go around again, mending their work, before returning with
+            news that they have passed the trials.
           </p>
           <p className="mb-6 text-amber-50/90">
             Within the home tower, local models share their quarters with
             <strong> Hermes Agent</strong>, bots, and the review and testing
             services that keep the experiments moving.{" "}
             <strong>Tailscale</strong> lays the hidden paths back to those
-            chambers. AWS first drew him beyond familiar ground through work; AI
-            has since led him much further into the unmapped realms.
+            chambers. AWS first drew him beyond well-trodden ground through
+            work; AI has since led him much further into the unmapped realms.
             SurveyScope&apos;s forge still needs tending, but there is always
             another door in the tower, and Ewan has never been this eager to see
             what lies behind it.

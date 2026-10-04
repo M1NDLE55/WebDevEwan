@@ -42,7 +42,7 @@ const skillCategories: {
       {
         name: "Python",
         description:
-          "A versatile familiar for scripts and quests beyond the browser.",
+          "A versatile tool for scripts and quests beyond the browser.",
       },
       {
         name: "AWS / Amplify Gen 2",
@@ -52,34 +52,36 @@ const skillCategories: {
     ],
   },
   {
-    title: "The Summoning Circle",
+    title: "The Clockwork Workshop",
     rarity: "legendary",
     description:
-      "Here, AI familiars meet home-forged wards of review and testing. The tower hums with unfinished experiments.",
+      "Here, AI constructs meet home-forged wards of review and testing. The workshop hums with unfinished experiments.",
     icon: Sparkles,
     skills: [
       {
         name: "T3 Code",
         description:
-          "The summoning desk where coding familiars receive their quests.",
+          "The workbench where coding constructs receive their quests.",
       },
       {
         name: "Review & Test Loops",
         description:
-          "Home-forged wards send errant familiars back to mend their spells.",
+          "Home-forged wards send faulty constructs back to mend their spells.",
       },
       {
         name: "Docker & QEMU",
         description:
-          "Pocket realms conjured for familiars to put their spells to the trial.",
+          "Pocket test chambers built for constructs to put their spells to the trial.",
       },
       {
         name: "Local Models",
-        description: "Small oracles housed within the mage's own tower.",
+        description:
+          "Small engines of reasoning housed within the mage's own tower.",
       },
       {
         name: "Hermes Agent & Bots",
-        description: "Messengers and familiars roaming the tower's workshops.",
+        description:
+          "Agents and clockwork helpers busy in the tower's workshops.",
       },
       {
         name: "Tailscale",

@@ -19,7 +19,7 @@ interface SkillCardProps {
 
 const categoryIcons: Record<string, JSX.Element> = {
   "The Worn Spellbook": <CodeBracketIcon className="h-6 w-6" />,
-  "The Summoning Circle": <SparklesIcon className="h-6 w-6" />,
+  "The Clockwork Workshop": <SparklesIcon className="h-6 w-6" />,
   "Relics of Past Quests": <WrenchScrewdriverIcon className="h-6 w-6" />,
   "Scrolls of the Academy": <BookOpenIcon className="h-6 w-6" />,
 };
@@ -172,8 +172,8 @@ export default function SkillCard({
           >
             {category === "The Worn Spellbook"
               ? "Equipped"
-              : category === "The Summoning Circle"
-                ? "Summoned"
+              : category === "The Clockwork Workshop"
+                ? "Forged"
                 : category === "Relics of Past Quests"
                   ? "Relic"
                   : "Academy"}
